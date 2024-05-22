@@ -1,0 +1,46 @@
+.related-products {
+  display: block;
+}
+
+.related-products__heading {
+  margin: 0 0 3rem;
+}
+.related-products .shoeName {
+  margin-top: 3.5rem;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1200px)  {
+  .c-width .grid--1-col-tablet-down .grid__item{
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+  #trending.grid--1-col-tablet-down .grid__item{
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+  .related-products  .grid--1-col-tablet-down .grid__item{
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+  #recently-viewed-products .grid--1-col-tablet-down .grid__item{
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+}
+.review_title{
+  text-align: center;
+  padding-top: 15px;
+}
+@media screen and (max-width: 768px) {
+  .related-products .grid.product-grid{
+    row-gap: 35px;
+  }
+  .related-products  .ForYouSectionTitle {
+      /* padding-bottom: 25px; */
+      padding-bottom: 10px;
+  }
+  .review_title{
+    padding-bottom: 10px;
+  }
+}
+

@@ -1,0 +1,319 @@
+.pageTitle {
+    height: fit-content;
+    font-family: termina-medium;
+    font-size: 28px;
+    color: #000;
+    /* padding: 0 5rem; */
+    margin: 0 auto;
+    max-width: var(--page-width);
+    text-transform: uppercase;
+    padding-top: 25px;
+}
+
+.fullLengthText br {
+    display: none;
+}
+
+.aboutUsPoster {
+    width: 100%;
+    height: 24.35rem;
+    object-fit: cover;
+    margin-bottom: 1.15rem;
+}
+
+.fullLengthText p {
+    margin-bottom: 1rem !important;
+}
+
+.faq_page {
+    background-color: #fff;
+}
+
+.AboutUsContained {
+    height: fit-content;
+    font-family: 'termina-demi';
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #000000;
+    /* background-color: white; */
+    padding: 0.25rem 0rem 2rem 0rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.AboutUsContained p {
+    font-family: 'Inter';
+    /* font-size: 18px; */
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.followUs {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3.95rem;
+    gap: 1.5rem;
+    display: none;
+}
+
+.followUs .followTitle {
+    font-family: 'termina-demi';
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+.followUs .followUSLogoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#instaLogo {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+}
+
+#facebookLogo {
+    width: 1.54rem;
+    height: 1.54rem;
+    object-fit: contain;
+}
+
+#tiktokLogo {
+    width: 1.54rem;
+    height: 1.8rem;
+    object-fit: contain;
+}
+
+#youtubeLogo {
+    width: 1.8rem;
+    height: 1.35rem;
+    object-fit: contain;
+}
+
+.aboutCompany {
+    width: 65.6%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 16rem;
+}
+
+.aboutCompany .aboutRow {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+}
+
+.aboutCompany .aboutRow img {
+    width: 3.59rem;
+    height: 3.59rem;
+}
+
+.aboutCompany .aboutRow .aboutRowDis {
+    width: 60%;
+    font-family: 'termina-demi';
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+.lastThought {
+    width: 60%;
+    font-family: 'termina-demi';
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000000;
+    margin-left: 4.5rem;
+}
+
+.aa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: var(--page-width);
+    padding: 0 5rem;
+}
+
+@media(max-width:1000px) {
+    .aboutUsPoster {
+        object-fit: fill;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner {
+        margin: 0.5rem 0!important;
+    }
+}
+
+@media (max-width: 477px) {
+    .pageTitle {
+        width: 100%;
+        margin-top: 15px;
+        padding: 0;
+    }
+    .aboutUsPoster {
+        height: fit-content;
+        object-fit: contain;
+    }
+    .AboutUsContained {
+        width: 100%;
+        font-size: 0.8rem;
+        padding: 0.5rem 0rem 1rem;
+        /* padding: 1rem; */
+    }
+    .aboutCompany {
+        width: 90%;
+        margin-bottom: 8rem;
+    }
+    .aboutCompany .aboutRow .aboutRowDis {
+        width: 70%;
+        font-size: 0.9rem;
+    }
+    .lastThought {
+        width: 60%;
+        font-size: 0.9rem;
+    }
+    .AboutUsContained p {
+        font-size: 12px;
+    }
+    .aa {
+        padding: 0 1rem
+    }
+}
+
+
+/* kyx-rating css - Start */
+
+
+/* .fullLengthHeadingText , .underStand ,.fullLengthText {
+    margin: 0rem 0 !important;
+} */
+
+.whiteArea .fullLengthHeadingText,
+.whiteArea .fullLengthText {
+    margin: 0rem 0 !important;
+}
+
+.cardContainer.c-grid .card {
+    width: 31% !important;
+}
+
+.cardContainer.removeBorder .card {
+    width: 31% !important;
+}
+
+.cardContainer.removeBorder .card {
+    height: inherit !important;
+    display: block !important;
+}
+
+.cardContainer.removeBorder {
+    padding-top: 20px;
+}
+
+.c-grid .card {
+    height: inherit !important;
+}
+
+.c-grid .card .cardTextArea {
+    height: 100% !important;
+}
+
+.cardContainer.removeBorder .card .cardTextArea {
+    height: 100% !important;
+}
+
+.cardContainer.c-grid .card img {
+    height: auto !important;
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1400px) {
+    .cardContainer.c-grid .card .cardTextArea {
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 990px) {
+    .cardContainer.c-grid .card {
+        width: 47%!important;
+    }
+    .cardContainer.removeBorder .card {
+        width: 47%!important;
+    }
+}
+
+@media only screen and (min-width: 478px) and (max-width: 767px) {
+    .underStand {
+        flex-direction: column!important;
+        gap: 1rem!important;
+    }
+    .underStand .column {
+        width: 100% !important;
+    }
+    .cardContainer.c-grid .card {
+        width: 70%!important;
+    }
+    .cardContainer.removeBorder .card {
+        width: 80%!important;
+    }
+    .c-grid .card .cardTextArea {
+        height: 185px!important;
+    }
+    .cardContainer .card img {
+        height: 99px!important;
+    }
+    .fullLengthText,
+    .underStand {
+        font-size: 12px!important;
+    }
+    .cardContainer .card .cardTextArea {
+        font-size: 12px!important;
+    }
+    .fullLengthText {
+        margin: 0.5rem 0!important;
+    }
+    .whiteArea {
+        gap: 0rem!important;
+    }
+}
+
+@media (max-width: 477px) {
+    .underStand {
+        gap: 1rem!important;
+    }
+    .cardContainer .card .cardTextArea {
+        font-size: 12px!important;
+    }
+    .cardContainer.c-grid .card {
+        width: 100%!important;
+    }
+    .cardContainer.removeBorder .card {
+        width: 90%!important;
+    }
+    .fullLengthText,
+    .underStand {
+        font-size: 12px!important;
+    }
+    .fullLengthText {
+        margin: 0.5rem 0!important;
+    }
+    .whiteArea {
+        gap: 0rem!important;
+    }
+}
+
+
+/* kyx-rating css - End */

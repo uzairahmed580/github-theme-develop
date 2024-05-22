@@ -1,0 +1,142 @@
+<section>
+  <div class="clean-policy page-width">
+    <div class="clean-policy--title">
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.desc != blank %}
+        <p>{{ section.settings.desc | newline_to_br }}</p>
+      {% endif %}
+    </div>
+    <div class="clean-policy__block">
+      {% for block in section.blocks %}
+        <div class="clean-policy__content">
+          {% if block.settings.title != blank %}
+            <h4>{{ block.settings.title | escape }}</h4>
+          {% endif %}
+          {% if block.settings.desc != blank %}
+            <p>{{ block.settings.desc | newline_to_br }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="note_content">
+      {% if section.settings.note_title != blank %}
+        <h4>{{ section.settings.note_title | escape }}</h4note_title>
+      {% endif %}
+      {% if section.settings.note_desc != blank %}
+        <p>{{ section.settings.note_desc | newline_to_br }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<style>
+  .note_content h4 {
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0;
+    color: #3A3A3A;
+    font-weight: 900;
+    font-family: Inter;
+  }
+  .note_content p {
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0;
+    color: #3A3A3A;
+  }
+  .note_content {
+    margin-bottom: 60px;
+  }
+  .clean-policy.page-width {
+    margin-top: 60px;
+    max-width: 920px;
+  }
+  .clean-policy__content p {
+    letter-spacing: 0;
+    color: #3A3A3A;
+    font-family: Inter;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 20px;
+  }
+  .clean-policy__content h4 {
+    letter-spacing: 0;
+    margin-bottom: 17px;
+    color: #3A3A3A;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 21px;
+  }
+
+  .clean-policy__content {
+    margin-bottom: 40px;
+  }
+  .clean-policy--title h2 {
+    letter-spacing: 0;
+    color: #E5337C;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    font-family: termina-bold;
+    margin-bottom: 25px;
+  }
+  .clean-policy--title p {
+    letter-spacing: 0;
+    color: #0062FF;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    font-family: Inter;
+    margin-bottom: 50px;
+  }
+</style>
+{% schema %}
+  {
+    "name": "Pro Clean Policy",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }, {
+        "type": "textarea",
+        "id": "desc",
+        "label": "Desc"
+      }, {
+        "type": "text",
+        "id": "note_title",
+        "label": "Note Title"
+      }, {
+        "type": "textarea",
+        "id": "note_desc",
+        "label": "Note Desc"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "policy",
+        "name": "Policy",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Policy Title"
+          }, {
+            "type": "richtext",
+            "id": "desc",
+            "label": "Policy Desc"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Pro Clean Policy"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,285 @@
+<div
+  id="recently-viewed-products"
+  class="collection clearfix"
+  style="display:none">
+  <div id="ForYouSection">
+    <div class="page-width full-width">
+      <div class="ForYouSectionTitle">RECENTLY  VIEWED  PRODUCTS</div>
+      <div id="recently-viewed-products-wrapper" class="product-grid contains-card "></div>
+      <div class="slider-buttons no-js-hidden">
+        <button
+          type="button"
+          class="slider-button slider-button--prev prev-btn"
+          name="previous"
+          aria-label="{{ 'general.slider.previous_slide' | t }}"
+          aria-controls="Slider-{{ section.id }}">
+          {% render 'icon-caret' %}
+        </button>
+        <button
+          type="button"
+          class="slider-button slider-button--next next-btn"
+          name="next"
+          aria-label="{{ 'general.slider.next_slide' | t }}"
+          aria-controls="Slider-{{ section.id }}">
+          {% render 'icon-caret' %}
+        </button>
+      </div> 
+    </div>
+  </div>
+</div>
+{{ 'custom-product-grid.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+{% raw %}
+  <script id="recently-viewed-product-template" type="text/x-jquery-tmpl">
+    <div class="col-gap_c">
+      <div id="product-${handle}" class="">
+        <div class="card-wrapper product-card-wrapper underline-links-hover">
+          <div class="card card--card card--media color-background-1 gradient" style="--ratio-percent: 100%;">
+            <div class="box-siz card__inner  ratio" style="--ratio-percent: 100%;">
+
+            {% endraw %}
+            {% if customer %}
+              {% raw %}
+                <button
+                  data-with-epi="true"
+                  class="swym-button swym-add-to-wishlist-view-product product_${id}"
+                  data-swaction="addToWishlist"
+                  data-product-id="${id}"
+                  data-variant-id="${variants[0].id}"
+                  data-product-url="${window.shopUrl}/products/${handle}"></button>
+              {% endraw %}
+            {% else %}
+              {% raw %}
+                <button class="customSymsBtn"></button>
+              {% endraw %}
+            {% endif %}
+            {% raw %}
+
+              <a href="${url}" class="mk ">
+                <div class="card__media">
+                  <div class="media media--transparent media--hover-effect">
+                    {{ if featured_image }}
+                    <img
+                      src="${Shopify.Products.resizeImage(featured_image, "
+                      master")}"
+                      data-src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/placeholder.jpg?v=1691044815" />
+                    {{ else }}
+                    <img
+                      class="placeholder-img"
+                      src="//cdn.shopify.com/s/files/1/0720/7819/7049/t/38/assets/placeholder.png?v=125816514545718613741685771274"
+                      alt="${title}" />
+                    {{/if}}
+                  </div>
+                </div>
+                <div class="ShoeImgSizeContainer">SIZE ${options[0].values[0]}</div>
+              </a>
+            </div>
+            <div class="shoeName">
+              <a href="${url}">${title}</a>
+            </div>
+            <div class="priceContainer">
+              <div class="price">
+                <div class="newPrice">{{ if price_varies }}From {{/if}}${Shopify.formatMoney(price)}</div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+  
+
+      </div>
+    </div>
+  </script>
+{% endraw %}
+
+<script>
+  Shopify.Products.showRecentlyViewed({howManyToShow: 15});
+</script>
+
+
+
+<style>
+
+  .slick-dots li {
+    margin: 0;
+  }
+  .slick-dots li button:before {
+    font-size: 36px;
+  }
+  .flexBox {
+    display: flex;
+  }
+  .ShoeImgSizeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "termina-medium";
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #8d8d8d;
+    background-color: #fff;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-bottom: 0.5rem;
+    position: absolute;
+    bottom: -35px;
+  }
+  .collection .card__inner {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  }
+  .shoeName {
+    font-family:'Inter';
+    font-size: 1rem;
+    font-weight: 600;
+    color: #3a3a3a;
+    width: 100%;
+    text-align: center;
+    height: 4rem;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+  .shoeName a {
+    color: #3A3A3A;
+  }
+  #ForYouSection {
+    /*padding-bottom: 50px; */
+    padding-bottom: 35px; 
+  }
+  #recently-viewed-products-wrapper .slick-prev.slick-arrow,
+  #recently-viewed-products-wrapper .slick-next.slick-arrow {
+    display: none !important;
+  }
+  #recently-viewed-products #recently-viewed-products-wrapper .card__media .media img {
+    max-width: 85%;
+    margin: 0 auto;
+    right: 0;
+  }
+  .prev-btn.slick-disabled svg,
+  .next-btn.slick-disabled svg {
+    color: rgba(var(--color-foreground), 0.3);
+    cursor: not-allowed;
+  }
+  @media screen and (min-width: 1200px) {
+    #recently-viewed-products-wrapper {
+      display: flex;
+      gap: 28px;
+      width: 100%;
+    }
+    #recently-viewed-products-wrapper .slick-list {
+      width: 100%;
+
+    }
+    #recently-viewed-products-wrapper .slick-track {
+      margin: 0;
+    };
+    /*.col-gap_c {
+        width: 100%;
+        max-width: 23%;
+        padding-right: 0 !important;
+    }*/
+  }
+  @media only screen and (min-width: 990px) and(max-width: 1200px) {
+    #recently-viewed-products-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    /*.col-gap_c {
+        width: 100% !important;
+        max-width: 50%;
+        padding: 0;
+    }*/
+    /*.col-gap_c:nth-child(2) {
+        padding-right: 0;
+    }*/
+    .col-gap_c {
+      padding-bottom: 28px;
+    }
+
+  }
+  @media only screen and (min-width: 1200px) and(max-width: 1400px) {
+    #recently-viewed-products #recently-viewed-products-wrapper .card__media .media img {
+      max-width: 100%;
+      margin: 0 auto;
+      right: 0;
+      object-fit: contain;
+    }
+  }
+  @media only screen and (min-width: 1024px) and(max-width: 1200px) {
+    #recently-viewed-products #recently-viewed-products-wrapper .card__media .media img {
+      max-width: 60%;
+      margin: 0 auto;
+      right: 0;
+    }
+  }
+  @media only screen and (min-width: 990px) and(max-width: 1024px) {
+    #recently-viewed-products #recently-viewed-products-wrapper .card__media .media img {
+      max-width: 72%;
+      margin: 0 auto;
+      right: 0;
+    }
+  }
+  {% comment %}
+    #recently-viewed-products-wrapper .slick-prev {
+      display: block;
+      height: 20px;
+      width: 20px;
+      background: url('../img/back.png') no-repeat;
+    }
+  {% endcomment %}
+
+  @media screen and (min-width: 750px) {
+    .col-gap_c {
+      padding-right: 28px;
+    }
+    .col-gap_c:last-child {
+      padding-right: 0;
+    }
+  }
+  @media screen and (min-width: 990px) {
+    #recently-viewed-products .slider-buttons.no-js-hidden {
+      {% comment %}
+        display: none;
+      {% endcomment %}
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .template-product .ShoeImgSizeContainer {
+      padding: 7px !important;
+      bottom: -33px !important;
+      font-size: 10px !important;
+      font-family: 'Inter' !important;
+    }
+    .shoeName {
+      height: 42px !important;
+      overflow: hidden !important;
+      margin-top: 42px !important;
+      font-size: 0.9rem !important;
+    }
+    .priceContainer {
+      padding-top: 4px;
+    }
+    #recently-viewed-products #recently-viewed-products-wrapper .card__media .media img {
+      max-width: 80%;
+      margin: 0 auto;
+      right: 0;
+    }
+  }
+  @media only screen and (min-width: 600px) and(max-width: 750px) {
+    .col-gap_c {
+      padding-right: 14px;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .shoeName {
+      height: auto !important;
+    }
+    #recently-viewed-products #recently-viewed-products-wrapper .card__media .media img {
+      object-fit: contain;
+    }
+  }
+</style>

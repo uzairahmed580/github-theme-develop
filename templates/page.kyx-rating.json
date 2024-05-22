@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-kyx-rating",
+      "blocks": {
+        "929675a6-e362-47d6-9769-ce37ebff71ae": {
+          "type": "ratings-breakdown",
+          "settings": {
+            "title": "RATINGS BREAKDOWN",
+            "sub_title": "To begin, we break the shoe down into five main parts. From there we grade each of these parts using a list of objective criteria. In other words, the hype or current value of the shoe has no influence on the KYX Rating.",
+            "tag_line": "The KYX rating scale is based on weighted rankings of the following five parts of the shoe:",
+            "breakdown_image_1": "shopify:\/\/shop_images\/IMG_4962_2.png",
+            "breakdown_title_1": "upper",
+            "breakdown_desc_1": "The Vamp (top of the toes), Quarter (the side\/heel), Logo, Foxing (back), and Sock Liner\/Collar that is visible when wearing.",
+            "breakdown_image_2": "shopify:\/\/shop_images\/IMG_4962_3.png",
+            "breakdown_title_2": "midsole",
+            "breakdown_desc_2": "The part of the shoe that is situated between the Upper and Outsole.",
+            "breakdown_image_3": "shopify:\/\/shop_images\/IMG_4962_5.png",
+            "breakdown_title_3": "laces\/tongue",
+            "breakdown_desc_3": "The Eyelets, Laces, and Tongue",
+            "breakdown_image_4": "shopify:\/\/shop_images\/IMG_4962_6.png",
+            "breakdown_title_4": "interior",
+            "breakdown_desc_4": "The Insole, Sock Liner, Heel Tab, color lining of the shoe.",
+            "breakdown_image_5": "shopify:\/\/shop_images\/IMG_4962_7.png",
+            "breakdown_title_5": "outsole",
+            "breakdown_desc_5": "The bottom of the shoe, also includes the Outsole tip and Outsole heel."
+          }
+        },
+        "2d473802-0ffa-487c-9345-d6fb6dfd9085": {
+          "type": "understanding-weighting",
+          "settings": {
+            "title": "UNderstanding weighting",
+            "desc": "We give a weight to each of the individual components of the shoe depending on the visibility of that specific part of the shoe. The Upper consists of the most surface area of the shoe and is the most visual design element. The Midsole is the second most visual aspect of the shoe and is usually the part that collects the most dirt\/wear as it’s the closest to the ground. The Laces\/Tongue are visible but comprise a smaller surface area. The Interior and Outsole are both non-visible in a normal wearing scenario so they are weighted the least.\n\nEach component is rated on a scale of 1-10 separate from other components. The hype, rarity, history, or price of the shoe bear no relevance in the rating. The rating functions purely as a snapshot of the physical condition of the shoe at the time of purchase.\n\nA shoe that is rated a 10 means we cannot find any trace of wear. This does not necessarily mean it will be classified as Deadstock. If we can 100% confirm it is Deadstock we will note that in the “Details” section. \n\nFrom there we look for any defects\/issues on each component of the shoe. Factoring in the size, contrast, visibility, and overall impact of each issue, we work our way through the 10-1 scale. Once we complete that process for the 5 parts of the shoe, we calculate the overall KYX Rating."
+          }
+        },
+        "8f59f01a-2244-4d68-b774-2c1355e68440": {
+          "type": "defects-issues",
+          "settings": {
+            "title": "DEFECTS\/ISSUES",
+            "desc": "Some Common Defects\/Issues that we look for in each component of the shoe:",
+            "defects_title_1": "UPPER",
+            "defects_desc_1": "Creases, scuffs, stains, dirt, fraying",
+            "defects_title_2": "MIDSOLE",
+            "defects_desc_2": "Cuts, dirt, stains, discoloration, scuffs",
+            "defects_title_3": "LACES\/TONGUE",
+            "defects_desc_3": "Dirt, stains, eyelet condition, tag present\/secure",
+            "defects_title_4": "INTERIOR",
+            "defects_desc_4": "Sock liner stains, collar fraying, logo wear, fuzzies, hair",
+            "defects_title_5": "OUTSOLE",
+            "defects_desc_5": "Star\/grip wear, dirt, heel drag"
+          }
+        },
+        "fe9c51c5-d024-40d0-995f-93d35dfdb8ba": {
+          "type": "qualifier",
+          "settings": {
+            "title": "QUALIFIERS",
+            "desc": "There are some items that are harder to qualify in our numerical rating system. When that is the case, we will list them in “Details” on each individual product page. Please note that these items do not have an impact on the KYX Rating.",
+            "qualifire_title_1": "DEADSTOCK",
+            "qualifire_desc_1": "Only if we can verify it is a brand new pair. Tags and original packing included.",
+            "qualifire_title_2": "BOX",
+            "qualifire_desc_2": "We rate the condition of each original box with “Excellent”, “Good”, or “Fair.” If there is a replacement KYX box we will list “KYX Box.”",
+            "qualifire_title_3": "EXTRAS",
+            "qualifire_desc_3": "If there are extra laces, hang tags, dust bags, etc.",
+            "qualifire_title_4": "REPLACEMENT LACES",
+            "qualifire_desc_4": "This item will be accounted for in the rating but we want you to know if your pair has replacement laces."
+          }
+        },
+        "85472297-7d7d-4fda-aaf5-2197731e8e55": {
+          "type": "subjectivity",
+          "settings": {
+            "title": "EYE APPEAL & SUBJECTIVITY",
+            "desc": "The majority of our grading scale is meant to be objective (locating creases, stains, tears, scuffs, etc), but like with any rating system, there are parts that remain partially subjective.\n\nAlthough the majority of rating is done with our straightforward objective standards, there are small and sometimes significant subjective elements. For example when a certain standard might fall just above or below a rating, the Rater reserves the right to make a judgment call on the strength or weakness of the eye appeal. In these instances an individual component’s rating may be a half point (ex. 7.5).\n\nPlease note that our KYX Rating is only valid and accurate for shoes sold directly on www.kyxsneakers.com. If anyone is using our logo and rating to resell a shoe, we can’t validate that rating because the shoe is not in our possession. If you have any more questions about our KYX Rating Process please reach out to us directly."
+          }
+        }
+      },
+      "block_order": [
+        "929675a6-e362-47d6-9769-ce37ebff71ae",
+        "2d473802-0ffa-487c-9345-d6fb6dfd9085",
+        "8f59f01a-2244-4d68-b774-2c1355e68440",
+        "fe9c51c5-d024-40d0-995f-93d35dfdb8ba",
+        "85472297-7d7d-4fda-aaf5-2197731e8e55"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/kyx_interior_banner_desktop_ratings_d1250de5-55d1-46cf-9878-e351f77a1c7f.jpg",
+        "sm_image": "shopify:\/\/shop_images\/kyx_interior_banners_mobile_ratings_8ee789bc-5f81-4c0b-8d24-e8b8ba7982e1.jpg",
+        "title": "The KYX Rating System",
+        "sub_title": "One of the greatest challenges when purchasing used sneakers online is knowing what you’re getting. Go further than the standard “Great, Good, Fair” ratings or the overall 1-10 score. Feel confident in your purchase—from the sneaker’s condition to its price. We took our own experience as customers and researched in-depth scoring systems (think PSA for baseball cards or Kelley Blue Book for cars) and used those learnings to create our KYX Rating System.",
+        "tag_line": "Below we want to share how we approach our\n proprietary KYX Rating process to continue our\n goal of being the most trusted, transparent, and\n easy to use source for buying used sneakers."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

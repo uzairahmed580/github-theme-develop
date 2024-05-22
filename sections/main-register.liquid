@@ -1,0 +1,1028 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'registration-form.js' | asset_url }}" defer="defer"></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+<script>
+
+{% comment %} 
+reCAPTCHA code
+var actCallback = function (response) {       
+  $('.registerbtn').prop("disabled", false);   
+
+};      
+var expCallback = function() {
+ $('.registerbtn').prop("disabled", true);
+
+};
+var onloadCallback = function () {
+ var widget = grecaptcha.render(document.getElementById("re-captcha"), {
+    'sitekey' : "6LfBbbgoAAAAAMfigk72EOR6E5c3FYE_hBhISwQ_", // Sitekey, Retrieving from reCaptcha
+    'theme': "light",
+    'callback' : actCallback,
+    'expired-callback': expCallback,
+  });
+} {% endcomment %}
+
+
+
+
+</script>
+
+{%- style -%} registerbtn
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .SendEmail{
+    background: #E5337C;
+    padding:10px;
+    color:#fff;
+    cursor:pointer;
+   text-align: center;
+  }
+ .resentOTP{
+    color:#0000FF;
+  }
+  .resentOTP .button-loader:after{
+    border: 4px solid #000;
+  }
+  /* CSS for the loading spinner */
+.button-loader {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-loader:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 4px solid #fff;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-sizing: border-box;
+  transform-origin: 50% 50%;
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+.SendEmail[disabled] {
+  opacity: 0.5; 
+  cursor: not-allowed; 
+}
+  .verifaction{
+    background: #E5337C;
+    padding:10px;
+    color:#fff;
+    cursor:pointer;
+  }
+  .info_containers{
+    text-align: center;
+    display:none;
+    cursor:pointer;
+  }
+  .otp_value, .Conform_otp_value{
+    width:100%;
+    padding-top: 10px;
+    gap: 15px;
+    display:flex;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+  .timer_deatils{
+   text-align: center;
+  }
+  .opt_values, .info_container .otp_value input, .Conform_otp_value input{
+    width:5%;
+    height: 3rem;
+  }
+  .registerbtn {
+    opacity: 1;
+  }
+  
+  .registerbtn[disabled] {
+    opacity: 0.5;
+  }
+    .h_google_button{
+  width:fit-content;}
+  #registration_page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .code_expire{
+    display:flex;
+    justify-content: center;
+    gap:10px;
+  }
+  .registration_title {
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'termina-medium';
+    font-size: 28px;
+    margin-top: 1rem;
+    color: black;
+  }
+
+  #registration_form {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form_first_container {
+    width: 79%;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .address_first_container h5 {
+     font-family: 'termina-demi';
+  }
+
+  .profile_photo {
+    height: 8rem;
+    width: 8rem;
+    border: 1px solid black;
+  }
+
+  #adress {
+    width: 79%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    margin-bottom: 0.3rem;
+    margin-top: 1rem;
+  }
+
+  .parent_div_registration {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .address_first_container {
+width: 70%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    font-family: 'termina-medium';
+    font-size: 18px;
+    color: black;
+    {% comment %} margin-bottom: 1rem; {% endcomment %}
+  }
+
+  .container_one_address {
+    width: 48%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .container_two_address {
+    width: 48%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .parent_container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .hbuttons {
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+.hbuttons div {
+  width: 100%;
+  max-width: 320px;
+}
+  .info_container {
+display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-family: termina-demi;
+    color:#3a3a3a;
+    flex: 1 0 50%;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .info_container_end {
+display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-family: termina-regular;
+    color:black;
+    align-items:end;
+  }
+
+  .info_container input {
+   height: 3rem;
+    width: 90%;
+    outline: none;
+    font-size: 14px;
+    padding-left:10px;
+    font-family: 'Inter';
+    color: #3a3a3a;
+  }
+  .email_input{
+    flex: 1 0 100% !important;
+  }
+  .info_container.email_input  input{
+    width: 95%;
+  }
+  .info_container select {
+   height: 3rem;
+    width: 90%;
+    outline: none;
+    font-size: 15px;
+    padding-left:10px;
+     -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 50%;
+  font-family: 'Inter';
+  color: #3a3a3a;
+  }
+
+  .checkbox_container {
+    display: flex;
+  }
+
+  .checkbox_text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+
+  .checkbox_text h6 {
+    color: #707070;
+     font-family: 'termina-demi';
+  }
+
+  .checkbox_text p {
+    color: #707070;
+     font-family: 'termina-demi';
+    margin-top: 0px;
+  }
+
+  .checkbox_button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .checkbox_button button {
+width: 10rem;
+    height: 3rem;
+    color: #fff;
+    background: #E5337C;
+    border: none;
+    font-family: termina-Medium;
+    font-size: 14px;
+    cursor:pointer;
+  }
+  .info_container_end input {
+    height: 3rem;
+    width: 90%;
+    outline: none;
+    font-size: 14px;
+    font-family: 'termina-regular';
+}
+
+  /* parent_container */
+
+
+  @media (max-width: 1000px) {
+    .parent_container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container_one_address {
+      width: 100%;
+    }
+
+    .container_two_address {
+      width: 100%;
+      padding-top:20px;
+    }
+    .info_container_end {
+      align-items: start;
+    }
+  }
+  .model-box{
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,0.8);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:999999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    display:none;
+
+  }
+  .model-content{
+    width:100%;
+    max-width:400px;
+    height:400px;
+    padding:10px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius:7px;
+    position:relative;
+  }
+  .model-content lable{
+    display:inline-block;
+  }
+  .model-content input{
+    width: 100%;
+    height: 2rem;
+    font-size: 1.2rem;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding-left:5px;
+
+  }
+  .otpbtn{
+    background-color: #000000;
+    color: #fff;
+     font-family: 'termina-demi';
+    font-size: 0.8rem;
+    font-weight: 400;
+    height: 2rem;
+    width:180px !important;
+  }
+  .closeModel{
+     background-color: #000000;
+    color: #fff;
+     font-family: 'termina-demi';
+    font-size: 0.8rem;
+    font-weight: 400;
+    height: 2rem;
+    width:126px !important;
+    position:absolute;
+    right:6%;
+    bottom:0;
+  }
+
+  .model-box1{
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,0.8);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:999999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    display:none;
+
+  }
+  .model-content1{
+    width:100%;
+    max-width:400px;
+    height:400px;
+    padding:10px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius:7px;
+    position:relative;
+  }
+  .model-content1 lable{
+    display:inline-block;
+  }
+  .model-content1 input{
+    width: 100%;
+    height: 2rem;
+    font-size: 1.2rem;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding-left:5px;
+
+  }
+  .otpbtn1{
+    background-color: #000000;
+    color: #fff;
+     font-family: 'termina-demi';
+    font-size: 0.8rem;
+    font-weight: 400;
+    height: 2rem;
+    width:180px !important;
+  }
+  .closeModel1{
+     background-color: #000000;
+    color: #fff;
+     font-family: 'termina-demi';
+    font-size: 0.8rem;
+    font-weight: 400;
+    height: 2rem;
+    width:126px !important;
+    position:absolute;
+    right:6%;
+    bottom:0;
+  }
+  li.error-msg {
+    color: rgb(176 35 58);
+    font-size: 18px;
+    padding: 15px;
+    line-height: 25px;
+    background-color: #fff5f5;
+    max-width: 550px;
+    margin: 15px auto;
+}
+.otp_value input.opt_values{
+  padding: 10px 0 10px 18px ;
+  font-size: 27px !important;
+}
+.Conform_otp_value input.Conform_opt_values{
+  padding: 10px 0 10px 18px ;
+  font-size: 27px !important;
+}
+@media screen and (max-width:1475px){
+  .otp_value input.opt_values{
+    padding: 10px 0 10px 10px !important;
+  }
+  .Conform_otp_value input.Conform_opt_values{
+    padding: 10px 0 10px 10px !important;
+  }
+}
+.otp_value input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+}
+.Conform_otp_value input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+}
+.error-msg-verification, .error-msg-wrong-verification, .error-msg-reset, .alrt-msg {
+  color: red;
+  font-size:15px;
+  text-align:center;
+}
+.successful-OTp-reset, .successful-OTp-verify, .successful_code_send{
+  color: #028A0F;
+  font-size: 15px;
+  text-align: center;
+}
+.Error-enter-msg, .Error-enter-number, .Error-enter-password, .Error-enter-email, .Error-enter-Conform-password, .Error-enter-Conform-passwords{
+  color:red;
+  padding-top:5px;
+  font-size:10px;
+}
+.resentOTP:hover{
+  text-decoration: underline;
+  font-size: 19px;
+}
+.main-title{
+  margin-bottom: 1rem;
+}
+{% comment %} .password_field.disable, .password_conform_field.disable{
+  background: #f8f8f8;
+  opacity: 0.4;
+  cursor: no-drop;
+} {% endcomment %}
+.password_field[readonly], .password_conform_field[readonly], .email-field[readonly]{
+  background: #f8f8f8;
+  opacity: 0.4;
+  cursor: no-drop;
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px)  {
+  .info_container {
+    width: 100%;
+    flex: 1 0 100%;
+   
+  }
+  .info_container input ,.info_container select{
+    width: 100%;
+  }
+  .info_container.email_input  input{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .opt_values, .info_container .otp_value input, .Conform_otp_value {
+    width:14%;
+    height: 3rem;
+  }
+  .Conform_otp_value input{
+    width:14%;
+    height: 3rem;
+  }
+  .otp_value{
+    gap: 8px;
+  }
+  .info_container {
+    width: 100%;
+  flex: 1 0 100%;
+  }
+  .SendEmail{
+    font-size: 14px;
+  }
+  .info_container input,
+  .info_container select {
+    width: 100%;
+  }
+  .info_container.email_input  input{
+    width: 100%;
+  }
+}
+      @media (max-width: 477px){
+      .info_container_end{align-items:start}
+
+        .address_first_container{
+          margin-top:2rem;
+          margin-bottom:0;
+        }
+        .SendEmail{
+          font-size: 12px;
+        }
+
+        #adress, .checkbox_button {margin-bottom: 0;}
+
+        .address_first_container {
+          width: 100%;
+          /*padding:0.3rem*/
+          padding:1rem
+        }
+
+    }
+.form__message, .error-msg{
+  display: none;
+}  
+</style>
+<script>
+  window.addEventListener('DOMContentLoaded', function(event) {
+    var registerForm = document.querySelector('#create_customer');
+    if (registerForm) {
+      registerForm.addEventListener('submit', function(event) {
+        if (event.keyCode == 13) {
+          event.preventDefault();
+          return false;
+        }
+        var firstNameInput = document.querySelector('#RegisterForm-FirstName');
+        var lastNameInput = document.querySelector('#RegisterForm-LastName');
+        var emailInput = document.querySelector('#RegisterForm-email');
+        var passwordInput = document.querySelector('#RegisterForm-password');
+        var ConformInput = document.querySelector('#RegisterForm-conform-password')
+      
+        if (!firstNameInput.value.trim() || !lastNameInput.value.trim() || !emailInput.value.trim()  || !passwordInput.value.trim() || !ConformInput.value.trim() ) {
+          event.preventDefault();
+          alert('Please enter value in required field.');
+        }
+        else if(!firstNameInput.value.trim() ) {
+          event.preventDefault();
+          alert('Please enter your first name.');
+        }
+        else if(!lastNameInput.value.trim() ){
+           event.preventDefault();
+          alert('Please enter your last name.');
+        }
+      });
+    }
+   
+  });
+
+</script>
+
+{%- form 'create_customer', id: formId, method: 'post' -%} 
+  <registration-form id="registration_page">
+    <div class="page-width full-width">
+      <div class="registration_title">REGISTRATION</div>
+    </div>
+
+    <div class="parent_div_registration page-width">
+      <div class="otp d-none" style="display:none;">
+        <h3>Enter OTP sent to your mobile no.:</h3>
+        <input type="text">
+        <button class="register11111" type="button">Verify</button>
+      </div>
+      {%- if form.errors -%}
+        <div style=" line-height: 1;">
+          <h2 class="form__message" tabindex="-1" autofocus>
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        <ul>
+          {%- for field in form.errors -%}
+            <li class="error-msg" style="list-style:none; text-align:center">
+              {%- if field == 'form' -%}
+                {{ form.errors.messages[field] }}
+              {%- else -%}
+                <a href="#RegisterForm-{{ field }}" style="font-size: 14px; font-family: 'termina-demi'; color: red;">
+                  {{ form.errors.translated_fields[field] | capitalize }}
+                  {{ form.errors.messages[field] }}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+        </div>
+      {%- endif -%}
+
+      <div class="adress full-width" id="adress">
+        <div class="address_first_container">
+          <span class="main-title">Personal Details</span>
+          <div class="parent_container">
+              <div class="info_container">
+                First Name*
+                 <input
+                    tabindex="1"
+                    type="text"
+                    name="customer[first_name]"
+                    id="RegisterForm-FirstName"
+                    oninput="validateInput(this, 0)"
+                    onkeypress="return isCharacterKey(event, 0)"
+                    {% if form.first_name %} value="{{ form.first_name }}"{% endif %}
+                    autocomplete="given-name"
+                    required="required"
+                >
+                <span class="Error-enter-msg" style="display:none;"> Please enter alphabets only</span>
+              </div>
+             
+              <div class="info_container">
+               <div style="width:90%">Last Name*</div> 
+               <input
+                    tabindex="2"
+                    type="text"
+                    name="customer[last_name]"
+                    id="RegisterForm-LastName"
+                    oninput="validateInput(this, 1)"
+                    onkeypress="return isCharacterKey(event, 1)"
+                    {% if form.last_name %} value="{{ form.last_name }}"{% endif %}
+                    autocomplete="family-name"
+                    required="required"
+                >
+                  <span class="Error-enter-msg" style="display:none;"> Please enter alphabets only</span>
+              </div>
+              {% comment %} gender {% endcomment %}
+              <div class="info_container">
+                Gender
+                <select tabindex=5 name='gender' class="selectgender">
+
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Prefer not to Say">Prefer not to Say</option>
+				          <option value="others">others</option>
+                </select>
+              </div>
+
+              <div class="info_container">
+                <div style="width:90%">Mobile Number</div>   
+                  <input type="tel" pattern="[0-9]{9-12}" tabindex=4 id="mobile-num" type="text" onkeypress="return isCharacterKeyNumber(event)" >
+                  <span class="Error-enter-number" style="display:none;"> Please enter a valid number</span>
+              </div>
+              <div class="info_container email_input">
+                <div class=""> 
+                    Email Address*
+                    <input tabindex="3" type="email" class="email-field" name="customer[email]" id="RegisterForm-email" {% if form.email %} value="{{ form.email }}" {% endif %} spellcheck="false" autocapitalize="off" autocomplete="email" {% if  form.errors contains 'email' %} aria-invalid="true" aria-describedby="RegisterForm-email-error" {% endif %} required="required"  oninput="validateEmail(this.value)" >
+                    <span class="Error-enter-email" style="display:none;"> Please enter a valid Email</span>
+                    {%- if  form.errors and form.errors contains 'email' -%}
+      
+                    {% comment %} <span id="RegisterForm-email-error" class="form__message" style="justify-content:start; color:red">
+                      {{ form.errors.translated_fields.email | capitalize }}
+                      {{ form.errors.messages.email }}.
+                    </span> {% endcomment %}
+        
+                  {%- endif -%}
+                </div>
+              </div>
+              <div class="info_container">
+                <div style="width:90%"> Password*</div>   
+                    <input 
+                      tabindex=6
+                      type="password"
+                      name="customer[password]"
+                      class="password_field"
+                      id="RegisterForm-password"
+                      required="required" 
+                      onkeypress="return validatePassword(event)"
+                      {% if form.errors contains 'password' %}
+                        aria-invalid="true"
+                        aria-describedby="RegisterForm-password-error"
+                      {% endif %}
+                      >
+                      {%- if form.errors contains 'password' -%}
+                        {% comment %}
+                      <span id="RegisterForm-password-error" class="form__message" style="width:90%; justify-content:start;color:red">
+                        {{ form.errors.translated_fields.password | capitalize }}
+                        {{ form.errors.messages.password }}.
+                      </span>
+                        {% endcomment %}
+                    {%- endif -%}
+                    <span class="Error-enter-password" style="display:none;"> Please enter minimum of 6 characters</span>
+                </div>
+
+                <div class="info_container">
+                  <div > Confirm Password*</div>   
+                      <input 
+                        tabindex=6
+                        type="password"
+                        name="customer[password_confirmation]"
+                        class="password_conform_field"
+                        id="RegisterForm-conform-password"
+                        required="required" 
+                        onkeypress="return validateConfirmPassword(event)"
+                        {% if form.errors contains 'password_confirmation' %}
+                          aria-invalid="true"
+                          aria-describedby="RegisterForm-password-error"
+                        {% endif %}
+                        >
+                        {%- if form.errors contains 'password_confirmation' -%}
+                          {% comment %}
+                        <span id="RegisterForm-password-error" class="form__message" style="width:90%; justify-content:start;color:red">
+                          {{ form.errors.translated_fields.password | capitalize }}
+                          {{ form.errors.messages.password }}.
+                        </span>
+                          {% endcomment %}
+                      {%- endif -%}
+                      <span class="Error-enter-Conform-password" style="display:none;"> Please enter minimum of 6 characters</span>
+                      <span class="Error-enter-Conform-passwords" style="display:none;"> Please enter correct Password</span>
+                </div>
+            </div>
+
+            <div class="info_containers">
+              Enter Code Sent To Your Email 
+              <span class="shipping_notes">
+                <img  src="{{ 'Group 38.png' | asset_url }}" width="12px" height="12px" alt="INFORMATION" />
+                <div class="Shipping_info">
+                  "Having trouble?"
+                  If you have not received the verification email make sure your email is correct. Also, try
+                  checking your spam or junk folder.
+                </div>
+              </span>
+              <div class="otp_value">
+                <input class="opt_values" name="otp-1" id="OTp-1" spellcheck="false" autocapitalize="off" data-gtm-form-interact-field-id="1" type="number" max="9" oninput="handleInput(this)">
+                <input class="opt_values" name="otp-2" id="OTp-2" spellcheck="false" autocapitalize="off" data-gtm-form-interact-field-id="2" type="number" max="9" oninput="handleInput(this)">
+                <input class="opt_values" name="otp-3" id="OTp-3" spellcheck="false" autocapitalize="off" data-gtm-form-interact-field-id="3" type="number" max="9" oninput="handleInput(this)">
+                <input class="opt_values" name="otp-4" id="OTp-4" spellcheck="false" autocapitalize="off" data-gtm-form-interact-field-id="4" type="number" max="9" oninput="handleInput(this)">
+                <input class="opt_values" name="otp-5" id="OTp-5" spellcheck="false" autocapitalize="off" data-gtm-form-interact-field-id="5" type="number" max="9" oninput="handleInput(this)">
+                <input class="opt_values" name="otp-6" id="OTp-6" spellcheck="false" autocapitalize="off" data-gtm-form-interact-field-id="6" type="number" max="9" oninput="handleInput(this)">
+              </div>
+
+              <span class="timer_deatils">
+                <span class="resentOTP" style="display: none;" >Resend Code?  </span>
+
+                
+                <span id="timerContainer" style="display: none;">
+                  <span class="code_expire">Code Expires in: <span  id="timer"> </span> </span>
+                </span>
+              </span>
+              
+              <span class="error-msg-reset" style="display: none;">Code expired, please try again</span>
+              <span class="error-msg-wrong-verification" style="display: none;">Please enter the correct code</span>
+              <span class="successful-OTp-reset" style="display: none;">Code has been sent to your email</span>
+            
+            </div>
+
+          {% comment %} <div id="re-captcha"></div> {% endcomment %}
+          <span class="successful-OTp-verify" style="display: none;">Verified!</span>
+          
+          <div class="parent_container">
+            <div class="container_one_address" style="width:100%">
+              <div class="checkbox_container">
+                <div class="checkbox_text" style="width:100%; margin-left:0; align-items:center">
+                  <div class="checkbox_button" style="justify-content: start;">
+                    <button class="registerbtn zoomInBtn" type="submit" style="display:none;">REGISTER</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <span class="alrt-msg"></span>
+          <span class="successful_code_send" style="display:none;">Code has been sent to your email</span>
+          
+          <span class="send_oTp">
+            <div class="container_one_address" style="width:100%">
+              <div class="checkbox_container">
+                <div class="checkbox_text" style="width:100%; margin-left:0; align-items:center">
+                  <div class="checkbox_button" style="justify-content: start;">
+                    <span class="SendEmail" disabled> Send Verification Code to Email</span>
+                    {% comment %} <span class="verifaction" style="display: none;" disabled> Verify </span> {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+
+        </div>
+      </div>
+      <input type="hidden" id="Source" name="customer[note][Source]" value="KYX Web" /> 
+    </div>
+  </registration-form>
+  <div class="model-box">
+    <div class="model-content">
+      <div>
+        <label for="otp">Enter OTP sent to your Email:</label><br>
+        <input type="text" name="otp" id="otpValue">
+      </div>
+      <div>
+        <input type="button" class="otpbtn" name="otpbtn" id="otpbtn" Value="Validate" required>
+      </div>
+      <input type="button" class="closeModel" name="closeModel" id="closeModel" Value="Close">
+    </div>
+  </div>
+     <div class="model-box1">
+    <div class="model-content1">
+      <div>
+    <span>Email Alredy Registered:</span>
+      </div>
+      <input type="button" class="closeModel1" name="closeModel1" id="closeModel1" Value="Close">
+    </div>
+  </div>
+  <input type="hidden" name="return_to" value="/">
+  <input type="hidden" name="checkout_url" value="{{ canonical_url }}"> 
+  <script>
+    $('[name="checkout_url"]').val(document.referrer.replace('https://www.kyxsneakers.com/', '/'))
+    $('[name="return_to"]').val(document.referrer.replace('https://www.kyxsneakers.com/', '/'))
+  </script>  
+{% endform %}
+
+<script>
+ var regBtn = document.querySelector('.registerbtn');
+  regBtn.addEventListener("click", function(e) {
+    console.log($('.selectgender').val());
+    setCookie('gender',$('.selectgender').val());
+  });
+
+  
+</script>
+{% comment %}
+  <script>
+      // var element = document.querySelector('.register');
+        var regBtn = document.querySelector('.registerbtn');
+      var otpBtn = document.querySelector('#otpbtn');
+        var closeModel = document.querySelector('.closeModel');
+    var closeModel1 = document.querySelector('.closeModel1');
+        var allInput = document.querySelectorAll('.parent_div_registration input');
+    var flag = 0;
+
+    
+      
+      otpBtn.addEventListener("click", function(e) {
+          var cutemail = $('#RegisterForm-email').val();
+
+        var otp = $('#otpValue').val();
+                var data = {
+                email: cutemail,
+                  "otp":111111
+  }; 
+        $.ajax({
+          url: 'https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/validate-user',     
+          crossDomain: true,
+          contentType: "application/x-www-form-urlencoded",
+          method: 'POST',
+          data: JSON.stringify(data),
+          success: function(data) {
+            console.log(data.body);
+            if(data.body=='Found'){
+              document.querySelector('#create_customer').submit();
+            }
+            
+          }
+      }).done(function(response){
+      });
+        console.log('hii');
+          var otp = document.querySelector('#otpValue').value;
+      });
+
+      {% comment %}   element.addEventListener("click", function(e) {
+          document.querySelector('.adress').classList.add('d-none')
+          document.querySelector('.otp').classList.remove('d-none');
+        }, false); {% endcomment %}
+
+        regBtn.addEventListener("click", function(e) {
+          console.log('1234');
+          allInput.forEach(function(input1){
+            var value = input1.value.trim();
+            if(value !== ''){
+              flag = 1;
+            }else{
+              flag = 0;
+            }
+          });
+          if(flag == 1){
+            var customeremail = $('#RegisterForm-email').val();
+            var data = {
+          email: customeremail 
+          };                  
+            let x='https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/register';
+                      $.ajax({
+                      url: x ,
+                      crossDomain: true,
+                      contentType: "application/json",
+                      method: 'POST',
+                      data: JSON.stringify(data),
+                      success: function(data) {
+                      if(data.body == "OTP Sent"){
+                      document.querySelector('.model-box').style.display = 'flex';
+                      }
+                        if(data.body=="Already registered"){
+                          document.querySelector('.model-box1').style.display = 'flex';
+                        }
+                        console.log(data);
+          }
+      });
+          }else{
+              document.querySelector('.model-box').style.display = 'none';
+            }
+        });
+      closeModel.addEventListener("click", function(e) {
+          document.querySelector('.model-box').style.display = 'none';
+        });
+      closeModel1.addEventListener("click", function(e) {
+          document.querySelector('.model-box1').style.display = 'none';
+        });
+  </script>
+
+
+
+
+{% endcomment %}

@@ -1,0 +1,517 @@
+<style>.abc {}
+
+#cardContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.order-id{
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    font-family: termina-demi;
+}
+.card_first_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card_second_container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    font-family: 'termina-Regular';
+    font-size: 12px;
+    gap: 0.3rem;
+    margin: 1rem;
+    margin-left: 0rem;
+    color: black;
+    border-radius: 8px;
+}
+
+.card_first_container_items {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_second_container_items {
+    display: flex;
+     font-family: 'termina-demi';
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    background: white;
+    /* margin-right: 1rem; */
+    justify-content: space-between;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.card_second_container_items img {
+    height: 60%;
+    object-fit: cover;
+    background-color: #bababad9;
+}
+
+.card_second_container_details {
+    display: flex;
+     font-family: 'termina-demi';
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    background: white;
+    height: fit-content;
+    width: 40%;
+    flex-direction: column;
+}
+
+.card_title {
+    width: 100%;
+    margin-bottom: 25px;
+    font-family: termina-Medium;
+    font-size: 28px;
+    color: #000;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+.shoe_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.price_container {
+    width: 60%;
+}
+
+.remove_container {
+    display: flex;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.responsiveButton {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: rem;
+    margin-bottom: 11px;
+     font-family: 'termina-demi';
+    margin-left: 2rem;
+    width: 6rem;
+    font-size: 15px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: none;
+    border: 1px solid #000000;
+}
+
+.price_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.discount_price_card p {
+    text-decoration: line-through;
+    color: #c4c4c4;
+}
+
+.discount_price_container {
+    display: flex;
+}
+
+.AddButton {
+    background-color: #000000;
+    color: #fff;
+     font-family: 'termina-demi';
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: 40%;
+    height: 2rem;
+    margin-top: 1rem;
+}
+
+.card_title_itmes {
+     font-family: 'termina-demi';
+    font-size: 1.8rem;
+}
+
+.card_second_container_details input {
+    height: 2rem;
+    width: 80%;
+    margin-top: 1rem;
+}
+
+.card_price {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0rem;
+    font-weight: 400;
+    font-size: 1rem;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.responsiveContainer {
+    display: flex;
+}
+
+.div_two_tax {
+    font-family: termina-Light;
+    font-size: 16px;
+    text-align: start;
+}
+
+@media (max-width: 1000px) {
+    .card_first_container_items {
+        flex-direction: column;
+    }
+    .card_second_container_details {
+        width: auto;
+        margin-top: 1rem;
+    }
+    .remove_container {
+        display: none;
+    }
+    .responsiveButton {
+        display: block;
+    }
+}
+
+.removeTag {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: rem;
+    margin-bottom: 11px;
+     font-family: 'termina-demi';
+    margin-left: 15px;
+    width: 6rem;
+    font-size: 15px;
+    border: 1px solid #000000;
+}
+
+@media (max-width: 477px) {
+    .responsiveContainer {
+        flex-direction: column;
+    }
+}
+
+.div_two_tax {
+    font-size: 12px;
+}
+
+.card_title {
+    display: flex;
+    justify-content: space-between;
+    font-family: termina-Medium;
+    color: black;
+    font-family: termina-Medium;
+    font-size: 1rem;
+}
+
+.card_title p {
+    font-size: 0.9rem;
+    color: black;
+}
+
+.shippedDetails {
+    display: flex;
+    margin-left: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'termina-Medium';
+    font-size: 18px;
+}
+
+.shippedDetails div {
+    font-family: 'termina-medium';
+    font-size: 18px;
+    font-weight: 500;
+    border: 2px solid yellow;
+    padding-right: 0.7rem;
+    padding-left: 0.7rem;
+    border-radius: 10px;
+}
+
+.shippedDetails p {
+    margin: 0;
+    color: #000000;
+}
+
+.viewDetails {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.orderDetails {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1%;
+}
+
+.viewOrderDetails {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_one {
+    height: 100%;
+    width: 80%;
+}
+
+.div_one {
+    display: flex;
+    align-items: center;
+}
+
+.div_one img {
+    width: 15%;
+}
+
+.div_two {
+    font-family: 'termina-Medium';
+    text-align: end;
+}
+
+.imgDiv {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+.cost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.div_one_cost {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cost ul {
+    font-weight: 100;
+    font-size: 0.8rem;
+}
+
+.Product_title {
+    margin-left: 2rem;
+    font-size: 1rem;
+    color: black;
+    font-family: "termina-Medium";
+}
+
+.detailsImageDiv {
+    justify-content: end;
+    margin-top: 1rem;
+}
+
+.direction {
+    flex-direction: row;
+}
+
+.searchDiv {
+    align-items: center;
+    width: 32%;
+}
+
+.showProduct {
+    display: none;
+}
+
+.ProductPrice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button#showHide {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: rem;
+    margin-bottom: 11px;
+    font-family: 'termina-medium';
+    width: 11rem;
+    font-size: 16px;
+    border: 2px solid #0062FF;
+}
+
+#showHide:hover {
+    /* font-size: 18px; */
+}
+
+.viewDetails a {
+    color: black;
+    text-decoration: underline;
+    font-family: termina-Regular;
+    font-size: 14px;
+}
+
+.viewDetails a:hover {
+    /* font-size: 16px; */
+}
+
+.cancelclass {
+    font-size: 18px;
+    font-family: termina-demi;
+}
+
+.largeSize {
+    font-family: termina-Medium;
+    font-size: 26px;
+}
+#cardContainer form#custmeta {
+    background: #fff;
+    padding: 30px 30px 5px 30px;
+}
+
+
+@media(max-width:1168px) {
+    .largeSize {
+        font-family: termina-Medium;
+        font-size: 16px;
+        text-align: end;
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width: 768px)  {
+    .order-id {
+        margin-left: 0px;
+        font-size: 16px;
+    }
+    .shippedDetails{
+        margin-left: 0px;
+        font-size: 12px !important;
+    }
+    .viewDetails{
+        margin-left: 0px;
+        margin-bottom: 0.5rem;
+    }
+    .shippedDetails div {
+        font-size: 12px!important;
+        text-align: center!important;
+    }
+    .responsiveButton{
+        margin-left: 0px;
+    }
+    button#showHide{
+        width: fit-content;
+        font-size: 11px;
+        padding: 8px;
+        margin-bottom:0;
+    }
+    .orderDetails {
+        padding: 15px 20px;
+    }
+    .viewDetails a {
+        font-size: 12px !important;
+    }
+}
+@media (max-width: 767px) {
+    .order-id {
+        margin-left: 0px;
+        font-size: 14px;
+    }
+    .shippedDetails{
+        margin-left: 0px;
+        font-size: 11px !important;
+    }
+    .viewDetails{
+        margin-left: 0px;
+        margin-bottom: 0.5rem;
+    }
+    .shippedDetails div {
+        font-size: 11px!important;
+        text-align: center!important;
+    }
+    .responsiveButton{
+        margin-left: 0px;
+    }
+    button#showHide{
+        width: fit-content;
+        font-size: 11px;
+        padding: 8px;
+        margin-bottom:0;
+    }
+    .orderDetails {
+        padding: 10px;
+    }
+    .viewDetails a {
+        font-size: 11px !important;
+    }
+}
+@media (max-width: 477px) {
+    .div_one {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 70%;
+    }
+    .largeSize {
+        font-size: 10px;
+    }
+    .cancelclass {
+        font-size: 10px;
+    }
+    .viewDetails a {
+        font-size: 10px;
+    }
+    .shippedDetails {
+        font-size: 14px
+    }
+    .shippedDetails div {
+        font-size: 14px
+    }
+    .div_two {
+        font-size: 10px;
+        width: 50%
+    }
+    .Product_title {
+        margin-left: 0rem;
+        font-size: 10px;
+    }
+    .imgDiv {
+        align-items: flex-end;
+    }
+    .detailsImageDiv {
+        justify-content: flex-start;
+    }
+    .div_one_cost {
+        width: 100%;
+    }
+    /* may be 1000px */
+    .direction {
+        flex-direction: column;
+    }
+    .searchDiv {
+        width: 100%;
+    }
+    .card_title {
+        width: 100%;
+        flex-direction: column;
+    }
+    .card_title p {
+        margin-top: 0rem;
+        margin-bottom: 0.3rem;
+    }
+}
+
+</style>

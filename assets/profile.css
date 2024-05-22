@@ -1,0 +1,490 @@
+
+.profileContainer {
+    
+    width: 65.5%;
+    background-color: #fff;
+    height: fit-content;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    color: #000000;
+    padding: 2rem 8.8rem 24rem 5.7rem;
+    margin-bottom: 2.4rem;
+}
+
+.popup .popupTitleContainer .close-btn:hover{
+  text-decoration:underline;
+}
+.profile_bg .probile_banner {
+    width: 100%;
+    height: auto;
+}
+.profile_bg {
+    position: relative;
+}
+.probile-p{
+    position: absolute;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 20%;
+}
+.userInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3.85rem;
+}
+
+.userInfoRow {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+     font-family: 'termina-demi';
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.userInfoRow img {
+    width: 0.78rem;
+    height: 0.78rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+.userInfo .userName {
+     font-family: 'termina-demi';
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+#addressRowContainer {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#addressRowContainer .addressContainer {
+    max-width: 22%;
+    min-width: 9.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#addressRowContainer .addressContainer .addressTagContainer {
+     font-family: 'termina-demi';
+    font-size: 0.7rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem;
+}
+
+#addressRowContainer .addressContainer .addressTagContainer img {
+    width: 0.78rem;
+    height: 0.78rem;
+    margin-right: 0.4rem;
+    cursor: pointer;
+}
+
+#addressRowContainer .addressContainer .addressTagContainer div {
+    border-radius: 0.4rem;
+    border: 1px solid #707070;
+    padding: 0.2rem 0.4rem;
+}
+
+#addressRowContainer .addressContainer .addressTitle {
+     font-family: 'termina-demi';
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+#addressRowContainer .addressContainer .addressTitle img {
+    width: 0.9rem;
+    height: 0.85rem;
+}
+
+#addressRowContainer .addressContainer .addressRow {
+     font-family: 'termina-demi';
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    text-align: left;
+}
+
+#addressRowContainer .addressContainer .addAddress {
+    border: 1px solid #707070;
+    height: 11.8rem;
+    width: 100%;
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     font-family: 'termina-demi';
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.popup .overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
+}
+
+.popup .content {
+    position: fixed;
+    top: 60vh;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #fff;
+    width: 56rem;
+    height: fit-content;
+    z-index: 1001;
+    text-align: center;
+    padding: 1.8rem 2.2rem 6.5rem 2.2rem;
+    box-sizing: border-box;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup .popupTitleContainer {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 4.6rem; */
+    margin-bottom: 1.6rem;
+}
+
+.popup .popupTitleContainer .popupTitle {
+     font-family: 'termina-demi';
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.popup .popupTitleContainer .close-btn {
+     font-family: 'termina-demi';
+    font-size: 1.4rem;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.popup .content .formContainer {
+    width: 70%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.popup .content .formContainer .addressRow_title {
+     font-family: 'termina-demi';
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+    width: 100%;
+    text-align: start;
+}
+
+.popup .content .formContainer .address_input_row {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.popup .content .formContainer .address_input_row .input_container {
+    width: 15.4rem;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.popup .content .formContainer .address_input_row .input_container .input_lable {
+     font-family: 'termina-demi';
+    font-size: 0.7rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.popup .content .formContainer .address_input_row .input_container input{
+    width: 100%;
+    height: 2.45rem;
+    border: 1px solid #000000;
+    outline: none;
+}
+
+.popup.active .overlay {
+    display: block;
+}
+
+.popup.active .content {
+    transition: all 400ms ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup .content .confBtn{
+    background-color: #135BEE;
+    color: #fff;
+    width: 7.25rem;
+    height: 2.45rem;
+    margin-top: 1.85rem;
+    /* margin-top: 4.85rem; */
+  cursor:pointer;
+  border:0;
+  font-size:0.7rem;
+}
+
+
+.banner {
+    width: 100%;
+    margin: 2rem 0;
+    font-family: "termina-regular";
+    font-size: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0rem;
+    object-fit: cover;
+}
+.customer.addresses {
+    padding-top: 0 !important;
+}
+.user-profile {
+    margin-top: 25px;
+}
+.customer_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.customer_name svg ,.customer_email svg{
+     /* margin-left: 15px; */
+}
+.edit {
+    margin-left: 15px;
+    cursor: pointer;
+}
+.social_icon{
+    display: flex;
+    margin: 12px 0;
+}
+.social_icon  .icon{
+    display: flex;
+    align-items: center;
+}
+.customer_name {
+    margin-top: 0px;
+}
+
+.icon svg {
+    margin: 0 5px;
+}
+.customer_username {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: "termina-regular";
+}
+.addresses .ad-list .ad-item {
+    width: 27%;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #0062FF;
+    border-radius: 16px;
+}
+li.ad-item.default_address {
+    border:1px solid #E5337B !important;
+}
+.default-box {
+    justify-content: center;
+    margin-top: -12px;
+}
+.default.default-add {
+    background-color: #E5337C;
+}
+.default.make-default {
+    background-color: #0062FF;
+}
+.address-content .edit{
+    display: flex;
+    justify-content: end;
+    margin: 0;
+}
+.address-content {
+    padding: 25px 25px 50px;
+}
+.address-content p {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.customer_email {
+    display: flex;
+    align-items: center;	
+    justify-content: center;
+}
+li[data-address] {
+    margin-top: 0;
+}
+.ad-list.page-width--narrow {
+    /* margin-top: 10%; */
+    /* margin-top: 5%; */
+    margin-top: 0;
+}
+@media screen and (max-width: 480px) {
+  .popup .content{position:absolute;}
+  .popup .content .confBtn{margin-top: 2rem;}
+}
+
+@media (max-width: 2000px) {
+
+    .pageTitle {
+        width: 100%;
+      margin-bottom:0.5rem;
+        font-family: termina-Medium;
+        color: black;
+        text-transform: uppercase;
+    }
+
+
+    .profileContainer {
+        width: 95%;
+        padding: 2rem 8.8rem 24rem 5.7rem;
+        margin-bottom: 2.4rem;
+    }
+
+    .popup .content {
+        width: 80%;
+        height: fit-content;
+        padding: 0.8rem 1.2rem 3.5rem 1.2rem;
+        /* margin-top: 20rem; */
+    }
+
+    .popup .content .formContainer {
+        height: fit-content;
+    }
+}
+@media only screen and (max-width: 1400px) and (min-width: 1201px)  {
+    .user-profile img{
+        width: 190px;
+    }
+    .probile-p {
+        bottom: 15%;
+    }
+}
+@media only screen and (max-width: 1200px) and (min-width: 1025px)  {
+    .user-profile img{
+        width: 120px;
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width: 751px)  {
+    .page-width--narrow {
+        padding: 0 0rem !important; 
+    }
+    .addresses .ad-list .ad-item {
+        width: 46%;
+    }
+    li[data-address] {
+        margin-top: 0rem;
+    }
+    ul.ad-list.page-width--narrow {
+        margin-top: 50px;
+    }
+    .user-profile img{
+        /* width: 50%; */
+        width: 120px;
+    }
+    .probile-p {
+        bottom: 10%;
+    }
+    /* .profile_bg .probile_banner {
+        height: 100%;
+        min-height: 250px;
+    } */
+}
+@media (max-width: 750px) {
+    .user-profile{
+        margin-top: 25px;
+    }
+    .user-profile img{
+        /* width: 50%; */
+        width: 120px;
+    }
+    .probile-p {
+        bottom: 10%;
+    }
+    .profile_bg .probile_banner {
+        height: 100%;
+        min-height: 250px;
+    }
+    .customer_name, .customer_email {
+        font-size: 14px !important;
+    }
+    .customer_username {
+        font-size: 13px;
+    }
+    .icon svg {
+        width: 25px;
+    }
+    .ad-list{
+        align-items: center;
+    }
+    .addresses .ad-list .ad-item {
+        width: 85%;
+    }
+    li[data-address] {
+        margin-top: 0rem;
+    }
+}
+@media (max-width: 477px) {
+
+    .profileContainer {
+        width: 95%;
+        color: #000000;
+        padding: 1rem 4.4rem 12rem 3rem;
+        margin-bottom: 1rem;
+    }
+
+    #addressRowContainer .addressContainer {
+        margin-bottom: 1rem;
+    }
+    .banner {
+        margin-bottom: 0rem;
+    }
+
+}
+.profile_btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+}
+.profile_btn button{
+    background: none;
+}

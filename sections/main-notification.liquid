@@ -1,0 +1,236 @@
+{{ 'notification.css' | asset_url | stylesheet_tag }}
+{{ 'profile.css' | asset_url | stylesheet_tag }}
+<style>
+.orderCancel{
+    font-family: 'termina-demi';		
+    color: black;
+    display:flex;
+    justify-content:space-between
+  }
+  .orderStatusRow{
+    display:flex;align-items:center;justify-content:space-between;width:100%;
+  }
+  @media (max-width: 477px) {
+    .orderCancel{flex-direction:column;}
+  }
+  .extra-data div{
+        position:absolute;
+      }
+    @media only screen and (max-width: 600px) {
+
+      .extra-data div{
+        position:unset;
+      }
+      .extra-data div:nth-child(1){
+        margin-top:17px;
+      }
+       .extra-data div:nth-child(2){
+        margin-bottom:-146px;
+      }
+  }
+  .static-page-banner img {
+    width: 100%;
+    height:auto;
+    display: block;
+}
+.static-page-title h2 {
+    font-family: Termina;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 65px;
+    text-align: center;
+    color: #0062ff;
+    padding: 2rem 0 2rem;
+}
+.static-page-heading {
+    background-color: #fff;
+}
+.static-banner{
+  padding-bottom:50px;
+}
+.static-page-banner {
+  background: #fff;
+}
+@media only screen and (max-width: 990px){
+  .static-page-title h2{
+    font-size: 32px;
+    line-height: 40px;
+    padding: 1rem 0 1rem;
+  }
+}
+</style>
+<div class="static-banner">
+  <div class="static-page-banner">
+    <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/kyx-desktop-banner.png?v=1686302463" width="1920px" height="424px"  alt="kyx-page-banner">
+  </div>
+  <div class="static-page-heading">
+    <div class="page-width">
+      <div class="static-page-title">
+        <h2>Notifications</h2>
+      </div>
+    </div>
+  </div>
+</div>
+{% comment %} <div class="extra-data_new  page-width">
+  <div class="back_home full-width" onclick="window.location.href='{{ shop.secure_url }}'" style="cursor:pointer">
+    Home <img
+            src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/side_icon_fa0a9189-8a9b-44d7-83ed-8ae9ecebdbc5.png?v=1680627384"
+            style="height: 1rem; width: 1rem"
+            alt="side"
+          />Messages
+  </div>
+
+  <div class="pageTitle full-width" style="margin-bottom:0">Messages</div>
+</div> {% endcomment %}
+<div class="noti-wraper page-width">
+  <div class="notifications full-width">
+    <div class="order-list">
+      {%- if customer.orders.size > 0 -%}
+        {%- for order in customer.orders -%}
+          <div class="order-data">
+            <div class="short-bar">
+              <div>	
+               {% if order.cancelled %}
+                <div class="orderStatusRow"><h3 class="orderCancel"> <span style="color:red;">Order Cancelled</span> -  {{ order.order_number }} - Order Date: {{ order.created_at |  date: "%a, %b %d, %Y, %H:%M"   }}</h3><i class="fa fa-caret-down" aria-hidden="true" style="cursor:pointer;"></i></div>
+                     <span class="desc"	
+                >Your order was cancelled at your request. Thank you.</span	>	
+              {% else %}  
+                <h3 style="font-family: 'termina-demi';		
+                color: black;display:flex;justify-content:space-between">Order {{ order.fulfillment_status }} -  {{ order.order_number }} - Order Date: {{ order.created_at |  date: "%a, %b %d, %Y, %H:%M"  }}<i class="fa fa-caret-down" aria-hidden="true" style="cursor:pointer;"></i></h3>	
+                   <span class="desc" style="color:black"	
+                >We are delighted to confirm that your order hs been successfully placed and is being processed. Thank	
+                you for shopping with us.</span	
+              >	
+              {% endif %}  
+          
+            </div>
+              <p class="date">{{ order.created_at |  date: "%a, %b %d, %Y, %H:%M"  }}</p>
+            </div>
+            <div class="order d-none">
+              <div class="order-header">
+                <p>{{ order.fulfillment_status_label }}</p>
+                <p>{{ order.created_at |  date: "%a, %b %d, %Y, %H:%M"  }}</p>
+              </div>
+              <div class="order-detailes">
+                <p><b>Order Confirmation Email:</b> {{ customer.email }}</p>
+                   {% if order.cancelled %}
+                      <p><b>Subject:</b> Your Order has been cancelled!</p>
+                   {% else %}
+                        <p><b>Subject:</b> Your Order has been confirmed!</p>
+                   {% endif %}
+               
+
+                Dear {{ customer.name }}, <br>
+                <br>
+                <p>
+                  {% if order.cancelled %}
+                    Your order was cancelled at your request. Thank you.
+                  {% else %}
+                  We are delighted to confirm that your order has been successfully placed and is being processed. Thank
+                  you for shopping with us.
+                  {% endif %}
+                </p>
+
+                <p><b>Order Details:</b></p>
+
+                <p>
+                  <b>Order Number: {{ order.order_number }}</b>
+                </p>
+                <p>
+                  <b>Order Date: {{ order.created_at  |  date: "%a, %b %d, %Y, %H:%M"  }}</b>
+                </p>
+                <p>
+                  <b>Order Total: {{ order.total_price }}</b>
+                </p>
+                <br>
+                 {% if order.cancelled %}
+                   {% else %}
+                <p>We will send you another email once your order has been shiped, so you can track your package.</p>
+                   {% endif %}
+                <p>you have any questions or conserns about your order, please don't hesitate to contact us.</p>
+                <br>
+
+                <p>Thank you for your business!</p>
+                <br>
+
+                <p>Best Regards,</p>
+                <p>Company Name</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+       <div class="order-data">
+            <div class="short-bar">
+              <div>	
+                <h3 style="font-family: 'termina-demi';		
+                color: black;display:flex;justify-content:space-between">Welcome {{ customer.name }}<i class="fa fa-caret-down" aria-hidden="true" style="cursor:pointer;"></i></h3>
+                     <span class="desc" style="color:red"	
+                > Thank you.</span	>	
+            
+          
+            </div>
+            </div>
+            <div class="order d-none">
+              <div class="order-header">
+                <p>Welcome to store</p>
+              </div>
+              <div class="order-detailes">
+               
+                <p><b>Subject:</b> Welcome Email!</p>
+
+                Dear {{ customer.name }}, <br>
+                <br>
+                <p>
+                  Thanks for creating account.
+                </p>
+
+                <br>
+                <p>you have any questions or conserns about your order, please don't hesitate to contact us.</p>
+                <br>
+
+                <p>Thank you for your business!</p>
+                <br>
+
+                <p>Best Regards,</p>
+                <p>Company Name</p>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let btns = document.querySelectorAll('.short-bar');
+  let panels = document.querySelectorAll('.order');
+
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(e){
+        // panels.forEach(function(panel){
+        //   panel.classList.add('d-none');
+        // });
+        if(Array.from(this.nextElementSibling.classList).includes('d-none')){
+            this.nextElementSibling.classList.remove('d-none');
+        }else{
+            this.nextElementSibling.classList.add('d-none');
+        }
+
+    })
+  });
+</script>
+{%- style -%}
+{%- endstyle -%}
+{% schema %}
+{
+  "name": "Notification",
+  "settings": []
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

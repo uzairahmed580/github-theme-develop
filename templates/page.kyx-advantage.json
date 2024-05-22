@@ -1,0 +1,81 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-banner-with-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/kyx_interior_banner_desktop_advantage_cd1ae7f8-cd16-47f6-a7be-751f1af02d3a.jpg",
+        "sm_image": "shopify:\/\/shop_images\/kyx_interior_banners_mobile_advantage_b5e0d34b-6b82-495c-b580-de9d04ac0e62.jpg",
+        "title": "KYX Advantage",
+        "sub_title": "It’s extremely important to us that you trust the sneakers you are buying from us. We want you to feel excited about your sneaker purchase from KYX. We know that used sneakers have traditionally been the wild west when it comes to buying shoes online. To ensure you feel great about what you are buying…take a look at our KYX process for every single pair of shoes we sell."
+      }
+    },
+    "b3615356-df2d-4e9c-86f6-f72cb7bc518d": {
+      "type": "kyx-advantage",
+      "blocks": {
+        "251e5a86-f527-4075-b6cd-11e7a6feaea6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Authentication_1.jpg",
+            "image_alignment": "left",
+            "icon_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0720\/7819\/7049\/files\/Isolation_Mode_5.svg?v=1686647130",
+            "title": "AUTHENTICATION",
+            "sub_title": "<p>The first step when we receive a pair of shoes is to authenticate them. We utilize a combination of AI technology and seasoned sneaker professionals to guarantee what we are selling is the real thing. 100% authentic every time.<\/p>"
+          }
+        },
+        "f04f0f3e-43b5-4f8f-aae5-4c865cad4b4b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cleaning_1.jpg",
+            "image_alignment": "right",
+            "icon_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0720\/7819\/7049\/files\/Isolation_Mode_1.svg?v=1686647057",
+            "title": "CLEANING",
+            "sub_title": "<p>We take every shoe through a thorough process of cleaning, sanitizing, and disinfecting. You shouldn’t have to clean dirt off the bottom of a pair of shoes you haven’t even worn yet! Every shoe has unique materials that require different methods of cleaning. We clean every part of the shoe, front to back, top to bottom. We remove the shoe laces and take out the insoles. We don’t believe in cutting corners when it comes to delivering you a beautifully clean product. No bad smells. No rogue hairs. No mud cakes. Just fresh sneakers You can find out more about our pro cleaning service <a href=\"\/pages\/kyx-cleaner\" title=\"kyx-cleaner\">HERE<\/a>.<\/p>"
+          }
+        },
+        "3b1d3579-376f-4caa-9f8b-a6d66e60f610": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Photography_1.png",
+            "image_alignment": "left",
+            "icon_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0720\/7819\/7049\/files\/Isolation_Mode_2.svg?v=1686647057",
+            "title": "PHOTOGRAPHY",
+            "sub_title": "<p>We want you to know exactly what you are getting. No tricky mood lighting or awkward angles. We give you a 360° image of every shoe and a photo from the top and the bottom. This way, you can zoom in and see exactly where there may be a stain or scuff. Nothing is hidden from you. For any significant defects we will take an additional closeup shot. We aren’t trying to get one over on anyone. KYX is about full transparency!<\/p>"
+          }
+        },
+        "a5e918e3-efe3-419b-8356-1582ae78b83c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rating_1.jpg",
+            "image_alignment": "right",
+            "icon_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0720\/7819\/7049\/files\/Isolation_Mode_3.svg?v=1686647057",
+            "title": "KYX RATING",
+            "sub_title": "<p>We’ve developed our own proprietary rating system that breaks the shoe down into 5 parts and rates each part based on a weighted scale. We created our system to be as objective as possible so you are even more confident in the condition of the shoe you are buying. You can find out more about our KYX Rating system <a href=\"\/pages\/kyx-rating\" title=\"KYX Rating\">HERE.<\/a><\/p>"
+          }
+        },
+        "c5ae81ab-80aa-4878-91fd-52b7a14b409b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Quick_Ship_1.jpg",
+            "image_alignment": "left",
+            "icon_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/0720\/7819\/7049\/files\/Isolation_Mode_4.svg?v=1686647057",
+            "title": "READY TO SHIP",
+            "sub_title": "<p>Once you purchase your shoes…we ship them right away. We don’t have to wait for anyone to send them to us first. Every shoe we sell has already gone through our KYX process and is ready for their new owner. No busted buys here. Just authentic, clean shoes that are ready to be yours.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "251e5a86-f527-4075-b6cd-11e7a6feaea6",
+        "f04f0f3e-43b5-4f8f-aae5-4c865cad4b4b",
+        "3b1d3579-376f-4caa-9f8b-a6d66e60f610",
+        "a5e918e3-efe3-419b-8356-1582ae78b83c",
+        "c5ae81ab-80aa-4878-91fd-52b7a14b409b"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "b3615356-df2d-4e9c-86f6-f72cb7bc518d"
+  ]
+}

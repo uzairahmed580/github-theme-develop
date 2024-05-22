@@ -1,0 +1,293 @@
+#search_firstContainer {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#search_firstContainer .back_home {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  font-family: 'termina-Regular';
+  font-size: 12px;
+  gap: 0.3rem;
+  margin: 1rem;
+  margin-left: 1rem;
+  color: black;
+}
+
+.form-status-list {
+  padding-left: 8rem;
+}
+
+#registration_page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration_title {
+  width: 80%;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: termina-Medium;
+  display: flex;
+  justify-content: space-between;
+  font-family: termina-Medium;
+  color: black;
+}
+
+.contact_title {
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: termina-Medium;
+  display: flex;
+  justify-content: space-between;
+  font-family: termina-Medium;
+  color: black;
+}
+
+#registration_form {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+}
+
+.form_first_container {
+  width: 79%;
+  background-color: white;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.address_first_container h5 {
+  font-family: "termina-Regular";
+  font-size: 14px;
+}
+
+.profile_photo {
+  height: 8rem;
+  width: 8rem;
+  border: 1px solid black;
+}
+
+#adress {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin-bottom: 5rem;
+}
+
+.parent_div_registration {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-contact {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
+  outline: none;
+  font-family: 'termina-demi';
+  color: black;
+  margin-top: 2rem;
+}
+@media (max-width: 1300px) {
+  .form-contact {
+    display: block !important;
+  }
+  .form-contact .icon {
+    margin-right: 0;
+    margin-bottom: -6px;
+  }
+}
+@media (max-width: 477px) {
+  .form-contact {
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 1rem;
+    /* margin: 0 1rem; */
+}
+
+  .form-contact a {
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+}
+
+.form-contact .icon {
+  flex-shrink: 0;
+  height: 1.3rem;
+  margin-right: 0.5rem;
+  width: 1.3rem;
+}
+
+
+.address_first_container {
+  width: 85%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.container_one_address {
+  width: 48%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.container_two_address {
+  width: 48%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.parent_container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.info_container {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: black;
+  font-family: 'termina-regular';
+}
+
+.info_container input {
+  height: 2rem;
+  width: 90%;
+  outline: none;
+  font-family: 'termina-regular';
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.info_container select {
+  height: 2rem;
+  width: 90%;
+   font-family: 'termina-demi';
+  font-size: 1rem;
+}
+
+.checkbox_container {
+  display: flex;
+}
+
+.checkbox_text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.checkbox_text h6 {
+  color: #707070;
+   font-family: 'termina-demi';
+}
+
+.checkbox_text p {
+  color: #707070;
+   font-family: 'termina-demi';
+  margin-top: 0px;
+}
+
+.checkbox_button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.checkbox_button button {
+  background-color: #000000;
+  color: #fff;
+   font-family: 'termina-demi';
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 30%;
+  height: 2rem;
+}
+
+@media (max-width: 480px) {
+  .container_one_address {
+    width: 100% !important
+  }
+
+  .address_first_container {
+    margin: 1.5rem 0 1.5rem 0;
+  }
+
+  .info_container input,
+  .info_container select {
+    height: 2rem;
+    width: 90% !important;
+  }
+}
+
+/* parent_container */
+
+@media (max-width: 1000px) {
+  .parent_container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container_one_address {
+    width: 100%;
+  }
+
+  .container_two_address {
+    width: 100%;
+    padding-top: 20px;
+  }
+}
+
+
+
+.contactUsButton button {
+  width: 10rem;
+  height: 3rem;
+  color: white;
+  background: #E5337C;
+  border: none;
+  font-family: termina-Medium;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.contactUsButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}

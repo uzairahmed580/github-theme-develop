@@ -1,0 +1,943 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+#MainContent{
+      background-color: #fff;
+}
+.account-setting h4 {
+    text-transform: uppercase;
+}
+
+          h4, h5{
+    font-family: termina-Medium;#
+      font-size:1.15rem;
+          }
+
+  hr{
+    width:60%;
+    margin: 1rem 0 !important;
+  }
+
+  .subTitle_setting{
+    font-family: termina-Medium;
+      font-size:0.9rem;
+    margin-top:1.6rem;
+    margin-bottom:0.6rem;
+  };
+
+        .section-{{ section.id }}-padding {
+          padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+          padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+        }
+
+        @media screen and (min-width: 750px) {
+          .section-{{ section.id }}-padding {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+          }
+        }
+        .container{
+          width:100%;
+      margin-bottom:50px;
+
+        }
+        .account-setting{
+/*           background: #ffffff; */
+          width:100%;
+
+          height:auto;
+          
+    margin-bottom:10px;
+        }
+        .brands{
+          
+          width: 85%;
+        }
+        @media screen and (max-width: 766px){
+          .brands{
+          width: 100%;
+          }
+        }
+        .brands input{
+          opacity:0;
+
+        }
+        .brands label{
+          border:1px solid #ccc;          
+          padding:6px;
+          font-size:14px;
+          cursor:pointer;          
+        }
+        .brand-row{
+          display:flex;
+          align-items:center;
+          gap:5px;
+          flex-wrap:wrap;
+          height:fit-content;
+          font-family: termina-Regular;
+          font-size:0.7rem
+        }
+
+/*             .brand-row input[type:checkbox]{
+              display:none
+            } */
+        .minMax{
+          position:relative;
+          padding: 0 5px;
+          min-width:3.5rem;
+          max-width:4.5rem;
+          height:1.6rem;
+          font-family:termina-regular;
+          font-size:0.5rem;
+          border:1px solid #707070;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          font-family: termina-demi;
+        }
+        .minMax input{
+          width: 80%;
+          font-size: 0.7rem;
+          outline:none;
+          border:none !important;
+          text-align:right;
+          background-color:white;
+          color:black;
+          font-family: termina-demi;
+/*           padding-left: 20px; */
+        }
+/*         .minMax span{
+         position:absolute;
+          top: 25%;
+          left: 5%;
+        } */
+        .button-footer{
+            width: 100%;
+            padding:0 1.1rem 1.1rem 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            position:relative;
+/*             background-color:#fff; */
+            margin-top: 30px;
+
+        }
+        .button-footer button{
+          /* width:4.75rem;
+          height:1.6rem; */
+          width: 6.75rem;
+          height: 2rem;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          border:1px solid #0062FF;
+          padding:0 10px;
+          font-family:termina-regular;
+          /* font-size:0.7rem; */
+          font-size: 14px;
+          background-color:#fff;
+          cursor:pointer;
+               }
+  .button-footer button:hover{
+          /* font-size:0.9rem; */
+          background-color:#E5337C;
+          color:#fff;
+        }
+        
+    .submit{
+      background-color: #0062FF !important;
+      color:white;
+    }
+    .multiselect {
+    width: 200px;
+      position:relative;
+  }
+
+  .selectBox {
+    position: relative;
+    font-family:termina-regular;
+    font-size:0.7rem;
+  }
+
+  .selectBox select {
+    width: 100%;
+    font-weight: bold;
+    padding: 0 0.4rem
+  }
+
+  .selectBox select::placeholder{
+    font-family:termina-regular;
+    font-size:0.7rem;
+  }
+
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  #checkboxes {
+    width: 100%;
+    display: none;
+    border: 1px #dadada solid;
+    position: absolute;
+    background: white;
+    z-index: 9999999;
+  }
+
+  #checkboxes label {
+    display: block;
+    padding-left:10px;
+    font-size:0.8rem
+  }
+
+  #checkboxes label:hover {
+    background-color: #1e90ff;
+  }
+  #select{
+    border: 1px solid black;
+  }
+  .productSizeRowHome label {
+   border:1px solid #0062FF;
+}
+  .productSizeHome12.active{
+    border:none;
+  }
+{%- endstyle -%}
+{{ 'order-advance.css' | asset_url | stylesheet_tag }}
+{% comment %}
+<div id="cardContainer">
+  <div class="card_first_container page-width">
+    <div class="card_second_container">
+     <div style="cursor:pointer" onclick="window.location.href='{{ shop.secure_url }}'"> Home</div> 
+      <img
+        src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/side_icon_fa0a9189-8a9b-44d7-83ed-8ae9ecebdbc5.png?v=1680627384"
+        style="height: 1rem; width: 1rem"
+        alt="side"
+      >
+
+        Preferences
+    </div>
+    
+  </div>
+</div>
+{% endcomment %}
+<div id="cardContainer" class="page-width">
+  <div class="container"  id="link2">
+    <input type="hidden" id="custId" name="customer[id]" value="{{ customer.id }}">
+    <form action="#" method="GET" id="custmeta" style="display: flex;
+    flex-direction: column;">
+      <div class="account-setting 123">
+        <h4>Preferences</h4>
+        <div>
+          <div class="prefrence">
+            <div class="brands">
+            <h5 class='subTitle_setting'>Select Gender</h5>
+            <div class="brand-row">
+              <div style="display:flex; ">
+                <label
+                  class="brand Msaved"
+                  for="genderM"
+                  {% if customer.tags contains 'Men' %}
+                    style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                    {% elsif customer.tags == blank and customer.note == 'Men' %}
+                     style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                  {% endif %}
+                  >Men</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="gender"
+                  value="Men"
+                  id="genderM"
+                  {% if customer.tags contains 'Men' %}
+                    checked
+                     {% elsif customer.tags == blank and customer.note == 'Men' %}
+                      checked
+                  {% endif %}
+                >
+              </div>
+              <div style="display:flex; ">
+                <label
+                  class="brand Wsaved"
+                  for="genderW"
+                  {% if customer.tags contains 'Women' %}
+                     style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                     {% elsif customer.tags == blank and customer.note == 'Women'%}
+                      style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                  {% endif %}
+                  >Women</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="gender"
+                  value="Women"
+                  id="genderW"
+                  {% if customer.tags contains 'Women' %}
+                    checked
+                    {% elsif customer.tags == blank and customer.note ==  'Women'%}
+                      checked
+                  {% endif %}
+                >
+              </div>
+                            <div style="display:flex; ">
+                 <label
+                  class="brand Osaved"
+                  for="genderO"
+                  {% if customer.tags contains 'Other' %}
+                      style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                     {% elsif customer.tags == blank and customer.note == 'Other'%}
+                      style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                  {% endif %}
+                  >Other</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="gender"
+                  value="Other"
+                  id="genderO"
+                  {% if customer.tags contains 'Other' %}
+                    checked
+                    {% elsif customer.tags == blank and customer.note == 'Other' %}
+                      checked
+                  {% endif %}
+                >
+              </div>
+              <div style="display:none; ">
+                <label
+                  class="brand Psaved"
+                  for="genderP"
+                  {% if customer.tags contains 'Pfn' %}
+                      style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                                {% endif %}
+                  >Prefer not to say</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="gender"
+                  value="Pfn"
+                  id="genderP"
+                  {% if customer.tags contains 'Pfn' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+            </div>
+              </div>
+            <h5 class='subTitle_setting'>Size Preference (select multiple sizes if you want!)</h5>
+               <div class="contentHome">
+               <div class="containerForSize" id="firstPage" >
+                    <div class="formContainerHome c-account-size">
+                        <div class="address_input_rowHome">
+                            <div class="sizeOptionsHome">
+                                <div class="productSizeRowHome">
+                                  <div class="c-sizeing">
+                                    <label for="two65555" class="productSizeHome12 {% if customer.tags contains '6S' %} active {% endif %}" > 6M/7.5W </label>
+                                    <input type="checkbox" style="display:none" id="two65555" name="sizes" value="6S" {% if customer.tags contains '6S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="two655" class="productSizeHome12 {% if customer.tags contains '6.5S' %} active {% endif %}" >6.5M/8W</label>
+                                    <input type="checkbox" style="display:none" id="two655" name="sizes" value="6.5S" {% if customer.tags contains '6.5S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three77S" class="productSizeHome12 {% if customer.tags contains '7S' %} active {% endif %}" >7M/8.5W</label>  
+                                    <input style="display:none" type="checkbox" id="three77S" name="sizes" value="7S" {% if customer.tags contains '7S' %} checked {% endif %}>  
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three75" class="productSizeHome12 {% if customer.tags contains '7.5S' %} active {% endif %}" >7.5M/9W</label>
+                                    <input style="display:none" type="checkbox" id="three75" name="sizes" value="7.5S" {% if customer.tags contains '7.5S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three8" class="productSizeHome12 {% if customer.tags contains '8S' %} active {% endif %}">8M/9.5W</label>
+                                    <input style="display:none" type="checkbox" id="three8" name="sizes" value="8S" {% if customer.tags contains '8S' %} checked {% endif %}> 
+                                  </div>
+
+                                  <div class="c-sizeing">
+                                    <label for="three985" class="productSizeHome12 {% if customer.tags contains '8.5S' %} active {% endif %}" >8.5M/10W</label> 
+                                    <input style="display:none" type="checkbox" id="three985" name="sizes" value="8.5S" {% if customer.tags contains '8.5S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three9" class="productSizeHome12 {% if customer.tags contains '9S' %} active {% endif %}" >9M/10.5w</label>
+                                    <input style="display:none" type="checkbox" id="three9" name="sizes" value="9S" {% if customer.tags contains '9S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three95" class="productSizeHome12 {% if customer.tags contains '9.5S' %} active {% endif %}" >9.5M/11W</label>  
+                                    <input style="display:none" type="checkbox" id="three95" name="sizes" value="9.5S" {% if customer.tags contains '9.5S' %} checked {% endif %}> 
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three10" class="productSizeHome12    {% if customer.tags contains '10S' %}active{% endif %}">10M/11.5W</label>
+                                    <input style="display:none" type="checkbox" id="three10" name="sizes" value="10S" {% if customer.tags contains '10S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three105" class="productSizeHome12 {% if customer.tags contains '10.5S' %} active {% endif %}">10.5M/12W</label>
+                                    <input style="display:none" type="checkbox" id="three105" name="sizes" value="10.5S" {% if customer.tags contains '10.5S' %} checked {% endif %}>
+                                  </div>
+
+                                  <div class="c-sizeing">
+                                    <label for="three1151" class="productSizeHome12 {% if customer.tags contains '11S' %} active {% endif %}" >11M/12.5W</label>
+                                    <input style="display:none" type="checkbox" id="three1151" name="sizes" value="11S" {% if customer.tags contains '11S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three115" class="productSizeHome12 {% if customer.tags contains '11.5S' %} active {% endif %}" >11.5M/13W</label>
+                                    <input style="display:none" type="checkbox" id="three115" name="sizes" value="11.5S" {% if customer.tags contains '11.5S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three12" class="productSizeHome12 {% if customer.tags contains '12S' %} active {% endif %}" >12M/13.5W</label>
+                                    <input style="display:none" type="checkbox" id="three12" name="sizes" value="12S" {% if customer.tags contains '12S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three125" class="productSizeHome12 {% if customer.tags contains '12.5S' %} active {% endif %}" >12.5M/14W</label>  
+                                    <input style="display:none" type="checkbox" id="three125" name="sizes" value="12.5S" {% if customer.tags contains '12.5S' %} checked {% endif %}>      
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three13" class="productSizeHome12 {% if customer.tags contains '13S' %} active {% endif %}" >13M/14.5W</label>
+                                    <input style="display:none" type="checkbox" id="three13" name="sizes" value="13S" {% if customer.tags contains '13S' %} checked {% endif %}>   
+                                  </div>
+    
+                                  <div class="c-sizeing">
+                                    <label for="three413" class="productSizeHome12 {% if customer.tags contains '13.5S' %} active {% endif %}" >13.5M/15W</label>
+                                    <input style='display:none;' type="checkbox" id="three413" name="sizes" value="13.5S" {% if customer.tags contains '13.5S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three5" class="productSizeHome12 {% if customer.tags contains '14S' %} active {% endif %}">14M/15.5W</label>  
+                                    <input style='display:none;' type="checkbox" id="three5" name="sizes" value="14S" {% if customer.tags contains '14S' %} checked {% endif %}>    
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three66" class="productSizeHome12 {% if customer.tags contains '14.5S' %} active {% endif %}" >14.5M/16W</label>
+                                    <input style='display:none;' type="checkbox" id="three66" name="sizes" value="14.5S" {% if customer.tags contains '14.5S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three715" class="productSizeHome12 {% if customer.tags contains '15S' %} active {% endif %}">15M/16.5W</label>
+                                    <input style="display:none" type="checkbox" id="three715" name="sizes" value="15S" {% if customer.tags contains '15S' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing" style="display:none">
+                                    <label for="three155" class="productSizeHome12 {% if customer.tags contains '15.5S' %} active {% endif %}">15.5M/17W</label>
+                                    <input style="display:none" type="checkbox" id="three155" name="sizes" value="15.5S" {% if customer.tags contains '15.5S' %} checked {% endif %}>     
+                                  </div>
+                                                                    <div class="c-sizeing">
+                                    <label for="three413y" class="productSizeHome12 {% if customer.tags contains '4.5Y' %} active {% endif %}" >4.5Y/6W</label>
+                                    <input style='display:none;' type="checkbox" id="three413y" name="sizes" value="4.5Y" {% if customer.tags contains '4.5Y' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three5y" class="productSizeHome12 {% if customer.tags contains '5Y' %} active {% endif %}">5Y/6.5W</label>  
+                                    <input style='display:none;' type="checkbox" id="three5y" name="sizes" value="5Y" {% if customer.tags contains '5Y' %} checked {% endif %}>    
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three66y" class="productSizeHome12 {% if customer.tags contains '5.5Y' %} active {% endif %}" >5.5Y/7W</label>
+                                    <input style='display:none;' type="checkbox" id="three66y" name="sizes" value="5.5Y" {% if customer.tags contains '5.5Y' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three715y" class="productSizeHome12 {% if customer.tags contains '6Y' %} active {% endif %}">6Y/7.5W</label>
+                                    <input style="display:none" type="checkbox" id="three715y" name="sizes" value="6Y" {% if customer.tags contains '6Y' %} checked {% endif %}>
+                                  </div>
+                                  <div class="c-sizeing">
+                                    <label for="three155y" class="productSizeHome12 {% if customer.tags contains '6.5Y' %} active {% endif %}">6.5Y/8W</label>
+                                    <input style="display:none" type="checkbox" id="three155y" name="sizes" value="6.5Y" {% if customer.tags contains '6.5Y' %} checked {% endif %}>     
+                                  </div>
+                                   <div class="c-sizeing">
+                                    <label for="three155y" class="productSizeHome12 {% if customer.tags contains '7Y' %} active {% endif %}">7Y/8.5W</label>
+                                    <input style="display:none" type="checkbox" id="three155y" name="sizes" value="7Y" {% if customer.tags contains '7Y' %} checked {% endif %}>     
+                                  </div>
+          
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+   
+            
+          </div>
+          <div class="brands">
+            <h5 class='subTitle_setting'>Favorite Brands</h5>
+            <div class="brand-row">
+              <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-1"
+                  {% if customer.tags contains 'Nike' %}
+                    style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                  {% endif %}
+                  >Nike</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="Nike"
+                  id="brand-1"
+                  {% if customer.tags contains 'Nike' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+              
+              <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-2"
+                  {% if customer.tags contains 'adidas' %}
+                    style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                  {% endif %}
+                  >Adidas</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="adidas"
+                  id="brand-2"
+                  {% if customer.tags contains 'adidas' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+              <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-3"
+                  {% if customer.tags contains 'jordan' %}
+                    style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                  {% endif %}
+                  >Jordan</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="jordan"
+                  id="brand-3"
+                  {% if customer.tags contains 'jordan' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+                 <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-4"
+                  {% if customer.tags contains 'Balance' %}
+                    style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124);color: white;"
+                  {% endif %}
+                  >New Balance</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="Balance"
+                  id="brand-4"
+                  {% if customer.tags contains 'Balance' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+                    <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-5"
+                  {% if customer.tags contains 'Asics' %}
+                    style="border:1px solid rgb(229, 51, 124);background: rgb(229, 51, 124); color: white;"
+                  {% endif %}
+                  >Asics</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="Asics"
+                  id="brand-5"
+                  {% if customer.tags contains 'Asics' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+              <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-6"
+                  {% if customer.tags contains 'Reebox' %}
+                    style="border:1px solid rgb(229, 51, 124); background: rgb(229, 51, 124); color: white;"
+                  {% endif %}
+                  >Reebox</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="Reebox"
+                  id="brand-6"
+                  {% if customer.tags contains 'Reebox' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+              <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-7"
+                  {% if customer.tags contains 'Vans' %}
+                    style="border:1px solid rgb(229, 51, 124); background: rgb(229, 51, 124); color: white;"
+                  {% endif %}
+                  >Vans</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="Vans"
+                  id="brand-7"
+                  {% if customer.tags contains 'Vans' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+              <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-8"
+                  {% if customer.tags contains 'Puma' %}
+                    style="border:1px solid rgb(229, 51, 124); background: rgb(229, 51, 124); color: white;"
+                  {% endif %}
+                  >Puma</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="Puma"
+                  id="brand-8"
+                  {% if customer.tags contains 'Puma' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+              <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-9"
+                  {% if customer.tags contains 'Tombogo' %}
+                    style="border:1px solid rgb(229, 51, 124); background: rgb(229, 51, 124); color: white;"
+                  {% endif %}
+                  >Tombogo</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="Tombogo"
+                  id="brand-9"
+                  {% if customer.tags contains 'Tombogo' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+              <div style="display:flex">
+                <label
+                  class="brand"
+                  for="brand-10"
+                  {% if customer.tags contains 'Converse' %}
+                    style="border:1px solid rgb(229, 51, 124); background: rgb(229, 51, 124); color: white;"
+                  {% endif %}
+                  >Converse</label
+                >
+                <input
+                  style="display:none"
+                  type="checkbox"
+                  name="brand"
+                  value="Converse"
+                  id="brand-10"
+                  {% if customer.tags contains 'Converse' %}
+                    checked
+                  {% endif %}
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        {% comment %} <hr>
+        <div>
+          <h5>Price Preference</h5>
+          <div>
+            <label style="font-family:termina-regular;font-size:0.7rem;">Range</label>
+            <div class="brand-row">
+              <div class="minMax" >
+                $
+                <input
+                  type="text"
+                  name="min"
+                  class="min"
+                  {% assign pattern = 'min' %}
+                  {% assign tags = customer.tags | split: ',' %}
+                  {% for tag in tags %}
+                    {% if tag contains pattern %}
+                      {% assign digits_only = tag | replace: '/[^0-9]/', '' | slice: 0, 12 %}
+                      {% assign digits_only = digits_only | replace: 'min:', '' %}
+                      value="{{ digits_only | replace: '"','' | replace: ']', '' | strip  }}"
+                    {% endif %}
+                  {% endfor %}
+                >
+              </div>
+              <div style="height:fit-content;">To</div>
+              <div class="minMax">
+                <span>$</span>
+                <input
+                  type="text"
+                  name="max"
+                  class="max"
+                  {% assign pattern = 'max' %}
+                  {% assign tags = customer.tags | split: ',' %}
+                  {% for tag in tags %}
+                    {% if tag contains pattern %}
+                      {% assign digits_only = tag | replace: '/[^0-9]/', '' | slice: 0, 12 %}
+                      {% assign digits_only = digits_only | replace: 'max:', '' %}
+                      value="{{ digits_only | replace: '"','' | replace: ']', '' | strip  }}"
+                    {% endif %}
+                  {% endfor %}
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <div>
+          <h5>Preferred KYX Rating</h5>
+          <div>
+            <label style="font-family:termina-regular;font-size:0.7rem;">Range</label>
+            <div class="brand-row">
+              <div class="minMax" >
+                
+                <input
+                  type="text"
+                  name="minr"
+                  class="minr"
+                  id="rating"
+                    min="1"
+                    max="10"
+                   {% assign pattern = 'kyx' %}
+            {% assign tags = customer.tags | split: ',' %}
+            {% for tag in tags %}
+              {% if tag contains pattern %}
+                {% assign digits_only = tag | replace: '/[^0-9]/', '' | slice: 0, 12 %}
+                {% assign digits_only = digits_only | replace: 'kyx:', '' %}
+                value="{{ digits_only | replace: '"','' | replace: '[', ''  | strip  }}"
+              {% endif %}
+            {% endfor %}
+                >
+              </div>
+              <div style="height:fit-content;">To</div>
+              <div class="minMax">
+                
+                <input
+                  type="text"
+                  name="maxr"
+                  class="maxr"
+                  id="rating1"
+                  min="1"
+                  max="10"
+                  {% assign pattern = 'kym' %}
+            {% assign tags = customer.tags | split: ',' %}
+            {% for tag in tags %}
+              {% if tag contains pattern %}
+                {% assign digits_only = tag | replace: '/[^0-9]/', '' | slice: 0, 12 %}
+                {% assign digits_only = digits_only | replace: 'kym:', '' %}
+                value="{{ digits_only | replace: '"','' | replace: '[', ''  | strip  }}"
+              {% endif %}
+            {% endfor %}
+                >
+              </div>
+            </div>
+          </div>
+        </div> {% endcomment %}
+        
+      </div>
+
+      <div class="button-footer">
+        <button type="reset" class="cancel">Cancel</button>
+        <button type="button" class="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+        $('.submit').on('click',function(){
+            var sizes = '';
+            var brands = '';
+            var sizeselected ='';
+            var brandselected ='';
+            var minpriceset="";
+            var gender="";
+          
+            $("input:checkbox[name=sizes]:checked").each(function(index) {
+              if(index == 0){
+                sizes = $(this).val();
+              } else{
+                 sizes = sizes + "," + $(this).val();
+              }
+
+            });
+            $("input:checkbox[name=gender]:checked").each(function(index) {
+              if(index == 0){
+                gender = $(this).val();
+              } else{
+                 gender = gender + "," + $(this).val();
+              }
+
+            });
+           if ($("input:checkbox[name=sizes]:checked").length > 0) {
+             console.log('hello');
+             sizeselected ='SizeSelected';
+             console.log(sizeselected)
+           }
+            $("input:checkbox[name=brand]:checked").each(function(index) {
+               if(index == 0){
+                brands = $(this).val();
+              } else{
+                 brands = brands + "," + $(this).val();
+              }
+            });
+            if ($("input:checkbox[name=brand]:checked").length > 0) {
+              
+             brandselected ='BrandSelected';
+           }
+
+
+          /*
+          var min = "min:" + $('.min').val();
+          var inputValue =$('.min').val();
+          if(inputValue.length > 0){
+            minpriceset= 'minset';
+          }
+                      
+          var max = "max:" + $('.max').val();
+           var inputValuemax =$('.min').val();
+          if(inputValuemax.length == 0){
+            max = "max:0"
+          }
+		  */
+		  var min = "min:0";
+          var max = "max:0";		  
+          
+          var rating = 'kyx:1';;
+          var rating1 = 'kym:10';
+          // if($('#rating').val()>$('#rating1').val()){
+          //   rating1 = 'kym:10';
+          // }
+		  
+          if ($('#rating').val() != undefined){
+                  rating = "kyx:" + $('#rating').val();
+          }
+          if ($('#rating1').val() != undefined){
+            rating1 = "kym:" + $('#rating1').val();
+          }
+          
+          if(sizes == ''){
+             var tags =  brands + "," + min + ","  + max + "," + rating + "," + rating1 + "," +  sizeselected + "," + brandselected  + "," + minpriceset + "," + gender + ", pfs";
+          }else if(brands == ''){
+             var tags = sizes + "," + min + ","  + max + "," + rating + "," + rating1 + "," + sizeselected + "," + brandselected  + "," + minpriceset  + "," + gender + ", pfs" ;
+          }else{
+             var tags = sizes + "," + brands + "," + min + ","  + max + ","  + rating + "," + rating1 + "," + sizeselected + "," + brandselected  + "," + minpriceset  + "," + gender + ", pfs";
+          }
+          
+            $.ajax({
+            url:"https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/update-customer",
+              method:"Post",
+              data:'{"customerId": "{{ customer.id  }}", "tags": "'+tags+'" }',
+               crossDomain: true,
+               contentType: "application/x-www-form-urlencoded",
+              success:function(data){
+                 window.location.reload();
+              }
+            })
+        });
+
+      var expanded = false;
+      var checkboxes = document.getElementById("checkboxes");
+    function showCheckboxes() {
+      var checkboxes = document.getElementById("checkboxes");
+      if (!expanded) {
+        checkboxes.style.display = "block";
+        expanded = true;
+      } else {
+        checkboxes.style.display = "none";
+        expanded = false;
+      }
+    }
+   $('body').click(function(e) {
+
+      if (!$(e.target).closest('.multiselect').length){
+         checkboxes.style.display = "none";
+          expanded = false;
+      }
+  });
+
+
+  $('.brand').on('click',function(){
+    if(!$(this).next().is(':checked')) {
+           $(this).css({"border-color": "white", "background": "#E5337C", "color": "white"});
+        }else{          
+		  $(this).css({"border": "1px solid #0062FF", "background": "white", "color": "black"});
+        }
+  });
+  var checkedCount = $('input[type="checkbox"][name="gender"]:checked').length;
+  if (checkedCount<1){
+     $.ajax({    
+               url:'https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/nickname',
+               method:'post',
+               crossDomain: true,
+               data:'{"customerId":"{{ customer.id }}"  }',
+               contentType: "text/plain",
+               success:function(data){
+                 let Gender = data.gender;
+                 if (Gender == 'Male'){
+                   $('#genderM').prop('checked', true);
+                   $('.Msaved').css({
+                      'border':'1px solid red'
+                      });
+                   }
+                 if (Gender == 'Female'){
+                   $('#genderW').prop('checked', true);
+                     $('.Wsaved').css({
+                      'border':'1px solid red'
+                      });
+                 
+                 }
+                 if (Gender == 'Prefer not to Say'){
+                   $('#genderP').prop('checked', true);
+                     $('.Psaved').css({
+                      'border':'1px solid red'
+                      });
+                 }
+                 if (Gender == 'others'){
+                   $('#genderO').prop('checked', true);
+                     $('.Osaved').css({
+                      'border':'1px solid red'
+                      });
+                 }
+                },
+               error: function(xhr, status, error) {
+                 console.log(error,xhr , status);
+             }
+             });
+  }
+
+</script>
+{% schema %}
+{
+  "name": "Section name",
+  "settings": []
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

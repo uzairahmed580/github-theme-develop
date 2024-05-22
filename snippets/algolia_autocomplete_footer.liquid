@@ -1,0 +1,38 @@
+<script>
+    (function(algolia) {
+        'use strict';
+
+        algolia.footerTemplate = function footerTemplate({ html, state }) {
+            function containsNumbers(str) {
+                return /[0-9]/.test(str);
+            }
+            
+            var querySearch = state.query.replace('size ', '').replace('Size ', '').replace('Size', '').replace('size', '');
+            var numericValue = containsNumbers(querySearch);
+            
+            if (numericValue) {
+                if (querySearch.includes('bred')) {
+                    querySearch = querySearch.replace(' ','');
+                } else {
+                    querySearch = querySearch.replace(' ', '-'); 
+                }
+            } else if (querySearch.includes('bred')) {
+                querySearch = querySearch.replace(' ','');
+            }
+
+          const encodedQuerySearch = querySearch ? encodeURIComponent(querySearch) : '';
+            var url;
+            if (querySearch.toLowerCase().includes('lace')) {
+               url = `/collections/shoe-laces?q=${encodeURIComponent(querySearch)}`;
+            } else {
+                url = querySearch ? `/search?q=${querySearch}` : `/collections/shoe-laces`; 
+            }
+          
+            return html `<div class="aa-footer">
+                <a class="aa-SeeAllBtn" href="${url}">
+                    ${algolia.translations.allProducts}
+                </a>
+            </div>`;
+        };
+    })(window.algoliaShopify);
+</script>

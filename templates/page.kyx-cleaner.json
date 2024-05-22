@@ -1,0 +1,106 @@
+{
+  "sections": {
+    "30094536-8c10-4496-bf7f-d827bcb324c0": {
+      "type": "page-banner-with-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/kyx_interior_banner_desktop_cleaning.jpg",
+        "sm_image": "shopify:\/\/shop_images\/kyx_interior_banners_mobile_cleaning.jpg",
+        "title": "Pro Cleaning",
+        "sub_title": "We believe sneakers are Meant To Be Worn. And the second you take a new pair of shoes and walk out your front door, they turn into used sneakers. With that...they pick up some dirt, scuffs, or creases sometimes. That's when we get to work. When we say \"pro-clean\", we mean it. Below you will see the steps we take for every pair of shoes you see on our site. So when they arrive at your doorstep, you don't have to do anymore scrubbing, sneaker wiping, or hair brushing. Just slide them on and prepare for the compliments on your fresh KYX!"
+      }
+    },
+    "main": {
+      "type": "kyx-cleaner",
+      "blocks": {
+        "2237fbde-e4a9-4c59-ae50-9b52932d6d92": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1.jpg",
+            "image_alignment": "left",
+            "title": "STEP ONE",
+            "sub_title": "<p>After we have authenticated the shoes, a member of our Sneaker Cleaning Team begins the cleaning process by carefully inspecting and analyzing the shoes. Taking note of the materials and current condition. <\/p>"
+          }
+        },
+        "5183c52c-df03-44df-b53e-1f86487f7d64": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2.jpg",
+            "image_alignment": "right",
+            "title": "STEP TWO",
+            "sub_title": "<p>The insoles and laces are removed and scrubbed clean in our KYX Cleaning Solution, bringing them to like-new condition.<\/p>"
+          }
+        },
+        "84aa3a10-e5f1-4963-bf6c-eff5a21772a2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3.jpg",
+            "image_alignment": "left",
+            "title": "STEP THREE",
+            "sub_title": "<p>We then use a combination of medium and stiff brushes with our KYX Cleaning Solution to wash the undersoles and midsoles squeaky clean. For some shoes this may mean using tool to get rid of any pesky debris or pebbles that may be lodged in the grooves.<\/p>"
+          }
+        },
+        "33f6a601-822a-47b7-9497-f4b5e1d7ab0f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4.jpg",
+            "image_alignment": "right",
+            "title": "STEP FOUR",
+            "sub_title": "<p>After the bottoms are cleaned thoroughly we use a combination of solutions on the upper. We are extremely mindful of how different materials react to different solutions and brushes.<\/p>"
+          }
+        },
+        "99819da1-2890-4a69-8472-d88d536b2404": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5.jpg",
+            "image_alignment": "left",
+            "title": "STEP FIVE",
+            "sub_title": "<p>Now it’s time to get inside the shoe and shave off any sock-pilings and debris. Then for some finer adjustments we bring out the tweezers. We don’t want hair coming in our sneakers, so we aren’t going to pass it on to you.<\/p>"
+          }
+        },
+        "ece194af-4015-4a1e-9f3d-22276bc31ab9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6_57878763-9731-47aa-97a8-a0c083e48c6c.jpg",
+            "image_alignment": "right",
+            "title": "STEP SIX",
+            "sub_title": "<p>Next we will use a combination of anti-bacterial fabric spray, deodorizers, and UV-C lights to fully sterilize your potential fresh KYX.<\/p>"
+          }
+        },
+        "fe16656c-b5d6-465b-8d4b-4bf9dee64c6c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/7.jpg",
+            "image_alignment": "left",
+            "title": "STEP SEVEN",
+            "sub_title": "<p>The shoes are finished with factory lacing and stuffed with tissue paper to maintain their shape and pop out any stubborn creases.<\/p>"
+          }
+        },
+        "dc91c6f0-fe03-4ec8-8bc5-146769283642": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Mask_group_1.jpg",
+            "image_alignment": "right",
+            "title": "STEP EIGHT",
+            "sub_title": "<p>Finally, we give them their final KYX Rating after conducting a multi-point inspection based on their revamped condition.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "2237fbde-e4a9-4c59-ae50-9b52932d6d92",
+        "5183c52c-df03-44df-b53e-1f86487f7d64",
+        "84aa3a10-e5f1-4963-bf6c-eff5a21772a2",
+        "33f6a601-822a-47b7-9497-f4b5e1d7ab0f",
+        "99819da1-2890-4a69-8472-d88d536b2404",
+        "ece194af-4015-4a1e-9f3d-22276bc31ab9",
+        "fe16656c-b5d6-465b-8d4b-4bf9dee64c6c",
+        "dc91c6f0-fe03-4ec8-8bc5-146769283642"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "30094536-8c10-4496-bf7f-d827bcb324c0",
+    "main"
+  ]
+}

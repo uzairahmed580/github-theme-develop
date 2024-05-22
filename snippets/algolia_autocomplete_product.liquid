@@ -1,0 +1,50 @@
+<script>
+  (function(algolia) {
+   'use strict';
+
+    algolia.productTemplate = function productTemplate({ item, html, components }, distinct, itemLink, getConversionData) {
+
+      var itemLInk = itemLink;
+      itemLInk = itemLInk.replace(/^\/search\?q=/, '');
+      if(item.title.includes('KYX Gift Card')) {
+        itemLInk = `/products/kyx-gift-card`;
+      } else if(itemLInk.includes('lace')) {
+        itemLInk = `/collections/shoe-laces?q=${itemLInk}`;
+        console.log('data---',itemLInk);
+      }
+      // ${item.title.includes('KYX Gift Card') ? `/products/kyx-gift-card` : `${itemLInk}`}
+      
+      return html `<a
+        href="${itemLInk}"
+        class="aa-ItemLink aa-ProductItem 123"
+        onClick="${(event) => getConversionData(event, item)}"
+      >
+        <div class="aa-ItemContent">
+          <div class="aa-ItemPicture aa-ItemPicture--loaded">
+            <img src="${algolia.helpers.compactImage(item)}" alt="${item.title}" />
+          </div>
+          <div class="aa-ItemContentBody">
+            <div class="aa-ItemContentBrand">
+              ${item.product_type && components.Highlight({ hit: item, attribute: 'product_type' })}
+              ${item.vendor && html`<span> by </span>`}
+              ${item.vendor && components.Highlight({ hit: item, attribute: 'vendor' })}
+            </div>
+            <div class="aa-ItemContentTitleWrapper">
+              <div class="aa-ItemContentTitle">
+                ${components.Highlight({ hit: item, attribute: 'title' })}
+                <span class="algolia-variant">
+                  ${algolia.helpers.variantTitleAddition (item, distinct)}
+                </span>
+              </div>
+            </div>
+            <div class="aa-ItemContentPrice">
+              <div class="aa-ItemContentPriceCurrent">
+                ${algolia.helpers.displayPrice(item, distinct)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>`
+    };
+  })(window.algoliaShopify);
+</script>

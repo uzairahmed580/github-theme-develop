@@ -1,0 +1,349 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+{{ 'ContactUs.css'  | asset_url | stylesheet_tag }}
+
+{%- style -%}
+.helpContact{
+  /* font-family: termina-demi; */
+  font-family: 'Inter';
+  color: #000;
+  font-size: 15px;
+  margin: 1.5rem 0;
+}
+.sendothermessage{
+  text-align:center;
+  font-family: termina-demi;
+  color: #000;
+  font-size: 14px;
+  margin-top: 1rem;
+}
+ 
+@media (max-width: 477px) {
+  .helpContact{text-align:justify;}
+  .sendothermessage{padding:1rem}
+ }
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .static-page-banner img {
+    width: 100%;
+    height:auto;
+    display: block;
+}
+.static-page-title h2 {
+    font-family: Termina;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 65px;
+    text-align: center;
+    color: #0062ff;
+    padding: 2rem 0 2rem;
+}
+.static-page-heading {
+    background-color: #f2eeeb;
+}
+.static-banner{
+  padding-bottom:50px;
+}
+.static-page-banner {
+    background: #fff;
+}
+.kyx-about-us-heading {
+    background-color: #f2eeeb;
+    padding-bottom: 5rem;
+}
+.kyx-about-us-title h2 {
+    font-family: Termina;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 65px;
+    text-align: center;
+    color: #0062ff;
+    padding: 3rem 0 2rem;
+}
+.kyx-about-us-des p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 161%;
+    color: #0062ff;
+    width: fit-content;
+    margin: auto;
+    display: block;
+    text-align: left;
+}
+.kyx-about-us-des {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 990px){
+  .static-page-title h2{
+    font-size: 32px;
+    line-height: 40px;
+    padding: 1rem 0 1rem;
+  }
+  .kyx-about-us-title h2 {
+    font-size: 35px;
+    padding: 2rem 0 1rem;
+}
+#adress{
+  width:100%;
+}
+}
+{%- endstyle -%}
+
+<div class="static-banner">
+  <div class="static-page-banner">
+    <img  class="merox-lazy" data-src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/kyx-desktop-banner.png?v=1686302463" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/contact-page-banner-placeholder.jpg?v=1691152769" width="1920px" height="424px" alt="kyx-page-banner">
+  </div>
+  <div class="kyx-about-us-heading ">
+    <div class="page-width">
+      <div class="kyx-about-us-title">
+        <h2>Need help?</h2>
+      </div>
+      <div class="kyx-about-us-des">
+        <p> If you haven't check out our <a href="/pages/faq" style="text-decoration:underline;">FAQ page</a>
+        to see if your question has already been answered. And if it hasn't feel free to reach out in the chat 
+        box at the bottom right or send us a contact form below. Thanks! 
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% comment %} <div class="mobileActive page-width shopifyBreadCumbs">
+  <div style="display: flex; align-items:center">
+    <a class="tags" href="/">Home</a>      
+    
+      <img src="//cdn.shopify.com/s/files/1/0720/7819/7049/t/38/assets/side_icon.png?v=576759082874759661683344293" style="height: 1rem; width: 1rem" alt="side">
+      
+    <div class="tags">{{ page.title | escape }}</div>
+  </div>
+</div> {% endcomment %}
+
+        {% comment %} <div id="search_firstContainer" class="page-width">
+        
+      <div class="contact_title">
+        Need help?
+      </div>
+      <div class="helpContact">
+      If you haven't check out our <a href="/pages/faq" style="text-decoration:underline;">FAQ page</a>
+      to see if your question has already been answered. And if it hasn't feel free to reach out in the chat 
+      box at the bottom right or send us a contact form below. Thanks! 
+</div>
+    </div> {% endcomment %}
+	
+	
+     {%- form 'contact', id: 'ContactForm', class: 'isolate page-width' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="form-contact" tabindex="-1" autofocus>
+          {% render 'icon-success' %}
+          {{ 'templates.contact.form.post_success' | t }} In the meantime check out some more &nbsp; <a href="/" style="text-decoration:underline;">shoes!</a>
+        </p>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {% render 'icon-error' %}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+	  
+	        {%- if form.posted_successfully? -%}
+			
+			<p class="sendothermessage">Need to send another message? <a href="/pages/contact-us">Click here</a>.</p>
+			
+			{%- else -%}
+                <div class="parent_div_registration">
+            <div id="adress" style="flex-direction:column ; align-items:center">
+                <div class="address_first_container">
+                    <div class="parent_container">
+                        <div class="container_one_address" style="gap: 2rem; width: 70%;font-family: termina-Medium; font-size:18px; color:black">
+                            
+                            <div class="info_container">
+                                Name *
+                                <input
+                class="field__input1"
+            autocomplete="name"
+            type="text"
+            id="ContactForm-name"
+            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+        style="height: 3rem; width: 70%;">
+                            </div>
+                            <div class="info_container">
+                                Email Address *
+                                <input 
+            autocomplete="email"
+            type="email"
+            id="ContactForm-email"
+            class="field__input1"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="ContactForm-email-error"
+            {% endif %}
+        style="height: 3rem; width: 70%;">
+                            </div>
+                          {% comment %}
+                            <div class="info_container">
+                                Gender
+                                <select  name="contact[gender]" style="height: 3rem; width: 70%; font-family: termina-Regular; outline:none; cursor: pointer;">
+                                    <option value="male" style="font-size:14px; font-family:termina-Regular">Male</option>
+                                    <option value="female" style="font-size:14px; font-family:termina-Regular">Female</option>
+                                    <option value="other" style="font-size:14px; font-family:termina-Regular">Others</option>
+                                </select>
+                            </div>
+                          {% endcomment %}
+                            <div class="info_container">
+                                Description *
+                                <textarea  required type="text" style="padding: 0.5rem;height: 8rem; width: 100%; font-family:termina-Regular; font-size:14px; outline:none"
+
+                                rows="10"
+          id="ContactForm-body"
+          class="text-area field__input1"
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+          ></textarea>
+                              
+                            </div>
+                            <div class="contactUsButton">
+                                        <button type="button" onclick="myFormReset()" style="background: white; color:black; border:1px solid #0062FF;">CLEAR</button>
+                                        <button>SUBMIT</button>
+                                    </div>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+			
+			
+			{%- endif -%}
+			
+			
+			
+       {% endform %}
+        </div>
+<script>
+function myFormReset() {
+    document.getElementById("ContactForm").reset();
+}
+</script>
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Contact form",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

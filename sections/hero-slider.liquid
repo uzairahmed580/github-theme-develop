@@ -1,0 +1,597 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+<style>
+  .banner:after,
+  .banner__media:after {
+    position: relative;
+  }
+  .hero-banner_img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .video-div {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    left: 0;
+    bottom: auto;
+    width: 100%;
+    max-width: 40%;
+    margin: 0 auto;
+  }
+  .gif-img {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: 100%;
+    max-width: 40%;
+    margin: 0 auto;
+  }
+  .banner-text {
+    position: absolute;
+    top: auto;
+    left: 0;
+    right: 0;
+    /* bottom: 12%; */
+    bottom: 8%;
+  }
+  .video-slider_btn {
+    margin: 15px auto 0;
+    background-color: #0062ff;
+    color: #fff;
+    font-family: termina-demi;
+    font-size: 1.37rem;
+    font-weight: 700;
+    border-radius: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 12px 40px;
+  }
+  .poster1Container.p-relative {
+    position: relative;
+  }
+  .video-slide {
+    width: 100%;
+  }
+  @media only screen and (min-width: 1201px) and(max-width: 1400px) {
+    .video-div {
+      top: 10%;
+      width: 55%;
+    }
+    .gif-img {
+      top: 10%;
+      max-width: 40%;
+    }
+  }
+  @media only screen and (min-width: 993px) and(max-width: 1200px) {
+    .video-div {
+      top: 10%;
+      max-width: 40%;
+    }
+    .gif-img {
+      top: 10%;
+      max-width: 40%;
+    }
+  }
+  @media only screen and (min-width: 768px) and(max-width: 992px) {
+    .video-div {
+      top: 7%;
+      width: 100%;
+      max-width: 42%;
+    }
+    .gif-img {
+      top: 7%;
+      width: 100%;
+      max-width: 42%;
+    }
+    .banner-text {
+      bottom: 8%;
+    }
+    .banner-text h2 {
+      line-height: 28px;
+      font-size: 23px;
+    }
+  }
+  .md-show {
+    display: block;
+  }
+  .md-none {
+    display: none;
+  }
+  .md-hidden {
+    padding: 0;
+  }
+  @media screen and (max-width: 767px) {
+    .md-show {
+      display: none;
+    }
+    .md-none {
+      display: block;
+    }
+    .gif-img {
+      top: 22%;
+      width: 100%;
+      max-width: 70%;
+    }
+  }
+  @media only screen and (min-width: 481px) and(max-width: 767px) {
+    .banner-text h2 {
+      letter-spacing: 1px;
+      line-height: 24px;
+      padding: 0 50px;
+      font-size: 22px;
+      width: 100%;
+      max-width: 390px;
+      margin: 0 auto;
+    }
+    .banner-text h2 br {
+      display: none;
+    }
+    .banner-text {
+      bottom: 8%;
+    }
+  }
+  @media(max-width: 480px) {
+    .banner-text h2 {
+      letter-spacing: 1px;
+      line-height: 20px;
+      padding: 0 50px;
+      font-size: 18px;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .banner-text h2 br {
+      display: none;
+    }
+    .banner-text {
+      bottom: 5%;
+    }
+  }
+</style>
+
+{%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank -%}
+  {%- style -%}
+    /* @media screen and (max-width: 749px) {
+    #Slider-{{ section.id }}::before,
+    #Slider-{{ section.id }} .media::before,
+    #Slider-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
+      padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+  } */
+
+    @media screen and (min-width: 750px) {
+      ;
+      /* #Slider-{{ section.id }}::before,
+    #Slider-{{ section.id }} .media::before {
+      padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    } */
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<slideshow-component
+  class="slider-mobile-gutter"
+  role="region"
+  aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
+  aria-label="{{ section.settings.accessibility_info | escape }}">
+  {%- if section.settings.auto_rotate and section.blocks.size > 1 -%}
+    <div class="slideshow__controls slideshow__controls--top slider-buttons no-js-hidden{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
+      <button
+        type="button"
+        class="slider-button slider-button--prev"
+        name="previous"
+        aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
+        aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+      <div class="slider-counter slider-counter--{{ section.settings.slider_visual }}{% if section.settings.slider_visual == 'counter' or section.settings.slider_visual == 'numbers' %} caption{% endif %}">
+        {%- if section.settings.slider_visual == 'counter' -%}
+          <span class="slider-counter--current">1</span>
+          <span aria-hidden="true">
+            /
+          </span>
+          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+          <span class="slider-counter--total">{{ section.blocks.size }}</span>
+        {%- else -%}
+          <div class="slideshow__control-wrapper">
+            {%- for block in section.blocks -%}
+              <button
+                class="slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link"
+                aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                aria-controls="Slider-{{ section.id }}">
+                {%- if section.settings.slider_visual == 'numbers' -%}
+                  {{ forloop.index }}
+                {% else %}
+                  <span class="dot"></span>
+                {%- endif -%}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <button
+        type="button"
+        class="slider-button slider-button--next"
+        name="next"
+        aria-label="{{ 'sections.slideshow.next_slideshow' | t }}"
+        aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+
+      {%- if section.settings.auto_rotate -%}
+        <button
+          type="button"
+          class="slideshow__autoplay slider-button no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
+          aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}">
+          {%- render 'icon-pause' -%}
+          {%- render 'icon-play' -%}
+        </button>
+      {%- endif -%}
+    </div>
+    <noscript>
+      <div class="slider-buttons">
+        <div class="slider-counter">
+          {%- for block in section.blocks -%}
+            <a
+              href="#Slide-{{ section.id }}-{{ forloop.index }}"
+              class="slider-counter__link link"
+              aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}">
+              {{ forloop.index }}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </noscript>
+  {%- endif -%}
+  <div
+    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere"
+    id="Slider-{{ section.id }}"
+    aria-live="polite"
+    aria-atomic="true"
+    data-autoplay="{{ section.settings.auto_rotate }}"
+    data-speed="{{ section.settings.change_slides_speed }}">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'img_slide' -%}
+        <div class="poster1Container p-relative" id="Slide-{{ section.id }}-{{ forloop.index }}">
+          {% liquid
+                      assign desktopImg = block.settings.image
+                      assign mobileImg = block.settings.image
+                      if block.settings.sm_image != blank
+                          assign mobileImg = block.settings.sm_image
+                      endif
+                  %}
+          {%- if block.settings.image != blank -%}
+            {%- assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round -%}
+            {{ desktopImg | image_url: width: 3840 | image_tag:
+             loading: 'lazy',
+             height: height,
+             alt: "main-slider",
+             sizes: "100vw",
+             widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+             class: 'hero-banner_img md-hidden' }}
+            <img
+              src="{{ mobileImg | img_url: 'master' }}"
+              alt="main-slider"
+              class="md-visible hero-banner_img">
+          {% endif %}
+          {%- if block.settings.gif_image != blank -%}
+            <img
+              src="{{ block.settings.gif_image | img_url: 'master' }}"
+              alt="gif img"
+              class="gif-img">
+          {% endif %}
+          {%- if block.settings.video_url contains 'youtube.com/watch' -%}
+            {%- assign video_id = block.settings.video_url | split: 'v=' -%}
+            {%- assign video_id = video_id[1] | split: '&' | first -%}
+            <div
+              id="YouTubeVideo-{{ block.id }}"
+              class="video-div"
+              data-type="youtube"
+              data-video-id="{{ video_id }}"></div>
+          {%- endif -%}
+
+          {%- if block.settings.video_url contains 'youtu.be/' -%}
+            {%- assign video_id = block.settings.video_url | split: '.be/' -%}
+            {%- assign video_id = video_id[1] | split: '&' | first -%}
+            <div
+              id="YouTubeVideo-{{ block.id }}"
+              class="video-div"
+              data-type="youtube"
+              data-video-id="{{ video_id }}"></div>
+          {%- endif -%}
+
+          {%- if block.settings.video_url contains 'vimeo.com' -%}
+            {%- assign video_id = block.settings.video_url | split: '.com/' -%}
+            {%- assign video_id = video_id[1] | split: '/' | first -%}
+            <div
+              id="Vimeo-{{ block.id }}"
+              class="video-div"
+              data-type="vimeo"
+              data-video-id="{{ video_id }}"></div>
+          {%- endif -%}
+
+          {%- if block.settings.video_url contains '.mp4' or block.settings.video_url contains '.MP4' -%}
+            <video
+              id="Mp4Video-{{ block.id }}"
+              class="video-div"
+              data-type="mp4"
+              src="{{ block.settings.video_url }}"
+              loop
+              muted
+              playsinline
+              autoplay></video>
+          {%- endif -%}
+          <div class="banner-text">
+            {% if block.settings.banner_heading != blank %}
+              <h2>{{ block.settings.banner_heading | newline_to_br }}</h2>
+            {% endif %}
+            {%- if block.settings.button_label != blank -%}
+              <a class="video-slider_btn" href="{{ block.settings.link }}">
+                {{ block.settings.button_label | escape }}
+                <img
+                  class="redArrow"
+                  src="{{ 'red-arrow.png' | asset_url }}"
+                  alt="{{ block.settings.button_label | escape }}"
+                  loading="lazy" />
+              </a>
+            {% endif %}
+          </div>
+
+        </div>
+        {%- when 'video_slide' -%}
+        <div class="poster1Container p-relative" id="Slide-{{ section.id }}-{{ forloop.index }}">
+          {% liquid
+                    assign desktopvid = block.settings.video_url
+                    assign mobilevid = block.settings.video_url
+                    if block.settings.sm_image != blank
+                        assign mobileImg = block.settings.sm_video_url
+                    endif
+                %}
+          {%- if block.settings.video_url != blank -%}
+            {%- if block.settings.video_url contains '.mp4' or block.settings.video_url contains '.MP4' -%}
+              <video
+                id="Mp4Video-{{ block.id }}"
+                class="video-slide md-show"
+                data-type="mp4"
+                src="{{ block.settings.video_url }}"
+                loop
+                muted
+                playsinline
+                autoplay></video>
+            {%- endif -%}
+            {%- if block.settings.sm_video_url contains '.mp4' or block.settings.sm_video_url contains '.MP4' -%}
+              <video
+                id="Mp4Video-{{ block.id }}"
+                class="video-slide md-none"
+                data-type="mp4"
+                src="{{ block.settings.sm_video_url }}"
+                loop
+                muted
+                playsinline
+                autoplay></video>
+            {%- endif -%}
+          {% endif %}
+          <div class="banner-text">
+            {% if block.settings.banner_heading != blank %}
+              <h2>{{ block.settings.banner_heading | newline_to_br }}</h2>
+            {% endif %}
+            {%- if block.settings.button_label != blank -%}
+              <a class="video-slider_btn" href="{{ block.settings.link }}">
+                {{ block.settings.button_label | escape }}
+                <img
+                  class="redArrow"
+                  src="{{ 'red-arrow.png' | asset_url }}"
+                  alt="{{ block.settings.button_label | escape }}"
+                  loading="lazy" />
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+  {%- if section.blocks.size > 1 and section.settings.auto_rotate == false -%}
+    <div class="slideshow__controls slider-buttons no-js-hidden{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %} arrow-center">
+      <button
+        type="button"
+        class="slider-button slider-button--prev"
+        name="previous"
+        aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
+        aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+      <div class="slider-counter slider-counter--{{ section.settings.slider_visual }}{% if section.settings.slider_visual == 'counter' or section.settings.slider_visual == 'numbers' %} caption{% endif %}">
+        {%- if section.settings.slider_visual == 'counter' -%}
+          <span class="slider-counter--current">1</span>
+          <span aria-hidden="true">
+            /
+          </span>
+          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+          <span class="slider-counter--total">{{ section.blocks.size }}</span>
+        {%- else -%}
+          <div class="slideshow__control-wrapper">
+            {%- for block in section.blocks -%}
+              <button
+                class="slider-counter__link slider-counter__link--{{ section.settings.slider_visual }} link"
+                aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                aria-controls="Slider-{{ section.id }}">
+                {%- if section.settings.slider_visual == 'numbers' -%}
+                  {{ forloop.index }}
+                {% else %}
+                  <span class="dot"></span>
+                {%- endif -%}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <button
+        type="button"
+        class="slider-button slider-button--next"
+        name="next"
+        aria-label="{{ 'sections.slideshow.next_slideshow' | t }}"
+        aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+
+      {%- if section.settings.auto_rotate -%}
+        <button
+          type="button"
+          class="slideshow__autoplay slider-button no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
+          aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}">
+          {%- render 'icon-pause' -%}
+          {%- render 'icon-play' -%}
+        </button>
+      {%- endif -%}
+    </div>
+    <noscript>
+      <div class="slider-buttons">
+        <div class="slider-counter">
+          {%- for block in section.blocks -%}
+            <a
+              href="#Slide-{{ section.id }}-{{ forloop.index }}"
+              class="slider-counter__link link"
+              aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}">
+              {{ forloop.index }}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </noscript>
+  {%- endif -%}
+</slideshow-component>
+
+{% schema %}
+  {
+    "name": "Hero Slider",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "select",
+        "id": "slider_visual",
+        "options": [
+          {
+            "value": "dots",
+            "label": "t:sections.slideshow.settings.slider_visual.options__2.label"
+          }, {
+            "value": "counter",
+            "label": "t:sections.slideshow.settings.slider_visual.options__1.label"
+          }, {
+            "value": "numbers",
+            "label": "t:sections.slideshow.settings.slider_visual.options__3.label"
+          }
+        ],
+        "default": "counter",
+        "label": "t:sections.slideshow.settings.slider_visual.label"
+      }, {
+        "type": "checkbox",
+        "id": "auto_rotate",
+        "label": "t:sections.slideshow.settings.auto_rotate.label",
+        "default": false
+      }, {
+        "type": "range",
+        "id": "change_slides_speed",
+        "min": 3,
+        "max": 9,
+        "step": 2,
+        "unit": "s",
+        "label": "t:sections.slideshow.settings.change_slides_speed.label",
+        "default": 5
+      }
+    ],
+    "blocks": [
+      {
+        "type": "img_slide",
+        "name": "Img Slide",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Desktop Background Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "sm_image",
+            "label": "Mobile Background Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "gif_image",
+            "label": "Gif Image"
+          },
+          {
+            "type": "text",
+            "id": "video_url",
+            "label": "video link",
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "info": "Supports YouTube, .MP4 and Vimeo. Not all features supported by Vimeo."
+          }, {
+            "type": "textarea",
+            "id": "banner_heading",
+            "label": "Banner Text"
+          }, {
+            "type": "text",
+            "id": "button_label",
+            "label": "t:sections.slideshow.blocks.slide.settings.button_label.label",
+            "info": "t:sections.slideshow.blocks.slide.settings.button_label.info"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "t:sections.slideshow.blocks.slide.settings.link.label"
+          }
+
+        ]
+      }, {
+        "type": "video_slide",
+        "name": "Video Slide",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "text",
+            "id": "video_url",
+            "label": "Desktop video link",
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "info": "Supports .MP4."
+          },
+          {
+            "type": "text",
+            "id": "sm_video_url",
+            "label": "Mobile video link",
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "info": "Supports .MP4."
+          },
+          {
+            "type": "textarea",
+            "id": "banner_heading",
+            "label": "Banner Text"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "t:sections.slideshow.blocks.slide.settings.button_label.label",
+            "info": "t:sections.slideshow.blocks.slide.settings.button_label.info"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "t:sections.slideshow.blocks.slide.settings.link.label"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Slider",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

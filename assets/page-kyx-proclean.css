@@ -1,0 +1,102 @@
+.kyx-rating_banner img {
+    width: 100%;
+    height: auto;
+}
+
+.kyx-rating_banner {
+    background: #fff;
+}
+
+.kyx-rating_title h2 {
+    font-family: 'termina-medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 65px;
+    text-align: center;
+    color: #0062FF;
+}
+
+.kyk-rating_desc {
+    margin: 0 auto;
+}
+
+.kyk-rating_desc p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 161%;
+    color: #0062FF;
+    width: fit-content;
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+.md-hidden {
+    display: none;
+}
+
+.md-visible {
+    display: block;
+}
+
+.kyx-rating_title {
+    padding: 3rem 0 2rem;
+}
+
+.rating-system {
+    background-color: #fff;
+    padding-bottom: 2.5rem;
+    margin-top: -5px;
+}
+
+.kyk-rating_desc {
+    width: 100%;
+    max-width: 900px;
+}
+
+@media only screen and (max-width: 990px) {
+    .md-hidden {
+        display: block;
+        padding: 0;
+    }
+    .md-visible {
+        display: none;
+    }
+    .kyx-rating_title h2 {
+        font-size: 32px;
+        line-height: 100%;
+    }
+    .kyk-rating_desc {
+        padding: 0 1.5rem;
+    }
+    .rating-system {
+        padding-bottom: 3rem;
+    }
+    .kyk-rating_desc p {
+        font-size: 14px;
+        line-height: 150%;
+    }
+    .kyk-rating_desc p br {
+        display: none;
+    }
+}
+
+.kyx_order_btn button {
+    margin-top: 20px;
+    width: 285px;
+    font-size: 20px;
+    font-family: 'termina-demi';
+    color: #fff;
+    height: 58px;
+    background: #E5337C 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    border: none;
+    opacity: 1;
+}
+
+.kyx_order_btn {
+    text-align: center;
+}

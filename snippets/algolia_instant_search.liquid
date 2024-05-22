@@ -1,0 +1,156 @@
+<script>
+ 
+  (function(algolia) {
+    'use strict';
+
+    function checkUrl(currentUrl) {
+        return currentUrl.includes("/search?") && currentUrl.includes("meta.custom.Brand");
+    }
+    window.onload = function() {
+        var element = document.querySelector(".ais-ClearRefinements-button");
+        if (element) {
+            var cookieValue = element.innerHTML;
+            element.addEventListener("click", (event) => {
+              setTimeout(function(){
+                document.querySelector(".boradcubs").style.display = 'none';
+              }, 200)
+            });
+        } 
+    };
+
+    algolia.instantSearchMainTemplate = function instantSearchMainTemplate(html, data) {
+      var currentUrl = window.location.href;
+      var isSoldProductPage = currentUrl.includes("/collections/sold-products");
+      var isretailerProduct = currentUrl.includes("/collections/retailer-product");
+      var showClearAllButton = currentUrl.includes("/collections/shoe-laces?q=");
+      var ShowSearchURl = currentUrl.includes("/search?q=");
+      var BrandSearchUrl = checkUrl(currentUrl);
+      //console.log('check---',BrandSearchUrl);
+       function getSearchQuery() {
+          var params = new URLSearchParams(window.location.search);
+          return params.get('q') || '';
+        }
+
+         if (showClearAllButton) {
+            setTimeout(function() {  
+               var title = window.location.search.replace('?q=','');
+               console.log('laces--',title);
+                title = title.replace(/%20/g, ' '); 
+               var breadCumbsEle = '';
+               breadCumbsEle += '<a href="https://www.kyxsneakers.com">Home</a> /';
+               breadCumbsEle += '<a href="/collections/shoe-laces">shoe-laces</a> /';
+               breadCumbsEle += title.replaceAll('-', ' ')
+               document.querySelector('.boradcubs').innerHTML = breadCumbsEle
+             }, 500)
+         }
+
+        if(ShowSearchURl){
+           setTimeout(function() {  
+               var title = getSearchQuery();
+               console.log('search--',title);
+                title = title.replace(/%20/g, ' '); 
+               title = title.replace(/%27/g, ' '); 
+               var breadCumbsEle = '';
+               breadCumbsEle += '<a href="https://www.kyxsneakers.com">Home</a> /';
+              breadCumbsEle += '<a href="/search?sortBy=shopify_products_kyxrating_ascending&range%5Bmeta.custom.kyx_rating%5D=1%3A10"> Search</a> / ';
+               breadCumbsEle += title.replaceAll('-', ' ')
+               document.querySelector('.boradcubs').innerHTML = breadCumbsEle
+             }, 500)
+        }
+
+        if (BrandSearchUrl) {
+            setTimeout(function() {  
+                var params = new URLSearchParams(window.location.search);
+                var brandValue = params.get('refinementList[meta.custom.Brand][0]');
+                if (brandValue) {
+                    console.log('brand--', brandValue);
+                    var breadCumbsEle = '';
+                    breadCumbsEle += '<a href="https://www.kyxsneakers.com">Home </a> / ';
+                    breadCumbsEle += brandValue;
+                    document.querySelector('.boradcubs').innerHTML = breadCumbsEle;
+                }
+            }, 500);
+        }
+
+     
+      return html `<div class="ais-page ${isretailerProduct ? '' : 'retailer_product'}">
+        <div  class="page-width sold_product_details">
+          <div class="sold_title ${isSoldProductPage ? '' : 'hidden'}">SOLD ON KYX</div>
+          <p class="sold_product_subtitle ${isSoldProductPage ? '' : 'hidden'}">KYX believes in transparency and in an effort to promote fair pricing on used sneakers we make our Sold Shoes Data available to all KYX users.</p>
+        </div>
+        <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width"><h1 class="ais-h2 categoryTitle">{{ collection.title }}</h1></div>
+       
+        <div class="ais-input" style="display:none;">
+          <div class="ais-search-box-container"></div>
+          <div class="ais-input-button">
+            <div class="ais-clear-input-icon"></div>
+          </div>
+        </div>
+        <div class="ais-facets-button">
+          Show filters
+        </div>
+      <div  class="ais-vertical page-width  ${isretailerProduct ? '' : 'retailer_product'}">
+        <div class="ais-facets">
+          <div class="filter-dropdown">
+            <div class="md-hidden">
+              <h2>Filter</h2>
+              <div class="closeDrawer">
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-close" fill="none" viewBox="0 0 18 17">
+                <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
+              </path></svg>
+              </div>
+            </div>
+            <div class="full-width">
+              <div class="d-flex fliter_title">
+               
+                ${data.facets.map( facet =>
+                html`<div class="ais-facet-dropdown-wrapper ais-facet-${facet.type} ais-facet-${facet.escapedName}">
+                      <label for="${facet.escapedName}" class="ais-range-slider--header ais-facet--header ais-header">${facet.title}<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </path></svg></label>
+    
+                      <input class="ais-dropdown-checkbox" type="checkbox" id="${facet.escapedName}" name="dropdown" />
+                      <div class="ais-facet-${facet.escapedName}-container ais-facet-dropdown-container ais-filter-${facet.escapedName.toLowerCase().replace(/\W+/g, "-").replace(/-+\z/, "").replace(/\A-+/, "")}" >
+                        
+                      </div>
+                    </div>`
+                )}
+                </div>
+            </div>            
+          </div>
+
+        </div>
+        <div class="ais-block">
+        <div class="boradcubs"></div>
+          <div class="ais_serach_aline ">
+            <div class="ais-search-header">
+              <div class="ais-stats-container"></div>
+              <div class="ais-change-display">
+                <span class="ais-change-display-block ais-change-display-selected"><i class="fa fa-th-large"></i></span>
+                <span class="ais-change-display-list"><i class="fa fa-th-list"></i></span>
+              </div>
+              <div class="ais-sort">
+                ${data.multipleSortOrders ?
+                  html`${algolia.translations.sortBy} <span class="ais-sort-orders-container"></span>`
+                  : html`${algolia.translations.sortBy} ${algolia.translations.relevance}`
+                }
+              </div>
+            </div>
+             
+            <div class="ais-search ${ShowSearchURl ? 'hidden' : ''}">
+              <div class="ais-clear-refinements-container"></div>
+              <div class="ais-current-refined-values-container"></div>
+            </div>
+            
+          </div>
+          <div class="signInaccc"></div>
+            
+             
+          <div id="contentContainer" class="ais-hits-container ais-results-as-block ${isretailerProduct ? '' : 'retailer_product'} ">  </div>
+        </div></div>
+        <div class="ais-pagination-container"></div>
+      </div>`
+    };
+  })(window.algoliaShopify);
+  
+</script>

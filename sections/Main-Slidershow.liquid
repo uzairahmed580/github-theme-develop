@@ -1,0 +1,261 @@
+{{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+{% comment %}{{ 'component-multicolumn.css' | asset_url | stylesheet_tag }}{% endcomment %}
+
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  
+{%- endstyle -%}
+
+{%- liquid
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
+    assign show_mobile_slider = true
+  endif
+-%}
+
+<div class="multicolumn multicolumn-slider ">
+  <div class="section-{{ section.id }}-padding isolate">
+    <slider-component class="slider-mobile-gutter desktop-slider">
+      <ul
+        class="slick-carousel"
+        id="Slider-{{ section.id }}"
+        role="list"
+      >
+        {%- for block in section.blocks -%}
+          <li
+            id="Slide-{{ section.id }}-{{ forloop.index }}"
+            style="cursor: pointer; width:100%;"
+            class="multicolumn-list__item multi_slider grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="multicolumn-cards">
+              {%- if block.settings.image != blank -%}
+                {% liquid
+                    if block.settings.sm_image != blank
+                        assign mobileImg = block.settings.sm_image
+                    endif
+                  %}
+              
+                <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width {% if section.settings.image_width != 'full'%} multicolumn-card-spacing{% endif %}">
+                  <div class="media desktop_img ">
+                    <a href="{{ block.settings.ss_link }}"> <img data-src="{{ block.settings.image | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/desktop-banner-placeholdre.jpg?v=1707371339" class= "multicolumn-card__image merox-lazy" width="100%" height="100%"></a>
+                  </div>
+                  {% if block.settings.sm_image != blank %}
+                    <div class="media mobile_img media--transparent">
+                      <a href="{{ block.settings.ss_link }}"> <img data-src="{{ block.settings.sm_image | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/mobile-banner-placeholder.jpg?v=1707370350" class="multicolumn-card__image merox-lazy" width="100%" height="100%"></a> 
+                    </div>
+                  {% endif %}
+                </div>
+              {%- endif -%}
+              
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+    </slider-component>
+
+
+</div>
+
+<style>
+    @media screen and (min-width: 990px){
+        .slider--desktop.grid--3-col-desktop .grid__item {
+            width: calc((100% - var(--desktop-margin-left-first-item)) / 3 );
+        }
+
+    }
+
+    .multicolumn-slider .slider--mobile+.slider-buttons{
+        display:flex;
+    }
+    .multicolumn-slider .slider--desktop .slider__slide:first-child{
+        margin-left: 0;
+    }
+    .multicolumn-slider .multicolumn-card__image-wrapper{
+        display:flex;
+        gap: 20px;
+        align-items: center;
+    }
+    .multicolumn-slider .multicolumn-list__item.center .media--adapt, .multicolumn-list__item .media--adapt .multicolumn-card__image{
+       width:100% ;
+    }
+    .multicolumn-slider .multicolumn-list__item.center .media--adapt img{
+        border-radius: 100%;
+        width:80%;
+    }
+   
+    .multicolumn-slider .media>*:not(.zoom):not(.deferred-media__poster-button), .media model-viewer{
+        position: relative;
+    }
+    .multicolumn-slider .multicolumn-card-spacing{
+        padding-top: 0rem;
+    }
+    
+    .multicolumn-slider .multicolumn-card__info.add-siz{
+        margin-top: 10px;
+        text-align:  left;
+    }
+    .multicolumn-slider .multicolumn-card__info.add-siz .rte{
+        font-size: 20px;
+        letter-spacing: normal;
+        padding-bottom: 2rem;
+    }
+    .multicolumn-slider .title-wrapper-with-link{
+        justify-content: center;
+    }
+    .mobile_img{
+        display:none;
+    }
+    .multicolumn-slider .slick-next{
+      right: 50px;
+    }
+    .multicolumn-slider .slick-prev {
+      left: 25px;
+    }
+    .multicolumn-slider .slick-prev:before, .slick-next:before{
+      font-size: 35px;
+      background: #ffff;
+      padding:10px;
+    }
+    .multicolumn-slider .slick-prev, .slick-next{
+      z-index: 1;
+    }
+    @media screen and (max-width:767px){
+        .slick-prev, .slick-next{
+          transform: 0;
+        }
+        .desktop_img{
+            display:none;
+        }
+        .mobile_img{
+            display:block;
+        }
+        .multicolumn-slider .slick-prev:before, .slick-next:before{
+          font-size:20px;
+          padding:8px;
+        }
+        .multicolumn-slider .slick-next{
+          right: 40px;
+        }
+    }
+</style>
+
+<script>
+    $('.slick-carousel').slick({
+      centerPadding: "0px",
+      slidesToShow: 1,
+      autoplay: false,
+      arrows: true,
+      speed: 2000,
+      infinite: true
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Main-Slidershow",
+  "tag": "section",
+ 
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.multicolumn.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.multicolumn.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.multicolumn.settings.columns_mobile.options__2.label"
+        }
+      ],
+      "default": "1",
+      "label": "t:sections.multicolumn.settings.columns_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": false,
+      "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "t:sections.slideshow.blocks.slide.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+            "type": "image_picker",
+            "id": "sm_image",
+            "label": "Mobile Image"
+        },
+        {
+          "type": "url",
+          "id": "ss_link",
+          "label": "Slide-Show Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main-Slidershow",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

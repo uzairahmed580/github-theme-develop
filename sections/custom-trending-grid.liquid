@@ -1,0 +1,442 @@
+{{ 'custom-product-grid.css' | asset_url | stylesheet_tag }}
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign products_to_display = section.settings.collection.all_products_count
+
+  if section.settings.collection.all_products_count > section.settings.products_to_show
+    assign products_to_display = section.settings.products_to_show
+    assign more_in_collection = true
+  endif
+
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile 
+    assign show_mobile_slider = true
+  endif
+
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
+    assign show_desktop_slider = true
+  endif
+-%}
+<style>
+  .rating_bg_c {
+    background: #fff !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: auto !important;
+    right: 0 !important;
+    width: 95px !important;
+    height: 85px !important;
+    border-radius: 0 12px 0 0 !important;
+    color: #fff;
+  }
+  .product-grid-image-login {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+  }
+  .product-grid-image-login button {
+    letter-spacing: 0;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    font-family: "termina-demi";
+    font-size: 20px;
+    color: #0062FF;
+    background: #fff;
+    border: 1px solid #0062FF;
+  }
+  .loading-img_position {
+    display: flex;
+    justify-content: center;
+  }
+  .trending-now_btn {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+    margin-bottom: 1.2rem;
+  }
+  @media screen and (max-width: 600px) {
+    .trending-now_btn {
+      margin-top: 15px;
+    }
+  }
+</style>
+
+<section class="section--{{section.id}}" style="background-color: #f5f5f5">
+  <div class="product-grid__header">
+    {% if section.settings.title != blank %}
+      <h3 class="product-grid__header--title">{{ section.settings.title }}
+        <span style="font-size: 16px;text-decoration: underline;font-weight: bold;" {% if customer %}onclick="window.location.href='{{ shop.url }}{{ routes.all_products_collection_url }}'"{% else %}onclick="window.location.href='{{ shop.url }}{{ routes.account_login_url }}'"{% endif %}>SEE ALL</span>
+      </h3>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="product-grid__header--subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+
+  <script>
+    var arry = ['test-ap', 'test-ap'];
+    for (var i = 0; i < arry.length; i++) {
+      console.log(arry[i]);
+      console.log('{{all_products[arry[i]].title}}');
+    }
+    console.log(arry);
+
+// Set the JavaScript variable value
+
+
+// Return the JavaScript variable value as a string
+
+
+
+    $(document).ready(function() {
+      $.ajax({
+
+        url: 'https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/product_views',
+        method: "GET",
+        crossDomain: true,
+        contentType: "application/json",
+        beforeSend: function() {
+          $("#loading-image").show();
+        },
+        success: function(response) {
+          $("#loading-image").hide();
+
+          console.log(response);
+
+          let count = 0;
+          for (var data in response) {
+            for (let innerKey in response[data]) {
+              if (count < 4) {
+                count = count + 1;
+                var rating = response[data][innerKey]['kyxrating'];
+                if (rating == '9') {
+                  rating = '9.0';
+                }
+                if (rating == '8') {
+                  rating = '8.0';
+                }
+                if (rating == '7') {
+                  rating = '7.0';
+                }
+                if (rating == '6') {
+                  rating = '6.0';
+                }
+                if (rating == '5') {
+                  rating = '5.0';
+                }
+                if (rating == '4') {
+                  rating = '4.0';
+                }
+                if (rating == '3') {
+                  rating = '3.0';
+                }
+
+                var image = response[data][innerKey]['product_image'];
+                var Imgclass = 'motion-reduce merox-lazy'
+                if (image == '') {
+                  image = 'https://cdn.shopify.com/s/files/1/0720/7819/7049/t/8/assets/placeholder.png?v=125816514545718613741685775323';
+                  Imgclass = 'placeholder-img';
+                } else {
+                  image = `//cdn.shopify.com/s/files/1/0720/7819/7049/${
+                    response[data][innerKey]['product_image']
+                  }`
+                }
+                let html = `
+     <li id="Slide-{{ section.id }}-${count}" class="grid__item  slider__slide">
+            
+
+<link href="//cdn.shopify.com/s/files/1/0720/7819/7049/t/30/assets/component-rating.css?v=24573085263941240431682772465" rel="stylesheet" type="text/css" media="all">
+
+<div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div class="
+        card
+        card--card
+         card--media
+         color-background-1 gradient
+        
+        
+        
+      " style="--ratio-percent: 100.0%;">
+      
+      <div class="card__inner  ratio" style="--ratio-percent: 100.0%;">
+      <a href="/products/${
+                  response[data][innerKey]['handle']
+                }"    class="mk">
+        <div class="card__media">
+            <div class="media media--transparent media--hover-effect">
+              <img srcset="" data-src="${image}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/placeholder.jpg?v=1691044815" alt="${
+                  response[data][innerKey]['product_name']
+                }"  class="${Imgclass}merox-lazy" loading="lazy" width="700" height="700">
+              <div class="rating_bg_c">0</div>
+              <div class="KYX_rating">
+                 <div class="KYXname">KYX</div>
+                 <div class="KYXrating">${
+                  rating
+                }</div>
+              </div>
+                
+            </div>
+          </div>
+          </a>
+            <div class="product-grid-image-login" >
+            <button type="button" onclick="window.location.href='{{ shop.url }}{{ routes.account_login_url }}'">Login</button>
+            </div>
+          <div class="ShoeImgSizeContainer">SIZE ${
+                  response[data][innerKey]['product_size']
+                }</div>
+          
+<div class="card__content hidden">
+          <div class="card__information">
+            <h3 class="card__heading">
+              <a href="/products/${
+                  response[data][innerKey]['handle']
+                }"  id="StandardCardNoMediaLink-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273" class="full-unstyled-link" aria-labelledby="StandardCardNoMediaLink-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273 NoMediaStandardBadge-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273">
+              ${
+                  response[data][innerKey]['product_name']
+                } 
+              </a>
+            </h3>
+          </div>
+          <div class="card__badge top left"></div>
+        </div>
+      </div>
+      <div class="shoeName">
+          <a  href="/products/${
+                  response[data][innerKey]['handle']
+                }  ">${
+                  response[data][innerKey]['product_name']
+                }</a>
+      </div>
+      <div class="priceContainer">
+          
+          <div class="price">
+              <div class="newPrice 123">$${
+                  response[data][innerKey]['product_price'].replace('$', '').replace('.00', '')
+                }</div>             
+          </div>
+               
+          
+            <div class="brandName">${
+                  response[data][innerKey]['product_brand']
+                }</div>
+            
+      </div>
+      <div class="card__content" style="display:none;">
+        <div class="card__information">
+          <h3 class="card__heading h5" id="title-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273">
+            <a href="/products/${
+                  response[data][innerKey]['handle']
+                }" id="CardLink-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273" class="full-unstyled-link" aria-labelledby="CardLink-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273 Badge-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273">
+             ${
+                  response[data][innerKey]['product_name']
+                }
+            </a>
+          </h3>
+          <div class="card-information"><span class="caption-large light"></span>
+<div class="
+    price ">
+  <div class="price__container"><div class="price__regular">
+      <span class="visually-hidden visually-hidden--inline">Regular price</span>
+      <span class="price-item price-item--regular">
+        ${
+                  response[data][innerKey]['product_price']
+                }
+      </span>
+    </div>
+    <div class="price__sale">
+        <span class="visually-hidden visually-hidden--inline">Regular price</span>
+        <span>
+          <s class="price-item price-item--regular">
+            
+              
+            
+          </s>
+        </span><span class="visually-hidden visually-hidden--inline">Sale price</span>
+      <span class="price-item price-item--sale price-item--last">
+        
+      </span>
+    </div>
+    <small class="unit-price caption hidden">
+      <span class="visually-hidden">Unit price</span>
+      <span class="price-item price-item--last">
+        <span></span>
+        <span aria-hidden="true">/</span>
+        <span class="visually-hidden">&nbsp;per&nbsp;</span>
+        <span>
+        </span>
+      </span>
+    </small>
+  </div></div>
+
+          </div>
+        </div><div class="card__badge top left"></div>
+      </div>
+    </div>
+  
+  </div>
+          </li>
+`
+                $('#Slider-    {{ section.id }}').append(html);
+              }
+            }
+          }
+
+        },
+        error: function(xhr, status, error) {
+          console.log('fail');
+          console.log(status);
+        }
+      });
+    });
+  </script>
+
+
+
+  {% comment %}
+  <div class="product-grid__container product-grid__container--{{ section.id }}">
+  {% assign latest_products = collections.all.products | sort: 'created_at' | reverse %}
+  {% for product in collections[section.settings.collection].products limit: 100 %}
+
+  {% include "custom-product-grid", product: product %}
+  {% endfor %}
+
+  </div>
+  {% endcomment %}<div class="color-background-1 isolate gradient" id="ForYouSection">
+    <div class="collection c-width  section-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-padding">
+      <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width">
+        <div class="ForYouSectionTitle">Trending Now</div>
+      </div>
+
+      <div id="myDiv" class="loading-img_position">
+        <img
+          id="loading-image"
+          src="{{ 'Kyx_Loading.gif' | asset_url }}"
+          style="display:none;" />
+      </div>
+
+      <slider-component class="slider-mobile-gutter page-width">
+        <ul
+          id="Slider-{{ section.id }}"
+          class="grid product-grid  contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if section.settings.collection == blank %} grid--1-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}"
+          role="list"
+          aria-label="{{ 'general.slider.name' | t }}"></ul>
+        {%- if show_mobile_slider or show_desktop_slider -%}
+          <div class="slider-buttons no-js-hidden">
+            <button
+              type="button"
+              class="slider-button slider-button--prev"
+              name="previous"
+              aria-label="{{ 'general.slider.previous_slide' | t }}"
+              aria-controls="Slider-{{ section.id }}">
+              {% render 'icon-caret' %}
+            </button>
+            <div class="slider-counter caption">
+              <span class="slider-counter--current">1</span>
+              <span aria-hidden="true">
+                /
+              </span>
+              <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+              <span class="slider-counter--total">4</span>
+            </div>
+            <button
+              type="button"
+              class="slider-button slider-button--next"
+              name="next"
+              aria-label="{{ 'general.slider.next_slide' | t }}"
+              aria-controls="Slider-{{ section.id }}">
+              {% render 'icon-caret' %}
+            </button>
+          </div>
+        {%- endif -%}
+      </slider-component>
+      <div class="trending-now_btn">
+        <a href="/pages/trending-now">
+          <div class="forYouBtn">View all
+            <img
+              src="https://cdn.shopify.com/s/files/1/0720/7819/7049/t/38/assets/Arrow.png?v=32159828437015456421683344293"
+              alt="View all"
+              class="arrow"
+              width="16px"
+              height="10px">
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>
+
+{% comment %} <script src="{{ 'jquery-3.6.3.min.js' | asset_url }}"></script>
+<script src="{{ 'slick.js' | asset_url }}"></script>
+<script>
+
+$('.product-grid__container--     {{ section.id }}').slick({
+infinite: true,
+slidesToShow: 4,
+slidesToScroll: 1,
+adaptiveHeight: true,
+arrows: true,
+prevArrow: "<button type='button' class='slick-prev pull-left product-grid__container-prev'><</button>",
+nextArrow: "<button type='button' class='slick-next pull-right product-grid__container-next'>></button>",
+responsive: [
+{
+breakpoint: 1300,
+settings: {
+slidesToShow: 2,
+slidesToScroll: 1
+}
+}, {
+breakpoint: 768,
+settings: {
+slidesToShow: 1,
+slidesToScroll: 1
+}
+}
+]
+});
+</script> {% endcomment %}{% schema %}
+  {
+    "name": "Product Trending Grid",
+    "tag": "section",
+    "class": "Product-grid",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle"
+      }, {
+        "type": "collection",
+        "id": "collection",
+        "label": "Choose the Trending Collection"
+      }, {
+        "type": "checkbox",
+        "id": "swipe_on_mobile",
+        "default": false,
+        "label": "Enable swipe on mobile"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Trending Grid"
+      }
+    ]
+  }
+{% endschema %}

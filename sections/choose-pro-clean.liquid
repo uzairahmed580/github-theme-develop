@@ -1,0 +1,180 @@
+<section>
+  <div class="choose-pro-clean page-width">
+    <div class="choose-pro-clean--title">
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.logo != blank %}
+        <div class="pro-clean__img">
+          {{ section.settings.logo }}?
+        </div>
+      {% endif %}
+    </div>
+    <div class="choose-pro-clean__block">
+      {% for block in section.blocks %}
+        <div class="choose-pro-clean__content">
+          <div class="pro-clean__img">
+            {% if block.settings.image != blank %}
+              <img
+                class=""
+                src="{{ block.settings.image | img_url: 'master' }}"
+                alt="{{ section.settings.title | escape }}">
+            {% endif %}
+          </div>
+          <div class="pro-clean__text">
+            {% if block.settings.logotitle != blank %}
+              <h4>{{ block.settings.logotitle | escape }}</h4>
+            {% endif %}
+            {% if block.settings.logodesc != blank %}
+              <p>{{ block.settings.logodesc | escape }}</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+  .choose-pro-clean--title h2 {
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: 0.1px;
+    color: #3A3A3A;
+    text-transform: uppercase;
+    font-family: 'termina-medium';
+  }
+  .choose-pro-clean--title {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  .choose-pro-clean--title .pro-clean__img {
+    display: flex;
+    align-items: flex-start;
+  }
+  .pro-clean__img svg {
+    height: 33px;
+    width: auto;
+    margin-left: 10px;
+    margin-top: 4px;
+  }
+  .choose-pro-clean__content {
+    flex: 0 0 33.33%;
+    max-width: calc(33.33% - 20px);
+  }
+  .choose-pro-clean__content .pro-clean__img img {
+    width: 100%;
+    max-width: 185px;
+  }
+  .pro-clean__text h4 {
+    font-size: 23px;
+    line-height: 29px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #3A3A3A;
+    font-family: 'termina-medium';
+    margin: 25px 0;
+  }
+  .pro-clean__text p {
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    line-height: 24px;
+    font-family: 'termina-medium';
+    color: #3A3A3A;
+  }
+  .choose-pro-clean__content .pro-clean__img {
+    text-align: center;
+  }
+  .choose-pro-clean__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  .choose-pro-clean {
+    margin: 50px auto 60px;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .choose-pro-clean__content {
+      flex: 0 0 50%;
+      max-width: calc(50% - 20px);
+    }
+    .choose-pro-clean__block {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .choose-pro-clean__content {
+      flex: 0 0 100%;
+      max-width: calc(100% - 20px);
+    }
+    .choose-pro-clean__block {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 60px;
+    }
+    .pro-clean__text h4 {
+      font-size: 20px;
+    }
+    .pro-clean__text p {
+      font-size: 14px;
+    }
+  }
+  @media only screen and (max-width: 510px) {
+    .choose-pro-clean--title {
+      display: block;
+    }
+    .pro-clean__img svg {
+      margin-left: 0;
+      height: 31px;
+    }
+
+  }
+</style>
+{% schema %}
+  {
+    "name": "Choose Pro Clean",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }, {
+        "type": "html",
+        "id": "logo",
+        "label": "Logo SVG"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+            "type": "text",
+            "id": "logotitle",
+            "label": "Logo Heading"
+          }, {
+            "type": "textarea",
+            "id": "logodesc",
+            "label": "Logo Desc"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Choose Pro Clean"
+      }
+    ]
+  }
+{% endschema %}

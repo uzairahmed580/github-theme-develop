@@ -1,0 +1,339 @@
+#top_view {
+    background-image: url(public/img/banner1.png);
+    background-size: cover;
+    background-position: top 25% right 0;
+    height: 603px;
+    width: 100%;
+    font-family: Helvetica;
+    font-size: 4.6rem;
+    color: #ecf87f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.roundBtn1WhiteP:hover {
+    font-size: 4rem;
+}
+
+.roundBtn1WhiteP {
+    background-color: #ffffff;
+    color: #726d4b;
+    font-family: "termina-demi";
+    font-size: 3.47rem;
+    font-weight: 700;
+    border-radius: 5rem;
+    width: 49rem;
+    height: 7rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: none;
+    /* Animation */
+}
+
+.container1productlisting {
+    position: relative;
+}
+
+.genderRoundBtnP {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "termina-demi";
+    font-size: 0.8rem;
+    border-radius: 5rem;
+    min-width: 18rem;
+    max-width: fit-content;
+    padding: 0 0.7rem;
+    height: 2.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 83%;
+    left: 33%;
+    transition: transform 0.2s;
+    font-family: termina-Regular;
+    /* Animation */
+}
+
+.genderRoundBtnP:hover {
+    font-size: 0.9rem;
+}
+
+#filterSection {
+    display: flex;
+    justify-content: space-between;
+    font-family: "termina-Light";
+    color: #0062FF;
+}
+
+.filters {
+    width: 10%;
+    padding: 0.8rem;
+    border: 3px solid #0062ff;
+    border-left: none;
+    font-size: 12px;
+    font-family: termina-demi;
+}
+
+#shoesSection {}
+
+.height {
+    height: 25rem;
+}
+
+.availableFilter {
+    display: flex;
+    cursor: pointer;
+    justify-content: end;
+    position: relative;
+    width: 30%;
+    text-align: end;
+}
+
+.priceFilter {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    width: 13%;
+}
+
+.sort {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    width: 19%;
+}
+
+.brand {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+    margin-right: 0.25rem;
+}
+
+.size {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    width: 13%;
+}
+
+.max {
+    background: #0062ff;
+    color: white;
+    font-size: 8px;
+    display: flex;
+    justify-content: end;
+    font-family: termina-demi;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    background: white;
+    z-index: 1;
+    list-style: none;
+    top: 0;
+    width: 65%;
+    text-align: start;
+    right: 0;
+    box-shadow: lightgrey 0px 0px 12px;
+}
+
+.menuPrice {
+    display: none;
+    position: absolute;
+    background: white;
+    z-index: 1;
+    list-style: none;
+    top: 0;
+    text-align: start;
+    right: 0;
+    width: 100%;
+    box-shadow: lightgrey 0px 0px 12px;
+}
+
+.menusort {
+    display: none;
+    position: absolute;
+    background: white;
+    z-index: 1;
+    list-style: none;
+    top: 0;
+    text-align: start;
+    right: 0;
+    width: 100%;
+    box-shadow: lightgrey 0px 0px 12px;
+}
+
+.menubrand {
+    display: none;
+    position: absolute;
+    background: white;
+    z-index: 1;
+    list-style: none;
+    top: 0;
+    text-align: start;
+    right: 0;
+    width: 100%;
+    box-shadow: lightgrey 0px 0px 12px;
+}
+
+.menusize {
+    display: none;
+    position: absolute;
+    background: white;
+    z-index: 1;
+    list-style: none;
+    top: 0;
+    text-align: start;
+    right: 0;
+    width: 100%;
+    box-shadow: lightgrey 0px 0px 12px;
+}
+
+.menubrand input {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 10px;
+}
+
+.menusize input[type="checkbox"] {
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 10px;
+    outline: none;
+}
+
+.availableFilter:hover .menu {
+    display: block;
+}
+
+.priceFilter:hover .menuPrice {
+    display: block;
+}
+
+.sort:hover .menusort {
+    display: block;
+}
+
+.brand:hover .menubrand {
+    display: block;
+}
+
+.size:hover .menusize {
+    display: block;
+}
+
+.menu li {
+    padding: 1rem;
+    font-size: 10px;
+}
+
+.menusort li {
+    padding: 1rem;
+    font-size: 10px;
+}
+
+.menuPrice li {
+    padding: 1rem;
+}
+
+.menubrand li {
+    padding: 1rem;
+    font-size: 10px;
+}
+
+.menusize li {
+    padding: 1rem;
+    font-size: 10px;
+}
+
+.priceMenu {
+    background: #0062FF;
+    padding: 1rem 0.4rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    font-family: "termina-demi";
+}
+
+.from {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+}
+
+.priceMenu input {
+    width: 90%;
+    height: 2rem;
+    color: #e5337c;
+    font-family: termina-demi;
+    outline: none;
+}
+
+.ratingFilter {
+    width: 30%;
+}
+
+@media (max-width: 1000px) {}
+
+@media (max-width: 477px) {
+    #top_view {
+        height: 199px;
+    }
+    .roundBtn1WhiteP {
+        width: 18rem;
+        height: 3rem;
+        font-size: 1rem;
+    }
+    .roundBtn1WhiteP:hover {
+        font-size: 1rem;
+    }
+    .genderRoundBtnP {
+        font-size: 0.5rem;
+        height: 2rem;
+        left: 30%;
+        min-width: fit-content;
+    }
+    .genderRoundBtnP:hover {
+        font-size: 0.5rem;
+    }
+    #filterSection {
+        flex-direction: column;
+    }
+    .availableFilter {
+        width: 100%;
+    }
+    .priceFilter {
+        width: 100%;
+    }
+    .sort {
+        width: 100%;
+    }
+    .brand {
+        width: 100%;
+    }
+    .size {
+        width: 100%;
+    }
+    .ratingFilter {
+        width: 100%;
+        text-align: center;
+    }
+    .menu {
+        width: 100%;
+    }
+    .filters {
+        border-top: none;
+    }
+}

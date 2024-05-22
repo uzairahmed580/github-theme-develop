@@ -1,0 +1,606 @@
+{{ 'page-kyx-rating.css' | asset_url | stylesheet_tag }}
+{% assign defects-issues = false %} 
+{% assign qualifier = false %} 
+{%- for block in section.blocks -%}
+  {% case block.type %}
+    {% when 'defects-issues' %}
+      {% assign defects-issues = true %} 
+    {% when 'qualifier' %}
+      {% assign qualifier = true %} 
+  {% endcase%}
+{% endfor %}
+<section class="kyx-rating">
+    <div class="kyx-rating_banner">
+        {% liquid
+            assign desktopImg = section.settings.image
+            assign mobileImg = section.settings.image
+            if section.settings.sm_image != blank
+                assign mobileImg = section.settings.sm_image
+            endif
+          %}
+        {% if section.settings.image != blank %}
+            <img class="md-visible merox-lazy" data-src="{{ desktopImg | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/about-banner-main-banner-desktop.jpg?v=1691127797" alt="{{ section.settings.title | escape }}" width="1920px" height="476px">
+        {% endif %}
+        <img class="md-hidden merox-lazy" data-src="{{ mobileImg | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/about-banner-main-banner-mobile.jpg?v=1691128496" alt="{{ section.settings.title | escape }}" width="375px" height="263px" >
+    </div>
+
+    <div class="rating-system">
+        <div class="kyx-rating_title">
+            {% if section.settings.title != blank %}
+                <h2>{{ section.settings.title | escape }}</h2>
+            {% else %}
+                <h2>{{ page.title | escape }}</h2>
+            {% endif %}
+        </div>
+        <div class="kyk-rating_desc">
+            {% if section.settings.sub_title != blank %}
+                <p>{{ section.settings.sub_title | newline_to_br }}</p>
+            {% endif %}
+        </div>
+        <div class="mobile_content page-width">
+            <a class="scrollLink" href="#link1"><p>RATINGS BREAKDOWN</p></a>
+            <a class="scrollLink" href="#link2"><p>UNderstanding weighting</p></a>
+            <a class="scrollLink" href="#link3"><p>DEFECTS/ISSUES</p></a>
+            <a class="scrollLink" href="#link4"><p>QUALIFIERS</p></a>
+            <a class="scrollLink" href="#link5"><p style="border-bottom: 2px solid #fff;">EYE APPEAL & SUBJECTIVITY</p></a>
+        </div>       
+    </div>
+    <div class="kyx-rating_bg-blue_text">
+        {% if section.settings.tag_line != blank %}
+            <p>{{ section.settings.tag_line | newline_to_br }}</p>
+        {% endif %}
+    </div>
+    {%- for block in section.blocks -%}
+      {% case block.type %}
+        {% when 'ratings-breakdown' %}
+          <div class="rating-img-with-text page-width" id="link1">
+            <div class="rating-img-with-text__content">
+              {% if block.settings.title != blank %}
+                <p class="rating-img-with-text_title">{{ block.settings.title }}</p>
+              {% endif %}
+              {% if block.settings.sub_title != blank %}
+                <p class="rating-img-with-text_desc">{{ block.settings.sub_title | newline_to_br }}</p>
+              {% endif %}
+              {% if block.settings.tag_line != blank %}
+                <p class="rating-img-with-text_subtitle">{{ block.settings.tag_line | newline_to_br }}</p> 
+              {% endif %}           
+            </div>
+            <div class="rating-img-with-text-first-flex">
+                <div class="first-flex-content">
+                    <div class="first-flex-img">
+                      {% if block.settings.breakdown_image_1 != blank %}
+                        <img data-src="{{ block.settings.breakdown_image_1 | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/rating-page-seconds-imgs.jpg?v=1691130580" class="merox-lazy" width="443px" height="295px" alt="upper">
+                      {% endif %}
+                    </div>
+                    <div class="first-flex-txt">
+                      {% if block.settings.breakdown_title_1 != blank %}
+                        <h2>{{ block.settings.breakdown_title_1 }}</h2>
+                      {% endif %}
+                      {% if block.settings.breakdown_desc_1 != blank %}
+                        <p>{{ block.settings.breakdown_desc_1 | newline_to_br }}</p>
+                      {% endif %}                        
+                    </div>
+                </div>
+                <div class="first-flex-content">
+                  <div class="first-flex-img">
+                    {% if block.settings.breakdown_image_2 != blank %}
+                      <img data-src="{{ block.settings.breakdown_image_2 | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/rating-page-seconds-imgs.jpg?v=1691130580" class="merox-lazy" width="443px" height="295px" alt="upper">
+                    {% endif %}
+                  </div>
+                  <div class="first-flex-txt">
+                    {% if block.settings.breakdown_title_2 != blank %}
+                      <h2>{{ block.settings.breakdown_title_2 }}</h2>
+                    {% endif %}
+                    {% if block.settings.breakdown_desc_2 != blank %}
+                      <p>{{ block.settings.breakdown_desc_2 | newline_to_br }}</p>
+                    {% endif %}                        
+                  </div>
+                </div>
+            </div>
+            <div class="rating-img-with-text-second-flex">
+                <div class="second-flex-content">
+                  <div class="second-flex-img">
+                    {% if block.settings.breakdown_image_3 != blank %}
+                      <img data-src="{{ block.settings.breakdown_image_3 | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/rateing-page-last-imgs.jpg"  class="merox-lazy" width="443px" height="295px" alt="upper">
+                    {% endif %}
+                  </div>
+                  <div class="second-flex-txt">
+                    {% if block.settings.breakdown_title_3 != blank %}
+                      <h2>{{ block.settings.breakdown_title_3 }}</h2>
+                    {% endif %}
+                    {% if block.settings.breakdown_desc_3 != blank %}
+                      <p>{{ block.settings.breakdown_desc_3 | newline_to_br }}</p>
+                    {% endif %}                        
+                  </div>
+                </div>
+                <div class="second-flex-content">
+                  <div class="second-flex-img">
+                    {% if block.settings.breakdown_image_4 != blank %}
+                      <img data-src="{{ block.settings.breakdown_image_4 | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/rateing-page-last-imgs.jpg"  class="merox-lazy" width="443px" height="295px" alt="upper">
+                    {% endif %}
+                  </div>
+                  <div class="second-flex-txt">
+                    {% if block.settings.breakdown_title_4 != blank %}
+                      <h2>{{ block.settings.breakdown_title_4 }}</h2>
+                    {% endif %}
+                    {% if block.settings.breakdown_desc_4 != blank %}
+                      <p>{{ block.settings.breakdown_desc_4 | newline_to_br }}</p>
+                    {% endif %}                        
+                  </div>
+                </div>
+                <div class="second-flex-content">
+                  <div class="second-flex-img">
+                    {% if block.settings.breakdown_image_5 != blank %}
+                      <img data-src="{{ block.settings.breakdown_image_5 | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/rateing-page-last-imgs.jpg" class="merox-lazy" width="443px" height="295px" alt="upper">
+                    {% endif %}
+                  </div>
+                  <div class="second-flex-txt">
+                    {% if block.settings.breakdown_title_5 != blank %}
+                      <h2>{{ block.settings.breakdown_title_5 }}</h2>
+                    {% endif %}
+                    {% if block.settings.breakdown_desc_5 != blank %}
+                      <p>{{ block.settings.breakdown_desc_5 | newline_to_br }}</p>
+                    {% endif %}                        
+                  </div>
+                </div>
+            </div>
+          </div>
+      {% endcase %}
+    {%- endfor -%}
+
+    {%- for block in section.blocks -%}
+      {% case block.type %}
+        {% when 'understanding-weighting' %}
+          <div class="product-overview" id="link2">
+            <div class="page-width">
+                <div class="product-overview-content">
+                  {% if block.settings.title != blank %}
+                    <h2>{{ block.settings.title }}</h2>
+                  {% endif %}
+                  {% if block.settings.desc != blank %}
+                    <p>{{ block.settings.desc | newline_to_br }}</p>
+                  {% endif %}
+                </div>
+            </div>
+          </div>
+        {% endcase %}
+      {%- endfor -%}
+
+      <div class="product-defects-issues page-width" >
+        <div class="product-defects-issues__content">
+          {% if defects-issues %}
+            {%- for block in section.blocks -%}
+              {% case block.type %}
+                {% when 'defects-issues' %}
+                  <div class="defects-issues" id="link3">
+                      <div class="top_content">
+                        {% if block.settings.title != blank %}
+                          <h6>{{ block.settings.title }}</h6>
+                        {% endif %}
+                        {% if block.settings.desc != blank %}
+                          <p>{{ block.settings.desc | newline_to_br }}</p>
+                        {% endif %}
+                      </div>
+                      <div class="bottom_content">
+                          <div>
+                            {% if block.settings.defects_title_1 != blank %}
+                              <h6>{{ block.settings.defects_title_1 }}</h6>
+                            {% endif %}
+                            {% if block.settings.defects_desc_1 != blank %}
+                              <p>{{ block.settings.defects_desc_1 | newline_to_br }}</p>
+                            {% endif %}
+                          </div>
+                          <div>
+                            {% if block.settings.defects_title_2 != blank %}
+                              <h6>{{ block.settings.defects_title_2 }}</h6>
+                            {% endif %}
+                            {% if block.settings.defects_desc_2 != blank %}
+                              <p>{{ block.settings.defects_desc_2 | newline_to_br }}</p>
+                            {% endif %}
+                          </div>
+                          <div>
+                            {% if block.settings.defects_title_3 != blank %}
+                              <h6>{{ block.settings.defects_title_3 }}</h6>
+                            {% endif %}
+                            {% if block.settings.defects_desc_3 != blank %}
+                              <p>{{ block.settings.defects_desc_3 | newline_to_br }}</p>
+                            {% endif %}
+                          </div>
+                          <div>
+                            {% if block.settings.defects_title_4 != blank %}
+                              <h6>{{ block.settings.defects_title_4 }}</h6>
+                            {% endif %}
+                            {% if block.settings.defects_desc_4 != blank %}
+                              <p>{{ block.settings.defects_desc_4 | newline_to_br }}</p>
+                            {% endif %}
+                          </div>
+                          <div>
+                            {% if block.settings.defects_title_5 != blank %}
+                              <h6>{{ block.settings.defects_title_5 }}</h6>
+                            {% endif %}
+                            {% if block.settings.defects_desc_5 != blank %}
+                              <p>{{ block.settings.defects_desc_5 | newline_to_br }}</p>
+                            {% endif %}
+                          </div>
+                      </div>
+                  </div>
+              {% endcase %}
+            {%- endfor -%}
+          {% endif %}
+          {% if qualifier %}
+            {%- for block in section.blocks -%}
+              {% case block.type %}
+                {% when 'qualifier' %}
+                <div class="qualifires" id="link4">
+                    <div class="top_content">
+                      {% if block.settings.title != blank %}
+                        <h6>{{ block.settings.title }}</h6>
+                      {% endif %}
+                      {% if block.settings.desc != blank %}
+                        <p>{{ block.settings.desc | newline_to_br }}</p>
+                      {% endif %}
+                    </div>
+                    <div class="bottom_content">
+                        <div>
+                          {% if block.settings.qualifire_title_1 != blank %}
+                            <h6>{{ block.settings.qualifire_title_1 }}</h6>
+                          {% endif %}
+                          {% if block.settings.qualifire_desc_1 != blank %}
+                            <p>{{ block.settings.qualifire_desc_1 | newline_to_br }}</p>
+                          {% endif %}
+                        </div>
+                        <div>
+                          {% if block.settings.qualifire_title_2 != blank %}
+                            <h6>{{ block.settings.qualifire_title_2 }}</h6>
+                          {% endif %}
+                          {% if block.settings.qualifire_desc_2 != blank %}
+                            <p>{{ block.settings.qualifire_desc_2 | newline_to_br }}</p>
+                          {% endif %}
+                        </div>
+                        <div>
+                          {% if block.settings.qualifire_title_3 != blank %}
+                            <h6>{{ block.settings.qualifire_title_3 }}</h6>
+                          {% endif %}
+                          {% if block.settings.qualifire_desc_3 != blank %}
+                            <p>{{ block.settings.qualifire_desc_3 | newline_to_br }}</p>
+                          {% endif %}
+                        </div>
+                        <div>
+                          {% if block.settings.qualifire_title_4 != blank %}
+                            <h6>{{ block.settings.qualifire_title_4 }}</h6>
+                          {% endif %}
+                          {% if block.settings.qualifire_desc_4 != blank %}
+                            <p>{{ block.settings.qualifire_desc_4 | newline_to_br }}</p>
+                          {% endif %}
+                        </div>
+                      
+                    </div>
+                </div>
+              {% endcase %}
+            {%- endfor -%}
+          {% endif %}
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+        {% when 'subjectivity' %}
+          <div class="page-width" id="link5">
+            <div class="subjectivity">
+              {% if block.settings.title != blank %}
+                <h6>{{ block.settings.title }}</h6>
+              {% endif %}
+              {% if block.settings.desc != blank %}
+                <p>{{ block.settings.desc | newline_to_br }}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="bg_logo-img">
+            <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/foot-load.png?v=1686206737" alt="Kyx Background Img" width="1316px" height="695px">
+          <div>
+        {% endcase %}
+      {%- endfor -%}
+
+
+</section >
+{% schema %}
+{
+  "name": "Page Kyx Rating",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "sm_image",
+        "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_title",
+      "label": "Desc"
+    },
+    {
+        "type": "textarea",
+        "id": "tag_line",
+        "label": "Tag Line"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ratings-breakdown",
+      "name": "Ratings Breakdown",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "sub_title",
+          "label": "Desc"
+        },
+        {
+            "type": "textarea",
+            "id": "tag_line",
+            "label": "Tag Line"
+        },
+        {
+          "type": "header",
+          "content": "Ratings Breakdown Block"
+        },
+        {
+          "type": "image_picker",
+          "id": "breakdown_image_1",
+          "label": "Breakdown image First"
+        },
+        {
+          "type": "text",
+          "id": "breakdown_title_1",
+          "label": "Breakdown Title First"
+        },
+        {
+          "type": "textarea",
+          "id": "breakdown_desc_1",
+          "label": "Breakdown Desc First"
+        },
+        {
+          "type": "image_picker",
+          "id": "breakdown_image_2",
+          "label": "Breakdown image Second"
+        },
+        {
+          "type": "text",
+          "id": "breakdown_title_2",
+          "label": "Breakdown Title Second"
+        },
+        {
+          "type": "textarea",
+          "id": "breakdown_desc_2",
+          "label": "Breakdown Desc Second"
+        },
+        {
+          "type": "image_picker",
+          "id": "breakdown_image_3",
+          "label": "Breakdown image Third"
+        },
+        {
+          "type": "text",
+          "id": "breakdown_title_3",
+          "label": "Breakdown Title Third"
+        },
+        {
+          "type": "textarea",
+          "id": "breakdown_desc_3",
+          "label": "Breakdown Desc Third"
+        },
+        {
+          "type": "image_picker",
+          "id": "breakdown_image_4",
+          "label": "Breakdown image Fourth"
+        },
+        {
+          "type": "text",
+          "id": "breakdown_title_4",
+          "label": "Breakdown Title Fourth"
+        },
+        {
+          "type": "textarea",
+          "id": "breakdown_desc_4",
+          "label": "Breakdown Desc Fourth"
+        },
+        {
+          "type": "image_picker",
+          "id": "breakdown_image_5",
+          "label": "Breakdown image Fifth"
+        },
+        {
+          "type": "text",
+          "id": "breakdown_title_5",
+          "label": "Breakdown Title Fifth"
+        },
+        {
+          "type": "textarea",
+          "id": "breakdown_desc_5",
+          "label": "Breakdown Desc Fifth"
+        }
+      ]
+    },
+    {
+      "type": "understanding-weighting",
+      "name": "Understanding Weighting",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Desc"
+        }
+      ]
+    },
+    {
+      "type": "defects-issues",
+      "name": "Defects Issues",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Desc"
+        },
+        {
+          "type": "header",
+          "content": "Defects Issues Block"
+        },
+        {
+          "type": "text",
+          "id": "defects_title_1",
+          "label": "Defects Issuesn Title First"
+        },
+        {
+          "type": "textarea",
+          "id": "defects_desc_1",
+          "label": "Defects Issues Desc First"
+        },
+        {
+          "type": "text",
+          "id": "defects_title_2",
+          "label": "Defects Issues Title Second"
+        },
+        {
+          "type": "textarea",
+          "id": "defects_desc_2",
+          "label": "Defects Issues Desc Second"
+        },
+        {
+          "type": "text",
+          "id": "defects_title_3",
+          "label": "Defects Issues Title Third"
+        },
+        {
+          "type": "textarea",
+          "id": "defects_desc_3",
+          "label": "Defects Issues Desc Third"
+        },
+        {
+          "type": "text",
+          "id": "defects_title_4",
+          "label": "Defects Issues Title Fourth"
+        },
+        {
+          "type": "textarea",
+          "id": "defects_desc_4",
+          "label": "Defects Issues Desc Fourth"
+        },
+        {
+          "type": "text",
+          "id": "defects_title_5",
+          "label": "Defects Issues Title Fifth"
+        },
+        {
+          "type": "textarea",
+          "id": "defects_desc_5",
+          "label": "Defects Issues Desc Fifth"
+        }
+      ]
+    },
+    {
+      "type": "qualifier",
+      "name": "Qualifier",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Desc"
+        },
+        {
+          "type": "header",
+          "content": "Qualifier Block"
+        },
+        {
+          "type": "text",
+          "id": "qualifire_title_1",
+          "label": "Qualifier Title First"
+        },
+        {
+          "type": "textarea",
+          "id": "qualifire_desc_1",
+          "label": "Qualifier Desc First"
+        },
+        {
+          "type": "text",
+          "id": "qualifire_title_2",
+          "label": "Qualifier Title Second"
+        },
+        {
+          "type": "textarea",
+          "id": "qualifire_desc_2",
+          "label": "Qualifier Desc Second"
+        },
+        {
+          "type": "text",
+          "id": "qualifire_title_3",
+          "label": "Qualifier Title Third"
+        },
+        {
+          "type": "textarea",
+          "id": "qualifire_desc_3",
+          "label": "Qualifier Desc Third"
+        },
+        {
+          "type": "text",
+          "id": "qualifire_title_4",
+          "label": "Qualifier Title"
+        },
+        {
+          "type": "textarea",
+          "id": "qualifire_desc_4",
+          "label": "Qualifier Desc"
+        }
+      ]
+    },
+    {
+      "type": "subjectivity",
+      "name": "Subjectivity",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Desc"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Kyx Rating"
+    }
+  ]
+}
+{% endschema %}

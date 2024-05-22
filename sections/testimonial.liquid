@@ -1,0 +1,199 @@
+{{ 'testimonial-slider.css' | asset_url | stylesheet_tag }}
+
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+<section class="testimonial-slider-section" style="background-color: {{ section.settings.bg_color }}">
+    <div class="testimonial-slider page-width">
+            {%- unless section.settings.title == blank -%}
+              <div class="testimonial-title title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
+                <h2 class="title {{ section.settings.heading_size }}">
+                  {{ section.settings.title | escape }}
+                </h2>
+              </div>
+            {%- endunless -%}
+            <div id="Slider-{{ section.id }}" class="slick-slider-testimonial">  
+                {%- for block in section.blocks -%}
+                    {% case block.type %}
+                        {% when 'testimonial-slide' %}        
+                        <div class="slick-slide ">              
+                            <div class="quote_svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="165" height="129" viewBox="0 0 165 129" fill="none">
+                                  <path d="M39.2 128.8C15.2 128.8 0 110.4 0 87.6C0 60.8 16.8 23.2 51.2 0L65.2 17.6C46.8 34 36 47.2 32 64.4C33.6 62.8 36.8 62 41.6 62C60.8 62 76.4 76 76.4 95.6C76.4 114 60.8 128.8 39.2 128.8ZM127.6 128.8C103.6 128.8 88.4 110.4 88.4 87.6C88.4 60.8 105.2 23.2 139.6 0L153.6 17.6C135.2 34 124.4 47.2 120.4 64.4C122 62.8 125.2 62 130 62C149.2 62 164.8 76 164.8 95.6C164.8 114 149.2 128.8 127.6 128.8Z" fill="#F2EEEB"/>
+                              </svg>
+                            </div>
+                            <div id="Slide-{{ section.id }}-{{ forloop.index }}" class="testimonial_block">
+
+                                <div class="testimonial_content">
+                                    <div class="content_block">
+                                        {% if block.settings.testimonial_content != blank %}
+                                            <h2 style="font-size: {{ block.settings.font_size | append:'px' }} ">{{ block.settings.testimonial_content | newline_to_br }}</h2>
+                                        {% endif %}  
+                                        {% if block.settings.name != blank %}                            
+                                            <h4 class="customer-name">{{ block.settings.name }}</h4>
+                                        {% endif %}     
+                                      <style>
+                                        @media screen and (max-width: 767px) {
+                                          #Slide-{{ section.id }}-{{ forloop.index }} .content_block h2 {
+                                            font-size: {{ block.settings.mobile_font_size | append:'px' }} !important;
+                                          }
+                                        }
+                                      </style>
+                                    </div>
+                                </div>
+                                <div class="testimonial_image">
+                                    {% if block.settings.testimonial_image != blank %}
+                                      <img data-src="{{ block.settings.testimonial_image | img_url: 'master' }}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/home-placeholder-customer.jpg?v=1691054554" class="merox-lazy"  alt="testimonial-image" width="391px" height="292px" aspect-ratio= "3 / 2" >
+                                    {% endif %}
+                                    <div class="KYX_rating">
+                                      <div class="KYXname">KYX</div>                                      
+                                       <div class="KYXrating">{{ block.settings.rating }}</div>                                                                  
+                                   </div>
+                                </div>
+                            </div>  
+                        </div>               
+                    {% endcase %}
+                {%- endfor -%} 
+            </div>
+            <div class="btn--wrap">
+              <button class="prev--btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                <path d="M13.5 9C14.0523 9 14.5 8.55228 14.5 8C14.5 7.44772 14.0523 7 13.5 7L13.5 9ZM0.292893 7.2929C-0.0976314 7.68342 -0.0976315 8.31658 0.292893 8.70711L6.65686 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928933C7.68054 0.538409 7.04738 0.538409 6.65685 0.928933L0.292893 7.2929ZM13.5 7L1 7L1 9L13.5 9L13.5 7Z" fill="#0062FF"/>
+              </svg></button>
+              <button class="next--btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                <path d="M1.5 7C0.947715 7 0.5 7.44772 0.5 8C0.5 8.55228 0.947716 9 1.5 9L1.5 7ZM14.2071 8.70711C14.5976 8.31658 14.5976 7.68342 14.2071 7.29289L7.84315 0.928932C7.45262 0.538408 6.81946 0.538408 6.42893 0.928933C6.03841 1.31946 6.03841 1.95262 6.42893 2.34315L12.0858 8L6.42893 13.6569C6.03841 14.0474 6.03841 14.6805 6.42893 15.0711C6.81946 15.4616 7.45262 15.4616 7.84315 15.0711L14.2071 8.70711ZM1.5 9L13.5 9L13.5 7L1.5 7L1.5 9Z" fill="#0062FF"/>
+                </svg></button>
+            </div>
+    </div>
+</section>
+
+<script>
+    {% comment %} $('.slick-slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: true,
+        adaptiveHeight: false,
+        fade: true
+    }); {% endcomment %}
+  
+    $(document).ready(function () {
+      $('.slick-slider-testimonial').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: true,
+        adaptiveHeight: false,
+        fade: true
+    });
+      $(".prev--btn").click(function () {
+        $(".slick-slider-testimonial").slick("slickPrev");
+      });
+    
+      $(".next--btn").click(function () {
+        $(".slick-slider-testimonial").slick("slickNext");
+      });
+      $(".prev--btn").addClass("slick-disabled");
+      $(".slick-slider-testimonial").on("afterChange", function () {
+        if ($(".slick-prev").hasClass("slick-disabled")) {
+          $(".prev--btn").addClass("slick-disabled");
+        } else {
+          $(".prev--btn").removeClass("slick-disabled");
+        }
+        if ($(".slick-next").hasClass("slick-disabled")) {
+          $(".next--btn").addClass("slick-disabled");
+        } else {
+          $(".next--btn").removeClass("slick-disabled");
+        }
+      });
+    });
+</script>
+{% schema %}
+{
+  "name": "Testimonial Slider",
+  "settings": [
+    {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial-slide",
+      "name": "Testimonial Slide",
+      "settings": [
+        {
+            "type": "textarea",
+            "id": "testimonial_content",
+            "label": "Testimonial Content"
+        },
+        {
+            "type": "range",
+            "id": "font_size",
+            "min":  20,
+            "max":  50,
+            "step":  1,
+            "unit": "px" ,
+            "label": "Font size",
+            "default":  26
+        },
+        {
+            "type": "range",
+            "id": "mobile_font_size",
+            "min":  16,
+            "max":  50,
+            "step":  1,
+            "unit": "px" ,
+            "label": "Mobile Font size",
+            "default":  26
+        },
+        {
+            "type": "text",
+            "id": "name",
+            "label": "Customer name"
+        },
+        {
+            "type": "image_picker",
+            "id": "testimonial_image",
+            "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Customer Rating"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Slider"
+    }
+  ]
+}
+{% endschema %}

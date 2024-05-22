@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-about-us",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/kyx_interior_banner_desktop_about_8322f7bf-6575-498e-aae9-dbcf6a91c228.jpg",
+        "sm_image": "shopify:\/\/shop_images\/kyx_interior_banners_mobile_about_b2446040-8d80-4944-8228-c8595d0edc84.jpg",
+        "title": "About KYX"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,410 @@
+<div class="blog_page">
+  <div class="carousel">
+    {% for block in section.blocks %}
+      <div class="blog_slider_text">
+        <div class="blog_text_width">
+          <div class="blog_text">
+            {% if block.settings.blog_tag_text != blank %}
+              <span>{{ block.settings.blog_tag_text }}</span>
+            {% endif %}
+            {% if block.settings.blog_text != blank %}
+              <p>{{ block.settings.blog_text }}</p>
+            {% endif %}
+          </div>
+          <div class="blog_view_btn">
+            {% if block.settings.button_label != blank %}
+              <a href="{{ block.settings.button_url }}" title="{{ block.settings.button_label }}">{{ block.settings.button_label }}
+                <svg
+                  width="24"
+                  height="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  fill="#fff"
+                  class="desktop_svg"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" /></svg>
+                <svg
+                  width="24"
+                  height="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  fill="#E5337C"
+                  class="mobile_svg"><path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" /></svg>
+              </a>
+
+            {% endif %}
+          </div>
+        </div>
+        <div class="blog_img_width">
+          <div class="desktop_img">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | img_url : 'master' }} " alt="slide Show Img" />
+            {% endif %}
+          </div>
+          <div class="mobile_img">
+            {% if block.settings.sm_image != blank %}
+              <img src="{{ block.settings.sm_image | img_url : 'master' }}" alt="slide Show Img" />
+            {% endif %}
+          </div>
+
+        </div>
+
+      </div>
+
+    {% endfor %}
+  </div>
+
+  <div class="blog_details">
+   <div class="blog_details_1">
+    <select id="tags" name="tags">
+      <option value="" disable selected hidden>TOPIC</option>
+      {% assign unique_tags = "" %}
+      {% for article in blog.articles %}
+        {% for tag in article.tags %}
+          {% capture tag_value %}{{ tag | strip_html | strip_newlines | strip | escape }}{% endcapture %}
+          {% unless unique_tags contains tag_value %}
+            {% assign unique_tags = unique_tags | append: tag_value | append: " " %}
+            <option value="{{ tag_value }}">{{ tag_value }}</option>
+          {% endunless %}
+        {% endfor %}
+      {% endfor %}
+    </select>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#tags').on('change', function() {
+      var selectedTag = $(this).val();
+      if (selectedTag) {
+        var filterUrl = 'https://www.kyxsneakers.com/blogs/news/tagged/' + selectedTag;
+
+        $.ajax({
+          url: filterUrl,
+          type: 'GET',
+          dataType: 'html',
+          success: function(response) {
+            $('#blogs_post').html($(response).find('#blogs_post').html());
+          },
+          error: function() {
+            console.error('Error');
+          }
+        });
+      } else {
+        
+        $('#blogs_post').empty();
+      }
+    });
+  });
+
+  $(document).ready(function() {
+    $('.carousel').slick({slidesToShow: 1, slidesToScroll: 1, dots: true, arrows: false});
+  });
+
+//pagination on blog start
+
+$(document).ready(function() {
+  var currentPage = 1;  
+   $('#load-more-btn').on('click', function() {
+    //alert('helo');
+    loadMoreBlogs();
+  });
+
+  function loadMoreBlogs() {
+    var nextPageUrl = $('#load-more-btn').data('next-page');
+
+    $.ajax({
+      url: nextPageUrl,
+      type: 'GET',
+      dataType: 'html',
+      success: function(response) {
+        
+        $('#blogs_post').append($(response).find('#blogs_post').html());
+        var nextPage = $(response).find('.pagination .next a').attr('href');
+        if (nextPage) {
+          $('#load-more-btn').data('next-page', nextPage);
+        } else {
+         
+          $('#load-more-btn').hide();
+        }
+      },
+      error: function() {
+        console.error('Error');
+      }
+    });
+  }
+});
+// end code of blog
+  
+</script>
+
+<style>
+
+  .overlay {
+    display: none;
+  }
+  .blog_slider_text {
+    display: flex !important;
+    background: #F2EEEB;
+    align-items: center;
+  }
+  .blog_text_width {
+    width: 50%;
+  }
+  .blog_img_width {
+    width: 50%;
+  }
+  .blog_img_width img {
+    width: 100%;
+  }
+  .mobile_img {
+    display: none;
+  }
+
+  .blog_page .slick-dots {
+    position: absolute;
+    bottom: 4%;
+    width: 50%;
+    left: 0;
+  }
+  .blog_page .slick-dots li button {
+    background: #8D8D8D;
+    border-radius: 100%;
+    padding: 0;
+    width: 13px;
+    height: 13px;
+  }
+  .mobile_svg {
+    display: none;
+  }
+  .blog_page .slick-dots li.slick-active button {
+    background: #E5337C;
+  }
+  .blog_text {
+    color: #0062FF;
+    text-align: center;
+    font-family: 'termina';
+    font-size: 55px;
+    font-weight: 700;
+    width: 50%;
+    margin: 0 auto;
+    line-height: 55px
+  }
+
+  .blog_text span {
+    color: #000;
+    text-align: center;
+    font-family: "Termina";
+    font-size: 12px;
+    letter-spacing: 2.4px;
+  }
+  .blog_view_btn {
+    display: flex;
+  }
+  .blog_view_btn a {
+    font-family: 'Inter';
+    color: #fff;
+    background: #0062FF 0 0 no-repeat padding-box;
+    border-radius: 29px;
+    border: none;
+    opacity: 1;
+    margin: 21px auto 1px;
+    display: flex;
+    gap: 13px;
+    text-align: center;
+    padding: 7px 29px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .blog_page .slick-dotted.slick-slider {
+    margin-bottom: 0;
+  }
+  .blog_details {
+    display: flex;
+    width: 100%;
+  }
+  .blog_details_1 {
+    width: 100%;
+    display: flex;
+    border: 2px solid #0062FF;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+    padding: 13px;
+  }
+  .blog_details p {
+    color: #0062FF;
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .blog_details_1 select{
+    border: none;
+    font-size: 22px;
+    color: #0062ff;
+    background: transparent !important;
+  }
+ 
+ 
+  *:focus-visible{
+    border: none !important;
+  }
+  
+  @media screen and (max-width:1365px) {
+    .blog_text {
+      font-size: 26px !important;
+      line-height: 33px;
+    }
+  }
+
+  @media screen and (max-width:1024px) {
+
+    .mobile_img {
+      display: block;
+    }
+    .desktop_img {
+      display: none;
+    }
+
+    .blog_img_width {
+      width: 100%;
+    }
+    .blog_slider_text {
+      position: relative;
+    }
+    .blog_text_width {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      width: 100% !important;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(58, 58, 58, 0.55);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .blog_text {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0;
+      width: 100%;
+    }
+    .blog_view_btn {
+      width: fit-content;
+      margin: 0 auto;
+    }
+    .blog_page .slick-dots {
+      position: absolute;
+      bottom: 4%;
+      width: 100%;
+      left: 0 !important;
+    }
+  }
+  @media screen and (min-width:1027px) and (max-width:1247px){
+    .blog_text{
+      font-size: 22px !important;
+      line-height: 27px !important;
+    }
+  }
+  @media screen and (min-width:1246px) and (max-width: 1739px) {
+    .blog_text {
+      font-size: 26px !important;
+      line-height: 41px !important;
+    }
+  }
+  @media screen and (min-width:767px) and (max-width: 1399px){
+    .blog_view_btn a{
+      margin: 14px auto 1px;
+    }
+  }
+  @media screen and (max-width:767px) {
+    .blog_text {
+      font-size: 20px;
+      line-height: 28px;
+    }
+    .blog_view_btn a {
+      background: #fff 0 0 no-repeat padding-box;
+      color: #0062FF;
+      padding: 4px 29px;
+    }
+    .blog_page .slick-dots {
+      left: 38%;
+      top: 83%;
+      bottom: 0;
+    }
+    .blog_page .slick-dots li button {
+      width: 13px;
+      height: 13px;
+      background: #fff;
+    }
+    .mobile_svg {
+      display: block;
+    }
+    .desktop_svg {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Blog-Slider",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.main-blog.settings.header.content"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "slider",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+          },
+          {
+            "type": "image_picker",
+            "id": "sm_image",
+            "label": "Mobile Image"
+          },
+          {
+            "type": "text",
+            "id": "blog_tag_text",
+            "label": "enter the text"
+          },
+          {
+            "type": "text",
+            "id": "blog_text",
+            "label": "enter the text"
+          }, {
+            "type": "text",
+            "id": "button_label",
+            "default": "View Article",
+            "label": "Button label"
+          },{
+            "type":"url",
+            "id":"button_url",
+            "label": "Blog Url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog-Slider"
+
+      }
+    ]
+  }
+{% endschema %}

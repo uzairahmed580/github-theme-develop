@@ -1,0 +1,61 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free ground shipping on orders $250+",
+            "text_alignment": "center",
+            "background_color": "#f2eeeb",
+            "color_scheme": "#000000",
+            "link": ""
+          }
+        },
+        "b5655a1a-8a38-4885-841f-adaf68bb177c": {
+          "type": "announcement",
+          "settings": {
+            "text": "Pro-Cleaned | Authentic | Ready to Ship",
+            "text_alignment": "center",
+            "background_color": "#f2eeeb",
+            "color_scheme": "#000000",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0",
+        "b5655a1a-8a38-4885-841f-adaf68bb177c"
+      ],
+      "settings": {
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "color_scheme": "inverse",
+        "logo_position": "top-center",
+        "menu": "header-new",
+        "sub_menu": "sub-menu-new",
+        "mobile_menu": "header2",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "always",
+        "show_line_separator": false,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 8
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

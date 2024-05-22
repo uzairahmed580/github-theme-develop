@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".ShoeImgSizeContainer {width: 100%; display: flex; justify-content: center; align-items: center; font-family: \"termina-medium\"; font-size: 0.9rem; font-weight: 800; color: #8d8d8d; background-color: #fff; border-bottom-right-radius: 0; border-bottom-left-radius: 0; padding-bottom: 0.5rem; position: absolute; bottom: -35px;}",
+        ".shoeName {font-family: \"Inter\"; font-size: 1rem; font-weight: 600; color: #3a3a3a; width: 100%; height: 3.5rem; overflow: hidden; margin-top: 2.5rem;}",
+        ".shoeName a {color: #3a3a3a;}"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "image_ratio": "portrait",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid"
+  ]
+}

@@ -1,0 +1,293 @@
+{% comment %}
+{% render 'recently-viewed' %}
+{% endcomment %}
+{%- if section.settings.background != settings.background and section.settings.background != 'rgba(0,0,0,0)' -%}
+  {%- assign blends_with_background = false -%}
+{%- else -%}
+  {%- assign blends_with_background = true -%}
+{%- endif -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    {%- if section.settings.background == 'rgba(0,0,0,0)' -%}
+      {%- assign section_background = settings.background -%}
+    {%- else -%}
+      {%- assign section_background = section.settings.background -%}
+    {%- endif -%}
+
+    {%- if section.settings.text_color == 'rgba(0,0,0,0)' -%}
+      {%- assign heading_color = settings.heading_color -%}
+      {%- assign text_color = settings.text_color -%}
+    {%- else -%}
+      {%- assign heading_color = section.settings.text_color -%}
+      {%- assign text_color = section.settings.text_color -%}
+    {%- endif -%}
+
+    --heading-color: {{ heading_color.red }}, {{ heading_color.green }}, {{ heading_color.blue }};
+    --text-color: {{ text_color.red }}, {{ text_color.green }}, {{ text_color.blue }};
+    --prev-next-button-background: {{ settings.background.red }}, {{ settings.background.green }}, {{ settings.background.blue }};
+    --prev-next-button-color: {{ settings.text_color.red }}, {{ settings.text_color.green }}, {{ settings.text_color.blue }};
+
+    --section-background: {{ section_background.red }}, {{ section_background.green }}, {{ section_background.blue }};
+    --section-products-per-row: 2;
+  }
+
+  @media screen and (min-width: 741px) {
+    #shopify-section-{{ section.id }} {
+      --section-products-per-row: 3;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    #shopify-section-{{ section.id }} {
+      --section-products-per-row: 4;
+    }
+  }
+</style>
+
+{% liquid
+  assign products_to_display = 20
+%}
+<recently-viewed-products id="ForYouSection" section-id="{{ section.id }}" products-count="{{ section.settings.products_count | escape }}" {% if request.page_type == 'product' %}exclude-product-id="{{ product.id | escape }}"{% endif %} class="section section-{{ section.id }} {% unless blends_with_background %}section--flush{% endunless %}">
+  {%- if request.page_type == 'search' and search.performed and search.results_count > 0 -%}
+    <div class="section__color-wrapper">
+      <div class="page-width {% unless blends_with_background %}vertical-breather{% endunless %} recently_view">
+        {%- if section.settings.title != blank or section.settings.subheading != blank -%}
+          <header class="section__header">
+            <div class="text-container">
+              {%- if section.settings.subheading != blank -%}
+                <h2 class="heading heading--small">{{ section.settings.subheading }}</h2>
+              {%- endif -%}
+
+              {%- if section.settings.title != blank -%}
+                <div class="ForYouSectionTitle">{{ section.settings.title }}</div>
+              {%- endif -%}
+            </div>
+          </header>
+        {%- endif -%}
+
+        <product-list {% if settings.stagger_products_apparition %}stagger-apparition{% endif %} class="product-list product-list--center">
+          {%- assign smallest_image_aspect_ratio = 0 -%}
+
+          <div class="scroller">
+            <div class="product-list__inner product-list__inner--scroller hide-scrollbar">
+              {%- comment -%}
+                NOTE: we are doing an inner for loop to preserve the order (from most recently seen to oldest one), as search.results, out of the box,
+                will order by title, which is not really desirable.
+              {%- endcomment -%}
+
+             
+              {%- assign parsed_terms = search.terms | split: ' OR ' -%}
+              <slider-component class="slider-mobile-gutter" aria-roledescription="Carousel" role="region">
+                <ul id="Slider-{{ section.id }}" class="grid product-grid contains-card--product grid--6-col-desktop  grid--1-col-tablet-down grid--col-tablet-down slider slider--desktop slider--tablet grid--peek" role="list">
+                {%- for parsed_term in parsed_terms -%}
+                  {%- assign id = parsed_term | split: 'id:' | last | times: 1 -%}
+
+                  {%- for product in search.results -%}
+                    {%- if product.id == id -%}
+                      {%- assign smallest_image_aspect_ratio = smallest_image_aspect_ratio | at_least: product.featured_media.aspect_ratio -%}
+
+                      {%- capture sizes_attribute -%}(max-width: 740px) 75vw, min({{ 100.0 | divided_by: 4 | ceil }}vw, {{ 1520.0 | divided_by: 4 | ceil }}px){%- endcapture -%}
+                      
+                          <li class="grid__item slideshow__slide slider__slide" id="Slide-recently-{{ forloop.index }} ">
+                            {% render 'card-product',
+                                  card_product: product,
+                                  media_aspect_ratio: section.settings.image_ratio,
+                                  show_secondary_image: section.settings.show_secondary_image,
+                                  show_vendor: section.settings.show_vendor,
+                                  show_rating: section.settings.show_rating,
+                                  lazy_load: lazy_load,
+                                  show_quick_add: section.settings.enable_quick_add,
+                                  section_id: section.id %}
+                          </li>
+                        
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endfor -%}
+                </ul>
+
+                {%- if search.results_count > 6 -%}
+                  <div class="slider-buttons no-js-hidden">
+                    <button
+                      type="button"
+                      data-action="prev"
+                      class="slider-button slider-button--prev"
+                      name="previous"
+                      aria-label="{{ 'general.slider.previous_slide' | t }}"
+                      aria-controls="Slider-{{ section.id }}">
+                      {% render 'icon-caret' %}
+                    </button>
+                    <div class="slider-counter caption">
+                      <span class="slider-counter--current">1</span>
+                      <span aria-hidden="true">
+                        /
+                      </span>
+                      <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                      <span class="slider-counter--total">{{ search.results_count }}</span>
+                    </div>
+                    <button
+                      type="button"
+                      data-action="next"
+                      class="slider-button slider-button--next"
+                      name="next"
+                      aria-label="{{ 'general.slider.next_slide' | t }}"
+                      aria-controls="Slider-{{ section.id }}">
+                      {% render 'icon-caret' %}
+                    </button>
+                  </div>
+                {% endif %}
+              </slider-component>
+
+            </div>
+          </div>
+
+          {% comment %} {%- if search.results_count > 4 -%}
+            <prev-next-buttons class="product-list__prev-next hidden-pocket" style="--smallest-image-aspect-ratio: {{ smallest_image_aspect_ratio }}">
+              <button class="product-list__arrow prev-next-button prev-next-button--prev" disabled data-action="prev">
+                <span class="visually-hidden">{{ 'general.accessibility.previous' | t }}</span>
+                {%- include 'icon' with 'nav-arrow-left', block: true, direction_aware: true -%}
+              </button>
+
+              <button class="product-list__arrow prev-next-button prev-next-button--next" data-action="next">
+                <span class="visually-hidden">{{ 'general.accessibility.next' | t }}</span>
+                {%- include 'icon' with 'nav-arrow-right', block: true, direction_aware: true -%}
+              </button>
+            </prev-next-buttons>
+          {%- endif -%} {% endcomment %}
+        </product-list>
+      </div>
+    </div>
+  {%- endif -%}
+</recently-viewed-products>
+<script>
+  // js/custom-element/section/product-recommendations/recently-viewed-products.js
+  class RecentlyViewedProducts extends HTMLElement {
+    async connectedCallback() {
+      if (this.searchQueryString === "") {
+        return;
+      }
+      const response = await fetch(`${window.routes.searchUrl}?type=product&q=${this.searchQueryString}&section_id=${this.sectionId}`);
+      const div = document.createElement("div");
+      div.innerHTML = await response.text();
+      const recentlyViewedProductsElement = div.querySelector("recently-viewed-products");
+      if (recentlyViewedProductsElement.hasChildNodes()) {
+        this.innerHTML = recentlyViewedProductsElement.innerHTML;
+
+
+        setTimeout(function() {
+             var lazyImages = [].slice.call(document.querySelectorAll("img.merox-lazy"));
+                if ("IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype) {
+                  let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                      if (entry.isIntersecting) {
+                        let lazyImage = entry.target;
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImage.classList.remove("merox-lazy");
+                        lazyImageObserver.unobserve(lazyImage);
+                      }
+                    });
+                  });
+              
+                  lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                  });
+                }
+          
+        }, 1000)
+        
+      }
+    }
+    get searchQueryString() {
+      const items = JSON.parse(localStorage.getItem("recently-viewed-products") || "[]");
+      if (this.hasAttribute("exclude-product-id") && items.includes(parseInt(this.getAttribute("exclude-product-id")))) {
+        items.splice(items.indexOf(parseInt(this.getAttribute("exclude-product-id"))), 1);
+      }
+      return items.map((item) => "id:" + item).slice(0, this.productsCount).join(" OR ");
+    }
+    get sectionId() {
+      return this.getAttribute("section-id");
+    }
+    get productsCount() {
+      return this.getAttribute("products-count") || 4;
+    }
+  };
+
+  customElements.define('recently-viewed-products', RecentlyViewedProducts);
+</script>
+<style>
+   .template-index #shopify-section-recently-viewed{
+    display:none;
+  }
+  #shopify-section-recently-viewed{
+    background-color: #fff;
+  }
+  #shopify-section-recently-viewed .ShoeImgSizeContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "termina-medium";
+    font-weight: 800;
+    color: #8d8d8d;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0px;
+  }
+  recently-viewed-products .slider--desktop {
+    scroll-padding-left: 0;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Recently viewed products",
+  "class": "shopify-section--recently-viewed-products",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Section is hidden if no products have been visited."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Recently viewed"
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "min": 4,
+      "max": 20,
+      "label": "Products count",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "rgba(0,0,0,0)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recently viewed products"
+    }
+  ]
+}
+{% endschema %}

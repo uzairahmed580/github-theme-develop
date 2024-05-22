@@ -1,0 +1,259 @@
+{
+  "sections": {
+    "main": {
+      "type": "kyx-proclean",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/kyx-desktop-banner.png",
+        "sm_image": "shopify:\/\/shop_images\/kyx-desktop-banner.png",
+        "title": "Let us freshen up your shoes",
+        "sub_title": "It’s no secret that KYX takes a lot of pride in the cleanliness of our sneakers. Every pair of shoes we list on our site are professionally cleaned by our team of experts. And now we want to offer the same \nservice for your personal used shoes."
+      }
+    },
+    "60f03afc-4479-47df-819e-0759986bb53d": {
+      "type": "choose-pro-clean",
+      "blocks": {
+        "32465ca6-4884-48b2-9c84-dcb0a11fa3d3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_7370_2x_fce477e0-1f94-4be3-8365-5c9ddffb55f5.png",
+            "logotitle": "Expert Cleaning",
+            "logodesc": "Our team of skilled sneaker cleaners and enthusiasts use industry leading cleaning techniques and premium products to restore your sneakers. Whether they are streetwear classics, limited editions, or high end designer kicks, we clean them with the utmost care and attention to detail."
+          }
+        },
+        "0497e330-b9ca-424e-8d5f-a7b7c23222f3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_7371_2x_77766caa-9d44-436f-9295-27390e06af99.png",
+            "logotitle": "Authenticity Certificate",
+            "logodesc": "Included in your Pro-Clean+ purchase is our authentication process. Just like we do with every pair of shoes we sell, we will put your shoes through our authentication process and provide you with a certificate of authenticity."
+          }
+        },
+        "887962ae-4745-4225-bc3d-1010591ada65": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_7372_2x_0d248473-57bb-49f1-ae52-3bfee29edce4.png",
+            "logotitle": "KYX Rating",
+            "logodesc": "After your sneakers finish going through the full KYX Cleaning process, we will put them through our proprietary KYX rating process. You can use this information to make informed decisions about the value and worth of your sneaker collections."
+          }
+        }
+      },
+      "block_order": [
+        "32465ca6-4884-48b2-9c84-dcb0a11fa3d3",
+        "0497e330-b9ca-424e-8d5f-a7b7c23222f3",
+        "887962ae-4745-4225-bc3d-1010591ada65"
+      ],
+      "settings": {
+        "title": "WHY CHOOSE",
+        "logo": "<svg width=\"490\" height=\"57\" viewbox=\"0 0 490 57\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M153.066 11.6C160.626 11.6 165.666 15.128 165.666 21.554C165.666 28.064 160.626 31.508 153.066 31.508H139.668V41H132.948V11.6H153.066ZM152.52 25.964C156.3 25.964 158.82 24.956 158.82 21.596C158.82 18.236 156.3 17.228 152.52 17.228H139.668V25.964H152.52ZM204.655 41H196.633L188.191 31.004H177.565V41H170.887V11.6H191.173C198.355 11.6 203.773 14.918 203.773 21.302C203.773 26.3 200.455 29.408 195.583 30.542L204.655 41ZM177.523 25.46H190.795C194.323 25.46 196.927 24.62 196.927 21.344C196.927 18.068 194.323 17.228 190.795 17.228H177.523V25.46ZM226.447 41.924C214.981 41.924 207.757 36.128 207.757 26.3C207.757 16.472 214.981 10.676 226.447 10.676C237.913 10.676 245.137 16.472 245.137 26.3C245.137 36.128 237.913 41.924 226.447 41.924ZM226.447 36.128C233.713 36.128 238.291 32.6 238.291 26.3C238.291 20 233.713 16.472 226.447 16.472C219.181 16.472 214.603 20 214.603 26.3C214.603 32.6 219.139 36.128 226.447 36.128ZM269.508 31.046H250.23V25.586H269.508V31.046ZM292.969 36.128C297.337 36.128 300.571 34.7 302.755 31.34L308.887 34.406C306.115 38.564 300.445 41.924 292.759 41.924C281.713 41.924 274.531 36.086 274.531 26.3C274.531 16.514 281.713 10.676 293.053 10.676C300.445 10.676 306.115 14.078 308.803 18.152L302.629 21.218C300.529 17.942 297.337 16.472 292.969 16.472C285.997 16.472 281.377 19.832 281.377 26.3C281.377 32.768 285.997 36.128 292.969 36.128ZM320.629 35.204H341.419V41H313.909V11.6H320.629V35.204ZM352.784 35.372H376.388V41H346.106V11.6H375.968V17.228H352.784V23.276H372.146V28.904H352.784V35.372ZM409.584 41L406.434 34.784H388.668L385.518 41H378.336L393.918 11.6H401.268L416.85 41H409.584ZM391.44 29.324H403.62L397.53 17.354L391.44 29.324ZM447.801 11.6H454.311V41H448.431L427.347 19.748V41H420.837V11.6H427.977L447.801 31.76V11.6ZM486.119 25.838V30.794H476.417V39.32H471.125V30.794H461.339V25.838H471.125V17.354H476.417V25.838H486.119Z\" fill=\"#E5337C\"><\/path>\n<path d=\"M106.891 31.2718C103.168 27.8159 100.108 24.9917 97.73 22.6524L97.0431 21.9589C101.415 19.9827 105.754 18.2074 106.635 17.7013C107.87 16.9923 108.345 16.6929 107.74 14.6144C107.135 12.5358 106.172 10.8224 105.074 9.80625C104.473 9.24991 103.935 9.44309 101.483 10.72C98.3768 12.3368 94.0072 14.5371 91.1317 15.9144C90.8264 15.5802 90.5363 15.2615 90.2597 14.9582C87.7047 12.1649 87.3879 11.8713 86.3423 10.5654C85.2966 9.25957 84.7127 8.86356 83.8713 9.30593C82.6081 9.96852 81.7647 10.5693 80.7992 11.3207C79.4845 12.3426 78.2957 13.4051 79.0723 14.3671C80.0168 15.5358 79.4272 14.6858 81.9898 17.2898C82.1673 17.4695 82.9382 18.2828 84.0296 19.436C81.0358 20.964 78 22.4997 76.0117 23.2551C75.8533 20.6047 75.2465 16.6717 74.779 14.5815C73.9738 10.9827 70.1137 9.66717 69.1596 9.52036C68.2055 9.37354 66.6428 9.51456 64.6755 11.4618C62.7082 13.4109 54.5987 21.1379 47.2696 24.2171C47.2696 24.2171 48.5194 20.9312 54.5662 15.4972C56.8846 13.4148 57.3922 12.9028 56.358 11.1179C55.9096 10.3452 54.7265 9.2615 53.4099 8.33233C52.0781 7.39544 50.9561 8.38256 48.838 10.067C46.264 12.1128 40.2629 18.4025 38.765 23.0097C38.7593 23.0097 38.7708 23.0136 38.765 23.0155C38.6601 23.3671 38.6868 23.3265 38.6181 23.4502C38.454 23.7361 37.2328 23.7766 36.5802 23.8114C35.0328 23.8925 34.1836 23.9022 31.6096 23.9215C25.1658 23.9698 19.1094 23.6627 19.1094 23.6627C19.1094 23.6627 37.5038 14.711 40.137 13.0574C42.7702 11.4038 43.0545 11.0715 42.4267 9.55706C41.8009 8.04257 40.7838 6.40831 39.3222 5.12757C38.1525 4.10374 36.9084 5.10246 33.5196 7.14624C32.8441 7.55384 32.0904 8.27631 14.9306 16.4341C14.9306 16.4341 16.9876 11.3188 18.6935 8.36904C20.3993 5.41733 20.5005 4.85712 19.4777 3.81978C18.5523 2.88288 14.4994 0.481721 13.4576 0.0895766C12.1295 -0.410745 11.4731 1.23896 10.5076 3.68649C10.0745 4.78565 3.96844 20.5641 2.16717 26.2087C-0.387809 34.2139 -0.296219 35.1102 0.484205 36.0625C1.56039 37.3781 6.05212 39.049 6.65509 38.6163C7.25806 38.1836 7.18936 37.9556 7.79233 34.7509C8.39339 31.5461 8.85325 30.9589 11.1564 30.6459C13.3908 30.3426 25.0361 30.36 38.9082 30.7135C39.0207 30.7174 39.1238 30.785 39.1696 30.8913C39.4272 31.4882 39.66 32.0986 40.1046 32.5912C41.1025 33.6981 42.9973 34.2332 45.2355 33.445C48.3763 32.3362 59.0809 25.3761 63.6279 21.8681C66.1352 19.9344 67.6178 18.2151 67.9747 18.2847C68.3009 18.3484 69.3428 21.0336 69.6137 26.1662C69.6137 26.1662 50.3321 34.1404 39.7668 41.0619C27.2438 49.2641 30.0411 57.9647 45.2241 56.9138C60.407 55.8649 69.3199 47.9157 73.0007 43.8281C75.6072 40.9344 76.3838 36.9222 76.4238 31.5229C77.292 31.1965 85.6916 26.993 87.2715 26.3304L89.5708 25.3143C92.3071 28.2235 94.8525 30.9453 95.3849 31.548C102.027 39.0645 102.674 39.2615 104.216 37.8204C108.059 34.2254 108.908 33.1437 106.891 31.2737V31.2718ZM66.3318 39.8874C63.399 43.1733 50.3417 49.2235 45.1439 49.4399C44.9684 49.4476 44.8233 49.2988 44.8348 49.1211C44.8939 48.277 47.1723 45.4045 65.9196 36.3774L69.0795 34.9228C68.86 35.9408 68.1597 37.8397 66.3337 39.8835L66.3318 39.8874Z\" fill=\"#0062FF\"><\/path>\n<\/svg>"
+      }
+    },
+    "image_banner_wnD7TQ": {
+      "type": "image-banner",
+      "custom_css": [
+        ".banner__media {margin-bottom: 30px;}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/1_c1a0c861-80ed-48f9-87fa-2e187540e24f.png",
+        "image_mb": "shopify:\/\/shop_images\/Group_221.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "f90b7e5c-92cc-442e-9a17-a3f49994e505": {
+      "type": "clean-offers",
+      "blocks": {
+        "bf4d56e0-e30a-46a6-9d48-520985a9b001": {
+          "type": "Offers",
+          "settings": {
+            "product": "1-pair",
+            "image": "shopify:\/\/shop_images\/Group_7422_8ce9eb30-51ef-4798-ab4a-89a1fc7da6b3.svg",
+            "logotitle": "1 PAIR",
+            "logodesc": "",
+            "symbol": "$",
+            "price": "90",
+            "compare_price": ""
+          }
+        },
+        "1ecb994b-95ee-4f40-aced-fde0deffd012": {
+          "type": "Offers",
+          "settings": {
+            "product": "2-pair",
+            "image": "shopify:\/\/shop_images\/Group_7421_748ce258-f56c-4bc9-a1db-a894ddc28d22.svg",
+            "logotitle": "2 PAIRS",
+            "logodesc": "",
+            "symbol": "$",
+            "price": "165",
+            "compare_price": "180"
+          }
+        },
+        "bcb88c62-e3da-4f3d-b5b5-8f8b2aefb0d2": {
+          "type": "Offers",
+          "settings": {
+            "product": "a-ma-maniere-x-jordan-1-high-og-airness-4",
+            "image": "shopify:\/\/shop_images\/Group_7423_9d2f68a8-e49f-45e4-8f04-2130a373bda3.svg",
+            "logotitle": "CUSTOM?",
+            "logodesc": "",
+            "symbol": "",
+            "price": "Contact us",
+            "compare_price": ""
+          }
+        }
+      },
+      "block_order": [
+        "bf4d56e0-e30a-46a6-9d48-520985a9b001",
+        "1ecb994b-95ee-4f40-aced-fde0deffd012",
+        "bcb88c62-e3da-4f3d-b5b5-8f8b2aefb0d2"
+      ],
+      "settings": {
+        "title": "",
+        "logo": "<svg width=\"490\" height=\"57\" viewbox=\"0 0 490 57\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path d=\"M153.066 11.6C160.626 11.6 165.666 15.128 165.666 21.554C165.666 28.064 160.626 31.508 153.066 31.508H139.668V41H132.948V11.6H153.066ZM152.52 25.964C156.3 25.964 158.82 24.956 158.82 21.596C158.82 18.236 156.3 17.228 152.52 17.228H139.668V25.964H152.52ZM204.655 41H196.633L188.191 31.004H177.565V41H170.887V11.6H191.173C198.355 11.6 203.773 14.918 203.773 21.302C203.773 26.3 200.455 29.408 195.583 30.542L204.655 41ZM177.523 25.46H190.795C194.323 25.46 196.927 24.62 196.927 21.344C196.927 18.068 194.323 17.228 190.795 17.228H177.523V25.46ZM226.447 41.924C214.981 41.924 207.757 36.128 207.757 26.3C207.757 16.472 214.981 10.676 226.447 10.676C237.913 10.676 245.137 16.472 245.137 26.3C245.137 36.128 237.913 41.924 226.447 41.924ZM226.447 36.128C233.713 36.128 238.291 32.6 238.291 26.3C238.291 20 233.713 16.472 226.447 16.472C219.181 16.472 214.603 20 214.603 26.3C214.603 32.6 219.139 36.128 226.447 36.128ZM269.508 31.046H250.23V25.586H269.508V31.046ZM292.969 36.128C297.337 36.128 300.571 34.7 302.755 31.34L308.887 34.406C306.115 38.564 300.445 41.924 292.759 41.924C281.713 41.924 274.531 36.086 274.531 26.3C274.531 16.514 281.713 10.676 293.053 10.676C300.445 10.676 306.115 14.078 308.803 18.152L302.629 21.218C300.529 17.942 297.337 16.472 292.969 16.472C285.997 16.472 281.377 19.832 281.377 26.3C281.377 32.768 285.997 36.128 292.969 36.128ZM320.629 35.204H341.419V41H313.909V11.6H320.629V35.204ZM352.784 35.372H376.388V41H346.106V11.6H375.968V17.228H352.784V23.276H372.146V28.904H352.784V35.372ZM409.584 41L406.434 34.784H388.668L385.518 41H378.336L393.918 11.6H401.268L416.85 41H409.584ZM391.44 29.324H403.62L397.53 17.354L391.44 29.324ZM447.801 11.6H454.311V41H448.431L427.347 19.748V41H420.837V11.6H427.977L447.801 31.76V11.6ZM486.119 25.838V30.794H476.417V39.32H471.125V30.794H461.339V25.838H471.125V17.354H476.417V25.838H486.119Z\" fill=\"#E5337C\"><\/path>\n<path d=\"M106.891 31.2718C103.168 27.8159 100.108 24.9917 97.73 22.6524L97.0431 21.9589C101.415 19.9827 105.754 18.2074 106.635 17.7013C107.87 16.9923 108.345 16.6929 107.74 14.6144C107.135 12.5358 106.172 10.8224 105.074 9.80625C104.473 9.24991 103.935 9.44309 101.483 10.72C98.3768 12.3368 94.0072 14.5371 91.1317 15.9144C90.8264 15.5802 90.5363 15.2615 90.2597 14.9582C87.7047 12.1649 87.3879 11.8713 86.3423 10.5654C85.2966 9.25957 84.7127 8.86356 83.8713 9.30593C82.6081 9.96852 81.7647 10.5693 80.7992 11.3207C79.4845 12.3426 78.2957 13.4051 79.0723 14.3671C80.0168 15.5358 79.4272 14.6858 81.9898 17.2898C82.1673 17.4695 82.9382 18.2828 84.0296 19.436C81.0358 20.964 78 22.4997 76.0117 23.2551C75.8533 20.6047 75.2465 16.6717 74.779 14.5815C73.9738 10.9827 70.1137 9.66717 69.1596 9.52036C68.2055 9.37354 66.6428 9.51456 64.6755 11.4618C62.7082 13.4109 54.5987 21.1379 47.2696 24.2171C47.2696 24.2171 48.5194 20.9312 54.5662 15.4972C56.8846 13.4148 57.3922 12.9028 56.358 11.1179C55.9096 10.3452 54.7265 9.2615 53.4099 8.33233C52.0781 7.39544 50.9561 8.38256 48.838 10.067C46.264 12.1128 40.2629 18.4025 38.765 23.0097C38.7593 23.0097 38.7708 23.0136 38.765 23.0155C38.6601 23.3671 38.6868 23.3265 38.6181 23.4502C38.454 23.7361 37.2328 23.7766 36.5802 23.8114C35.0328 23.8925 34.1836 23.9022 31.6096 23.9215C25.1658 23.9698 19.1094 23.6627 19.1094 23.6627C19.1094 23.6627 37.5038 14.711 40.137 13.0574C42.7702 11.4038 43.0545 11.0715 42.4267 9.55706C41.8009 8.04257 40.7838 6.40831 39.3222 5.12757C38.1525 4.10374 36.9084 5.10246 33.5196 7.14624C32.8441 7.55384 32.0904 8.27631 14.9306 16.4341C14.9306 16.4341 16.9876 11.3188 18.6935 8.36904C20.3993 5.41733 20.5005 4.85712 19.4777 3.81978C18.5523 2.88288 14.4994 0.481721 13.4576 0.0895766C12.1295 -0.410745 11.4731 1.23896 10.5076 3.68649C10.0745 4.78565 3.96844 20.5641 2.16717 26.2087C-0.387809 34.2139 -0.296219 35.1102 0.484205 36.0625C1.56039 37.3781 6.05212 39.049 6.65509 38.6163C7.25806 38.1836 7.18936 37.9556 7.79233 34.7509C8.39339 31.5461 8.85325 30.9589 11.1564 30.6459C13.3908 30.3426 25.0361 30.36 38.9082 30.7135C39.0207 30.7174 39.1238 30.785 39.1696 30.8913C39.4272 31.4882 39.66 32.0986 40.1046 32.5912C41.1025 33.6981 42.9973 34.2332 45.2355 33.445C48.3763 32.3362 59.0809 25.3761 63.6279 21.8681C66.1352 19.9344 67.6178 18.2151 67.9747 18.2847C68.3009 18.3484 69.3428 21.0336 69.6137 26.1662C69.6137 26.1662 50.3321 34.1404 39.7668 41.0619C27.2438 49.2641 30.0411 57.9647 45.2241 56.9138C60.407 55.8649 69.3199 47.9157 73.0007 43.8281C75.6072 40.9344 76.3838 36.9222 76.4238 31.5229C77.292 31.1965 85.6916 26.993 87.2715 26.3304L89.5708 25.3143C92.3071 28.2235 94.8525 30.9453 95.3849 31.548C102.027 39.0645 102.674 39.2615 104.216 37.8204C108.059 34.2254 108.908 33.1437 106.891 31.2737V31.2718ZM66.3318 39.8874C63.399 43.1733 50.3417 49.2235 45.1439 49.4399C44.9684 49.4476 44.8233 49.2988 44.8348 49.1211C44.8939 48.277 47.1723 45.4045 65.9196 36.3774L69.0795 34.9228C68.86 35.9408 68.1597 37.8397 66.3337 39.8835L66.3318 39.8874Z\" fill=\"#0062FF\"><\/path>\n<\/svg>"
+      }
+    },
+    "97f7a9b6-efe7-4d08-917b-e731af610eb9": {
+      "type": "clean-how-it-works",
+      "blocks": {
+        "6ef8fe3f-6f55-49f1-995b-bc5be17a9795": {
+          "type": "text",
+          "settings": {
+            "no": "1",
+            "title": "Place Your Order",
+            "desc": "Whether it’s, one pair or two, place your order on our website. All orders come with Authentication Certificates and KYX Ratings. You will have the option to decline these options in Step 2.",
+            "text_alignment": "left"
+          }
+        },
+        "007bec1f-96d5-4992-a98c-d2b2bf2e1680": {
+          "type": "text",
+          "settings": {
+            "no": "2",
+            "title": "Getting the Details",
+            "desc": "A KYX rep will email you to get information to complete your order. Including the shipping address, shoe brand, whether you want to decline authentication\/rating, and a picture of the shoes you are sending in.",
+            "text_alignment": "right"
+          }
+        },
+        "05df9ffc-79b3-4ac5-8dc9-2f598561af39": {
+          "type": "text",
+          "settings": {
+            "no": "3",
+            "title": "Secure Packaging and Pickup",
+            "desc": "Once we receive your information we will send you a pre-paid, pre-addressed shipping label. Simply pack up your sneakers securely and drop them off at the nearest UPS location.",
+            "text_alignment": "left"
+          }
+        },
+        "f824bed9-9cfe-40d8-bc24-443d6b5e6bf9": {
+          "type": "text",
+          "settings": {
+            "no": "4",
+            "title": "Pro-Clean",
+            "desc": "Our team of sneaker aficionadas will work their magic on your shoes, employing professional grade techniques to remove dirt, stains, and odor.",
+            "text_alignment": "right"
+          }
+        },
+        "e0a6ee0e-f2fb-430e-a42c-cc2daf40ba8c": {
+          "type": "text",
+          "settings": {
+            "no": "5",
+            "title": "Authentication",
+            "desc": "We will take your shoes through our authentication process so we can provide you with a certificate of authenticity.",
+            "text_alignment": "left"
+          }
+        },
+        "ffeba483-90a8-431e-a76d-1614eea618da": {
+          "type": "text",
+          "settings": {
+            "no": "6",
+            "title": "KYX Rating Report",
+            "desc": "Upon completion of cleaning, we’ll take your sneakers through our KYX Rating process so you can see an objective rating of each of the components of your shoes.",
+            "text_alignment": "right"
+          }
+        },
+        "f2d7cf39-450c-4cac-be12-a7426ccb2668": {
+          "type": "text",
+          "settings": {
+            "no": "7",
+            "title": "Sneakers returned in Pristine Condition",
+            "desc": "Your sparkling-clean, certified authentic sneakers, along with its KYX Rating report card, will be safely delivered to your doorstep. Get ready to rock your kicks with pride!",
+            "text_alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "6ef8fe3f-6f55-49f1-995b-bc5be17a9795",
+        "007bec1f-96d5-4992-a98c-d2b2bf2e1680",
+        "05df9ffc-79b3-4ac5-8dc9-2f598561af39",
+        "f824bed9-9cfe-40d8-bc24-443d6b5e6bf9",
+        "e0a6ee0e-f2fb-430e-a42c-cc2daf40ba8c",
+        "ffeba483-90a8-431e-a76d-1614eea618da",
+        "f2d7cf39-450c-4cac-be12-a7426ccb2668"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "title": "How It Works?",
+        "btn_label": "THE NITTY GRITTY",
+        "point": "<ul><li>Authentication with certificate provided to you via email <\/li><li>Laces and Insoles removed for deep cleaning<\/li><li>Outsoles scrubbed and detailed <\/li><li>Uppers cleaned appropriately to their material <\/li><li>Combination of anti-bacterial sprays, deodorants, and UV-C light to fully sterilize your shoes<\/li><li>12-15 day turnaround including shipping<\/li><\/ul>",
+        "desc": "*This service is only available to the contiguous United States currently\n **We are only accepting up to 2 pairs of shoes in an order currently. If you would like to send more than 2 pairs please place multiple orders."
+      }
+    },
+    "33963519-d822-4729-b934-2a4650e87e98": {
+      "type": "pro-clean-policy",
+      "blocks": {
+        "600be991-5b04-4deb-9736-f3d0f6415969": {
+          "type": "policy",
+          "settings": {
+            "title": "Shipping",
+            "desc": "<p>Shipping to and from the US is included in the pricing of your sneakers. That means you don’t have to worry about any additional shipping charges during checkout.<\/p>"
+          }
+        },
+        "32e56471-8cd6-43c5-9ffa-04c86dbf2368": {
+          "type": "policy",
+          "settings": {
+            "title": "Insurance Coverage:",
+            "desc": "<p>We provide insurance for <strong>$200 per pair<\/strong> for each way. This coverage protects your sneakers in case of damage, loss, or theft during transit. Rest assured, your sneakers are protected until they reach your doorstep.<\/p>"
+          }
+        },
+        "f3b80c1d-f0f1-40ad-bca7-bdf096a3e217": {
+          "type": "policy",
+          "settings": {
+            "title": "Extra Coverage:",
+            "desc": "<p>If your sneakers are valued at more than <strong>$200 per pair<\/strong>, and you would like to have additional coverage during shipping, please feel free to reach out to us at <a href=\"#\" title=\"#\">support@kyxsneakers.com<\/a> before placing your order. We can discuss the options available to meet your specific needs.<\/p>"
+          }
+        },
+        "9d1c3d8d-3cc4-4916-ba5b-5a6a2f610332": {
+          "type": "policy",
+          "settings": {
+            "title": "Responsibility for Extra Fees:",
+            "desc": "<p>In the unfortunate event that the replacement cost of your sneakers exceeds the covered amount of <strong>$200 per pair<\/strong>, you will be responsible for any extra fees incurred. Therefore, if your sneakers are of higher value, we recommend considering additional insurance coverage to safeguard your investment.<\/p><p><\/p><p>At KYX Sneakers, we prioritize the safety and satisfaction of our customers. If you have any questions or concerns regarding our shipping and insurance policies, don’t hesitate to get in touch with our support team at <a href=\"#\" title=\"#\">support@kyxsneakers.com.<\/a> We’re here to assist you in any way we can.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "600be991-5b04-4deb-9736-f3d0f6415969",
+        "32e56471-8cd6-43c5-9ffa-04c86dbf2368",
+        "f3b80c1d-f0f1-40ad-bca7-bdf096a3e217",
+        "9d1c3d8d-3cc4-4916-ba5b-5a6a2f610332"
+      ],
+      "settings": {
+        "title": "Shipping and Insurance Policy:",
+        "desc": "At KYX Sneakers, we want to make sure your sneakers reach you safely and securely. That’s why we offer hassle-free shipping and insurance coverage for your peace of mind.",
+        "note_title": "",
+        "note_desc": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "60f03afc-4479-47df-819e-0759986bb53d",
+    "image_banner_wnD7TQ",
+    "f90b7e5c-92cc-442e-9a17-a3f49994e505",
+    "97f7a9b6-efe7-4d08-917b-e731af610eb9",
+    "33963519-d822-4729-b934-2a4650e87e98"
+  ]
+}

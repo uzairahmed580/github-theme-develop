@@ -1,0 +1,163 @@
+<script>
+  (function(algolia) {
+    'use strict';
+
+    algolia.instantSearchProductTemplate = function instantSearchProductTemplate(hit, html, components) {
+      // console.log('hit=======>', hit.meta.custom);
+      var classImg = ''
+      var image = algolia.helpers.originalImage(hit);
+      if(image == 'http://cdn.shopify.com/s/images/admin/no-image-compact.gif') {
+        image = 'https://cdn.shopify.com/s/files/1/0720/7819/7049/t/8/assets/placeholder.png?v=125816514545718613741685775323';
+        classImg = 'placeHOlderImg'
+      }
+      if(hit.option3 != null) {
+        var brandName = hit.option3;
+        if(hit.meta.custom.brand != undefined) {
+          brandName = hit.meta.custom.brand;
+        }  
+      }      
+      var soldText = '';
+      var classSold = ''
+      var classAvailbale = 'product-available';
+      if(hit.variants_inventory_count == 0) {
+        soldText = 'SOLD';
+        classSold = 'hide';
+        classAvailbale = 'product-sold';
+      }
+      if(hit.meta.custom != undefined) {
+        var rating = hit.meta.custom.kyx_rating;      
+        if(rating == '9') {
+          rating = '9.0';
+        }
+        if(rating == '8') {
+          rating = '8.0';
+        }
+        if(rating == '7') {
+          rating = '7.0';
+        }
+        if(rating == '6') {
+          rating = '6.0';
+        }
+        if(rating == '5') {
+          rating = '5.0';
+        }
+        if(rating == '4') {
+          rating = '4.0';
+        }
+        if(rating == '3') {
+          rating = '3.0';
+        }
+      }
+      
+      var className = '';
+      if(hit.sku == "MW001674" || hit.sku == "MW001674") {
+        className = 'verticle-product'
+      }
+
+      var hideClass= "hide";
+      var removeHide = "";
+      if(window.customer) {
+        hideClass= "show";
+        removeHide = "hide";
+      }
+      const hideDiv = hit.tags.some(tag => tag === 'Shoe Lace Supply') ? 'none' : 'flex';
+        let sizeOrColor;
+        if (hit.tags.some(tag => tag === 'Shoe Lace Supply')) {
+            sizeOrColor = `${hit.option1}`;
+        } else {
+            sizeOrColor = `Size ${hit.option1}`; 
+        }
+      
+      var currentUrl = window.location.href;
+        var availabilityDivs = document.querySelectorAll('.availability');
+        var soldDivs = document.querySelectorAll('.availability.sold');
+        
+        if (currentUrl.includes('https://www.kyxsneakers.com/collections/shoe-laces')) {
+            availabilityDivs.forEach(function(div) {
+                div.style.display = 'none';
+            });
+            soldDivs.forEach(function(div) {
+                div.style.display = 'block';
+            });
+        } else {
+            availabilityDivs.forEach(function(div) {
+                div.style.display = 'block';
+            });
+            soldDivs.forEach(function(div) {
+                div.style.display = 'none';
+            });
+        }
+
+return html ` <div data-algolia-index="${hit.index}" data-algolia-position="${hit.productPosition}" data-algolia-queryid="${hit.queryID}" data-algolia-objectid="${hit.objectID}" class="ais-hit ais-product ${classAvailbale}" data-handle="${hit.handle}" data-variant-id="${hit.objectID}" data-distinct="${hit._distinct}">
+        <div class="ais-hit--picture ${classImg}" style="background-image: url('${image}')">
+
+          <button data-with-epi="true" class="${hideClass} ${classSold} swym-button swym-add-to-wishlist-view-product product_${hit.id}" data-swaction="addToWishlist" data-product-id="${hit.id}" data-variant-id="${hit.objectID}" data-product-url="${window.shopUrl}/products/${hit.handle}"></button>
+          
+          <button class="customSymsBtn ${removeHide}"></button>
+          
+          <div class="rating_bg_c ${className}" style="display: ${hideDiv};">0</div>
+          
+          <div class="KYX_rating" style="display: ${hideDiv};">
+            <div class="KYXname">KYX</div>           
+            <div class="KYXrating">${rating}</div>        
+          </div>
+          
+            <div class="availability">${soldText}</div>
+        </div>
+        <div class="availability sold">${soldText}</div>
+         <div class="ShoeImgSizeContainer">${sizeOrColor}</div>
+
+        <div class="ais-hit--details">
+          <p class="ais-hit--title">
+            <a data-algolia-index="${hit.index}"
+               data-algolia-position="${hit.productPosition}"
+               data-algolia-queryid="${hit.queryID}"
+               data-algolia-objectid="${hit.objectID}"
+               href="${algolia.helpers.instantsearchLink(hit)}"
+               onclick="void(0)"
+               title="${algolia.helpers.fullTitle(hit.title, hit._distinct, hit.variant_title)}">
+              ${components.Highlight({ attribute: 'title', hit })}
+              ${algolia.helpers.variantTitleAddition (hit, hit._distinct)}
+            </a>
+          </p>
+          
+          <!-- product vendor craeted -->
+          
+
+
+          <p class="ais-hit--price">
+            <b>$${(hit.price)}</b>
+            ${!hit._distinct && html`<span class="ais-hit--price-striked"><span>${algolia.helpers.displayStrikedPrice(hit.price, hit.compare_at_price)}</span></span>`}
+            ${!hit._distinct && html`<span class="ais-hit--price-discount">${algolia.helpers.displayDiscount(hit.price, hit.compare_at_price, hit.price_ratio)}</span>`}
+            <div class="brandName">${brandName}</div>
+          </p>
+          <!-- Extra info examples - Remove the display: none to show them -->
+          <p class="ais-hit--info" style="display: none">
+            ${hit.sku && html`<span class="algolia-sku">${components.Highlight({ attribute: 'sku', hit })}</span>`}
+            ${hit.barcode && html`<span class="algolia-barcode">${components.Highlight({ attribute: 'barcode', hit })}</span>`}
+            ${hit.weight && html`<span class="algolia-weight">${hit.weight}</span>`}
+            ${!hit.taxable && html`<span class="algolia-taxable">Tax free</span>`}
+          </p>
+          <!-- Tags example - Remove the display: none to show them -->
+          <p class="ais-hit--tags" style="display: none">
+                  ${hit._highlightResult.tags?.map( tag => html`<span class="ais-hit--tag">${tag.value}</span>`)}
+          </p>
+              ${!hit._distinct && html`
+              <form id="algolia-add-to-cart-${hit.objectID}" style="display: none;" action="/cart/add" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="${hit.objectID}" />
+              </form>
+              <p class="ais-hit--cart">
+                ${hit.can_order ? html`
+                  <button class="ais-hit--cart-button" data-form-id="algolia-add-to-cart-${hit.objectID}">
+                    ${ algolia.translations.addToCart }
+                  </button>`
+                : html`
+                  <button class="ais-hit--cart-button ais-hit--cart-button__disabled">
+                      ${ algolia.translations.outOfStock }
+                  </button>`}
+              </p>`}
+          </div>
+      </div>`
+    };
+  })(window.algoliaShopify);
+</script>

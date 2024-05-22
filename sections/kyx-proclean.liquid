@@ -1,0 +1,116 @@
+{{ 'page-kyx-proclean.css' | asset_url | stylesheet_tag }}
+
+
+<section class="kyx-rating">
+  <div class="kyx-rating_banner">
+    {% liquid
+            assign desktopImg = section.settings.image
+            assign mobileImg = section.settings.image
+            if section.settings.sm_image != blank
+                assign mobileImg = section.settings.sm_image
+            endif
+          %}
+    {% if section.settings.image != blank %}
+      <img
+        class="md-visible merox-lazy"
+        data-src="{{ desktopImg | img_url: 'master' }}"
+        src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/about-banner-main-banner-desktop.jpg?v=1691127797"
+        alt="{{ section.settings.title | escape }}"
+        width="1920px"
+        height="476px">
+    {% endif %}
+    <img
+      class="md-hidden merox-lazy"
+      data-src="{{ mobileImg | img_url: 'master' }}"
+      src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/about-banner-main-banner-mobile.jpg?v=1691128496"
+      alt="{{ section.settings.title | escape }}"
+      width="375px"
+      height="263px">
+  </div>
+
+  <div class="rating-system">
+    <div class="kyx-rating_title">
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+      {% else %}
+        <h2>{{ page.title | escape }}</h2>
+      {% endif %}
+    </div>
+    <div class="kyk-rating_desc">
+      {% if section.settings.sub_title != blank %}
+        <p>{{ section.settings.sub_title | newline_to_br }}</p>
+      {% endif %}
+    </div>
+    <div class="kyx_order_btn" id="order_btn">
+      <button type="button">ORDER NOW</button>
+    </div>
+  </div>
+</section>
+<div class="show_float_btn">
+  <div class="float_btn hide">
+    <button type="button">ORDER NOW</button>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    var aTag = $('#clean-offer')[0];
+    $('#order_btn').click(function(e) {
+      e.preventDefault();
+      $('html,body').animate({
+        scrollTop: aTag.offsetTop
+      }, 'slow');
+    });
+
+
+// floatting btn js  
+
+
+    $(window).scroll(function() {
+      var heightGet = aTag.offsetTop + aTag.offsetHeight
+      if (window.pageYOffset > heightGet) {
+        $('.float_btn').removeClass('hide');
+      } else {
+        $('.float_btn').addClass('hide');
+      }
+    });
+
+    $('.float_btn').click(function(e) {
+      e.preventDefault();
+
+      $('html,body').animate({
+        scrollTop: aTag.offsetTop
+      }, 'slow');
+
+    })
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Page Kyx Proclean",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "image_picker",
+        "id": "sm_image",
+        "label": "Mobile Image"
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }, {
+        "type": "textarea",
+        "id": "sub_title",
+        "label": "Desc"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Page Kyx Proclean"
+      }
+    ]
+  }
+{% endschema %}

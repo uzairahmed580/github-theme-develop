@@ -1,0 +1,128 @@
+{
+  "sections": {
+    "main": {
+      "type": "kyx-sneakers",
+      "blocks": {
+        "column_aGehPn": {
+          "type": "column",
+          "settings": {
+            "title": "Erik G.",
+            "sub_title": "Pennsylvania",
+            "product_title": "1 Pair",
+            "text": "<p>Honestly the process was so easy. It’s nice that you can upload your photos right onto the site and send them right in. I got a very quick response from you guys and a really great offer for my shoes. To be honest it was the most smooth sailing shoe transaction I have ever done. Will definitely be doing business again in the future.<\/p>"
+          }
+        },
+        "column_RVWdLE": {
+          "type": "column",
+          "settings": {
+            "title": "Matthew G.",
+            "sub_title": "New York",
+            "product_title": "6 Pairs",
+            "text": "<p>The buying manager Tony was excellent! He made the selling experience effortless and kept in good communication with me the entire time. The process online to list the sneakers was also very simple to do and near effortless. The entire process from start to finish was swift, easy and enjoyable. Payment arrived fast shortly after the shipment and inspection was completed. I can’t say enough good about the company and he selling process. I highly recommend.<\/p>"
+          }
+        },
+        "column_cQUnbM": {
+          "type": "column",
+          "settings": {
+            "title": "Brett H.",
+            "sub_title": "Utah",
+            "product_title": "2 Pairs",
+            "text": "<p>Selling my collection was very easy. All I had to do was take a few pictures and send them over. I even added or dropped some shoes to the process because I wanted to keep some and Tony was so quick to respond on how that would fluctuate the price. Tony was awesome. Very friendly and very quick to respond no matter what time of day it was.<\/p>"
+          }
+        },
+        "column_xRkUL7": {
+          "type": "column",
+          "settings": {
+            "title": "Justin.",
+            "sub_title": "New Jersey",
+            "product_title": "12 Pairs",
+            "text": "<p>It was an excellent experience. The process was easy and very fast. Convenience at its finest. At no point did I feel like I was being lowballed or pressured in any way. My buyer Tony worked with me and adjusted to my pricing. It was a comfortable selling experience for sure!!!<\/p>"
+          }
+        },
+        "image_kPqUE6": {
+          "type": "Image",
+          "settings": {
+            "review_image": "shopify:\/\/shop_images\/6_96ea08ff-7533-48ad-afba-2286cfa06022.jpg"
+          }
+        },
+        "image_PCdpDX": {
+          "type": "Image",
+          "settings": {
+            "review_image": "shopify:\/\/shop_images\/7_90728981-0340-4b92-b37d-b76101aa1602.jpg"
+          }
+        },
+        "image_gGEMka": {
+          "type": "Image",
+          "settings": {
+            "review_image": "shopify:\/\/shop_images\/8_3adb6b04-fa64-421f-b001-087f9fb66d9d.jpg"
+          }
+        },
+        "image_ecFpaP": {
+          "type": "Image",
+          "settings": {
+            "review_image": "shopify:\/\/shop_images\/10_22c11452-0553-4d2b-8df7-4a0cb0353d3d.jpg"
+          }
+        },
+        "image_pYeGGU": {
+          "type": "Image",
+          "settings": {
+            "review_image": "shopify:\/\/shop_images\/11_57301555-32da-4b28-8ec4-82ac23c27115.jpg"
+          }
+        },
+        "image_fR66Jf": {
+          "type": "Image",
+          "settings": {
+            "review_image": "shopify:\/\/shop_images\/12_12addc45-47f3-478f-be98-13fff22f53af.jpg"
+          }
+        },
+        "image_BLGhzE": {
+          "type": "Image",
+          "settings": {
+            "review_image": "shopify:\/\/shop_images\/13_c09408c5-4d92-4d88-a16a-3877a8e8fe67.jpg"
+          }
+        },
+        "image_4Pn6kE": {
+          "type": "Image",
+          "settings": {
+            "review_image": "shopify:\/\/shop_images\/14_1ba043d3-35f7-430d-a542-5523d969dcc6.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "column_aGehPn",
+        "column_RVWdLE",
+        "column_cQUnbM",
+        "column_xRkUL7",
+        "image_kPqUE6",
+        "image_PCdpDX",
+        "image_gGEMka",
+        "image_ecFpaP",
+        "image_pYeGGU",
+        "image_fR66Jf",
+        "image_BLGhzE",
+        "image_4Pn6kE"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/kyx-sneakers_banner_76831fdb-d5e8-49d7-97ea-134b5ba6647d.png",
+        "sm_image": "shopify:\/\/shop_images\/kyx_interior_banners_mobile_sell.jpg",
+        "title": "Sell With  KYX",
+        "sub_title": "Do you have some used sneakers you want to sell? Maybe you want to free up some closet space or you’ve got your eye on a fresh pair that you need some funds for. We got you!",
+        "title_review": "What People Are Saying About Us",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

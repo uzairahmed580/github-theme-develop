@@ -1,0 +1,90 @@
+(function(algolia) {
+  'use strict';
+
+  if (!algolia.config.autocomplete_enabled) return;
+
+  const autocomplete = algolia.externals.autocomplete;
+
+  algolia.searchClient.addAlgoliaAgent('Shopify Integration');
+
+  // Retrieve the container from Shopify's config
+  const containers = Array.from(document.querySelectorAll(algolia.config.input_selector));
+  containers.forEach(container => {
+    container.innerHTML = ''
+    const containerClasses = container.classList;
+    containerClasses.add('aa-MainContainer');
+  });
+
+  // Set plugins
+  const { productsPlugin, collectionsPlugin, articlesPlugin, pagesPlugin, querySuggestionsPlugin } = algolia;
+  const plugins = [
+    algolia.config.index_products && productsPlugin,
+    algolia.config.index_collections && collectionsPlugin,
+    algolia.config.index_articles && articlesPlugin,
+    algolia.config.index_pages && pagesPlugin,
+    algolia.config.autocomplete_query_suggestions && querySuggestionsPlugin
+  ];
+
+  const cssFile = document.getElementById('template_algolia_autocomplete.css');
+  //Set CSS variables
+  document.documentElement.style.setProperty(`--aa-text-color-rgb`, `${algolia.helpers.hexToRGB(algolia.config.colors.secondary)}`);
+  document.documentElement.style.setProperty(`--aa-primary-color-rgb`, `${algolia.helpers.hexToRGB(algolia.config.colors.main)}`);
+  document.documentElement.style.setProperty(`--aa-muted-color-rgb`, `${algolia.helpers.hexToRGB(algolia.config.colors.muted)}`);
+  document.documentElement.style.setProperty(`--aa-highlight-color-rgb`, `${algolia.helpers.hexToRGB(algolia.config.colors.highlight)}`);
+  //Link CSS
+  algolia.appendStyle(cssFile.text);
+
+  const autocompleteOptions = {
+    openOnFocus: false,
+    debug: algolia.config.autocomplete_debug,
+    insights: algolia.config.analytics_enabled,
+    plugins,
+    render({ elements, render, html, state }, root) {
+      const sourceIdsToExclude = ['products'];
+      const hasLeftPanelResults = state.collections
+              .filter(
+                      ({ source }) => sourceIdsToExclude.indexOf(source.sourceId) === -1
+              )
+              .reduce((prev, curr) => prev + curr.items.length, 0) > 0;
+      const [querySuggestionsPluginResults] = state.collections.filter(({source}) => source.sourceId === 'querySuggestionsPlugin');
+      const displaySuggestions = algolia.config.autocomplete_query_suggestions && querySuggestionsPluginResults.items.length > 0;
+      render(
+              hasLeftPanelResults ?
+              algolia.mainTemplate({ html, state }, elements, displaySuggestions)
+              : algolia.mainProductsTemplate({ html, state }, elements),
+              root
+      );
+    },
+    renderNoResults({ render, html, state }, root) {
+      render(
+              algolia.noResultsTemplate({ html, state }),
+              root
+      )
+    },
+    
+    onSubmit({ state }) {
+      function containsNumbers(str) {
+        return /[0-9]/.test(str);
+      }
+      const brandsToHandle = ["jordan 1", "jordan 2", "jordan 3", "jordan 4", "jordan 5", "jordan 6", "jordan 7", "jordan 8", "jordan 9", "jordan 10", "jordan 11", "jordan 12", "jordan 13", "jordan 14"];
+      var querySearch = state.query.replace('size ', '').replace('Size ', '').replace('Size', '').replace('size', '');
+      if (brandsToHandle.includes(querySearch.toLowerCase())) {
+        querySearch = querySearch.split(' ').join('-');
+      } else if (querySearch.includes('bred')) {
+        querySearch = querySearch.replace(' ','');
+      }
+       if (querySearch.toLowerCase().includes('lace')) {
+          window.location.href = `/collections/shoe-laces?q=${encodeURIComponent(querySearch)}`;
+      } else {
+          window.location.href = querySearch ? `/search?q=${querySearch}` : `/collections/shoe-laces`;
+      }
+    }
+  }
+  
+  containers.forEach(container => {
+    autocomplete({
+      container,
+      ...autocompleteOptions
+    });
+  });
+})(window.algoliaShopify);

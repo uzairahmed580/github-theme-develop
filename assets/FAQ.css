@@ -1,0 +1,128 @@
+/* @import url("home.css"); */
+
+@import url("card.css");
+@import url("order.css");
+#FAQ_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question_answer {
+    width: 100%;
+    height: 100%;
+    /* background-color: white; */
+    font-family: 'termina-regular';
+    font-size: 18px;
+    overflow-wrap: break-word;
+    text-align: left;
+    text-justify: inter-word;
+}
+
+.pinkArea {
+    width: 100% !important;
+}
+
+.cardContainer {
+    gap: 1rem !important;
+}
+
+.question_answer_content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container1 {
+   
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.answerContainer {
+    font-size: 12px !important;
+}
+
+.QASection {
+    width: fit-content;
+    height: fit-content;
+    padding: 0.8rem;
+    border: 1px solid #707070;
+}
+
+.questionContainer p {
+    font-family: 'termina-Medium';
+    font-size: 18px;
+}
+
+.answerContainer {
+    /* font-family: 'termina-regular' !important; */
+    font-family: 'Inter' !important;
+    font-size: 18px;
+}
+
+.container1 p {
+    margin: 0;
+    font-size: 18px;
+    color: black;
+    width: 100%;
+    /* display: flex; */
+    justify-content: space-between;
+    padding-right: 0.5rem;
+}
+
+.questionContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.dropFAQ {
+    width: 0.95rem;
+    height: 0.8rem;
+    cursor: pointer;
+    transition-delay: 1s ease;
+}
+
+.dropFAQActive {
+    transform: rotate(180deg);
+}
+
+.answerContainer {
+    display: none;
+}
+
+.answerContainer a {
+    color: blue;
+}
+
+.answerContainer a:hover {
+    text-decoration: underline;
+}
+
+#FAQ_container .active {
+    display: inline-block;
+    padding-bottom: 2rem;
+    flex-direction: column;
+    padding: 0 1rem 1rem 1rem;
+}
+.questionContainer.open {
+  border-top: 1px solid #d7d7d7;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+.questionContainer.open .block-icon {
+    transform: rotate(180deg);
+}
+
+@media(max-width:477px) {
+    .question_answer {
+        width: 100%
+    }
+    .container1 p {
+        font-size: 12px;
+    }
+}

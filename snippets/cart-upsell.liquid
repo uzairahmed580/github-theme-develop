@@ -1,0 +1,90 @@
+<style>
+    .upsell_item_box{
+        font-size: 12px;
+        color: #8d8d8d;
+        font-weight: 600;
+        font-family: 'termina-medium';    
+    }
+   .product-single__form {
+        padding-bottom: 20px;
+    }
+</style>
+{%- assign product = all_products[settings.select_product] -%}
+
+<product-form-upsell data-url="{{ product.url }}" data-section-id="{{ product.id }}" class="upsell_item ">
+  
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    {%- assign product_form_id = 'product-form-' | append: product.id -%}
+    {% assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media %}
+   
+    {%- capture form_id -%}AddToCartForm-{{ product.id }}-{{ product.id }}{%- endcapture -%}
+    <div class="upsell_item--image">
+        <img src="{{  product.featured_image  | img_url: 'small' }}" alt="{{ product.title }}" class="object-cover w-full">
+    </div>
+    <div class="upsell_item-form ">
+            <div class="">
+                <a href="{{ product.url }}" class="cart-item__name h4 break">{{ product.title }}</a>
+            </div>
+            <div class="upsell_item_box">Box of 15 Wipes</div> 
+        <div id="price-{{ product.id }}" class="">  
+            {% if upsell %}
+                {% liquid
+                    assign testValue = 100 | minus: 25
+                    assign testVealue2 =  testValue | times: 0.01 
+                    assign totalValue = testVealue2 | times: product.price | round: 2
+                %} 
+                <div class="product-options ">{{ totalValue | money | remove: '.00' }}</div>
+                <s class="product-options">{{ product.price | money | remove: '.00' }}</s>
+            {% else %}
+                <div class="product-options ">{{ product.price | money | remove: '.00' }}</div>
+            {% endif %}
+        </div>
+        {%- unless product.has_only_default_variant -%}
+        <variant-selects id="variant-selects-{{ product.id }}" class="no-js-hidden" data-section="{{ product.id }}" data-url="{{ product.url }}" data-update-url="false" {{ block.shopify_attributes }} >
+            {%- for option in product.options_with_values -%}
+                <div class="product-form__input product-form__input--dropdown py-2 {% if option.values.size == 1 %} hidden {% endif %}">
+                    {% comment %}                        
+                    <label class="form__label" for="Option-{{ product.id }}-{{ forloop.index0 }}">
+                        {{ option.name }}
+                    </label>
+                    {% endcomment %}
+                    <div class="select flex relative">
+                        <select id="Option-{{ product.id }}-{{ forloop.index0 }}" class="text-12 select__select w-full appearance-none h-8 border bg-transparent border-gray px-3" name="options[{{ option.name | escape }}]" form="{{ product_form_id }}">
+                            {% render 'product-variant-options', product: product, option: option, block: block %}
+                        </select>
+                        {% render 'icon-caret' %}
+                    </div>
+                </div>
+            {%- endfor -%}
+
+            <script type="application/json">
+                {{ product.variants | json }}
+            </script>
+        </variant-selects>
+        {%- endunless -%}
+        {%- form 'product', product, id: product_form_id, class: 'product-single__form ' -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled class="product-variant-id">
+            {% if upsell %}
+                <input id="upsell_product-{{ product.id }}" type="hidden" name="properties[__upsell_product]" value="id_{{ line_item.id }}_25">
+            {% endif %}
+            {%- liquid
+                assign default_text = 'products.product.add_to_cart' | t
+                assign button_text = 'products.product.add_to_cart' | t
+                unless current_variant.available
+                    assign button_text = 'products.product.sold_out' | t
+                endunless
+            -%}
+
+            <button id="ProductSubmitButton-{{ product.id }}" name="add" type="submit" class="data-cart-add-{{ product.id }} add_btn_upsell" {% unless current_variant.available %} disabled="disabled"{% endunless %}>
+                <span data-sticky-add-to-cart-text data-default-text="{{ default_text }}" class="relative z-10">
+                    {{ button_text }}
+                </span>
+            </button>
+        {%- endform -%}
+        
+    </div>
+    
+    
+</product-form-upsell>
+
+<script src="{{ 'product-form-upsell.js' | asset_url }}" defer="defer"></script>

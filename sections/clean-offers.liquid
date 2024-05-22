@@ -1,0 +1,495 @@
+<section id="clean-offer">
+
+  <div class="clean-offers page-width">
+    <div class="clean-offers--title">
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.logo != blank %}
+        <div class="clean-offers__img">
+          {{ section.settings.logo }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="clean-offers__block">
+
+      {% for block in section.blocks %}
+
+        {%- assign product = block.settings.product -%}
+        <div class="clean-offers__content {% if forloop.index == 2 %} active {% endif %}">
+
+          {% if product.selected_or_first_available_variant != blank %}
+            {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+              <input type="hidden"
+                name="id"
+                value="{{ product.selected_or_first_available_variant.id }}">
+              {% comment %} 
+              <input
+              type="hidden"
+              class="quantity__input "
+              name="quantity"
+              value="{% if forloop.index == 2 %}2{% else %}1{% endif %}">  {% endcomment %}
+
+              <div class="subcribe_btn" id="{{ product.selected_or_first_available_variant.id }}">
+                <div class="clean-offers__img">
+
+                  {% if block.settings.image != blank %}
+                    <img
+                      class=""
+                      src="{{ block.settings.image | img_url: 'master' }}"
+                      alt="{{ block.settings.logotitle | escape }}">
+                  {% endif %}
+                </div>
+                <div class="clean-offers__text">
+
+                  {% if block.settings.logotitle != blank %}
+                    <h4>{{ block.settings.logotitle | escape }}</h4>
+                  {% endif %}
+                  {% if block.settings.logodesc != blank %}
+                    <p>{{ block.settings.logodesc | newline_to_br }}</p>
+                  {% endif %}
+
+                  {% if block.settings.price != blank %}
+                    {% liquid
+                      assign regular_price = product.price
+                      assign comparePrice = product.compare_at_price
+                      if comparePrice > regular_price
+                        assign total_difference = comparePrice | minus: regular_price
+                      endif
+                    %}
+
+                    {% if block.settings.price != 'Contact us' %}
+
+                      <h5 class="offer-price">
+                        <sup class="doller_sign">
+                          {{ block.settings.symbol }}
+                        </sup>
+                        {{ regular_price | money | remove: '.00' | remove: '$' }}</h5>
+
+                      {% if forloop.index == 2 %}
+                        <span class="compare_price">SAVE {{ total_difference | money | remove: '.00' }}
+                        </span>
+                      {% endif %}
+
+                    {% else block.settings.price == 'Contact us' %}
+                      <h5 class="offer-price">
+                        <a href="#" id="Contact_us_btn">{{ block.settings.price }}</a>
+                      </h5>
+                    {% endif %}
+                  {% endif %}
+                </div>
+                {% if block.settings.price != 'Contact us' %}
+                  <button
+                    type="submit"
+                    class="hover-svg ad_to_cart"
+                    var_id="{{ product.selected_or_first_available_variant.id }}">
+                    <svg
+                      width="68"
+                      height="68"
+                      viewBox="0 0 68 68"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M34 68C52.7777 68 68 52.7777 68 34C68 15.2223 52.7777 0 34 0C15.2223 0 0 15.2223 0 34C0 52.7777 15.2223 68 34 68Z" fill="#F4F4F9" />
+                      <path d="M34 63.3334C50.2004 63.3334 63.3334 50.2004 63.3334 34.0001C63.3334 17.7997 50.2004 4.66675 34 4.66675C17.7997 4.66675 4.66669 17.7997 4.66669 34.0001C4.66669 50.2004 17.7997 63.3334 34 63.3334Z" fill="#E5337C" />
+                      <path d="M44.0667 28.3386C44.0127 27.3906 42.9887 26.6493 41.7493 26.6493H39.054V25.3719C39.054 23.1466 36.682 21.3333 33.772 21.3333C30.862 21.3333 28.49 23.1466 28.49 25.3719V26.6493H25.7953C24.5553 26.6493 23.5287 27.3913 23.478 28.3386L22.6667 45.1926C22.6781 45.412 22.7736 45.6185 22.9333 45.7693C23.1425 45.9478 23.4137 46.0366 23.688 46.0166H43.9047C44.1765 46.0188 44.4415 45.9319 44.6593 45.7693C44.7478 45.7025 44.8185 45.615 44.865 45.5144C44.9116 45.4138 44.9325 45.3032 44.926 45.1926L44.0667 28.3386ZM30.4847 25.3333C30.4847 23.9333 31.94 22.8199 33.772 22.8199C35.604 22.8199 37.0593 23.9293 37.0593 25.3333V26.6493H30.484L30.4847 25.3333ZM24.7173 44.4919L25.526 28.4213C25.526 28.2973 25.688 28.2153 25.8493 28.2153H28.544V31.4706C28.5794 31.7086 28.7062 31.9234 28.8973 32.0695C29.0885 32.2156 29.329 32.2815 29.568 32.2533C30.1607 32.2533 30.592 31.9233 30.592 31.4706V28.2153H37.1673V31.4706C37.2028 31.7086 37.3295 31.9234 37.5207 32.0695C37.7118 32.2156 37.9524 32.2815 38.1913 32.2533C38.784 32.2533 39.2153 31.9233 39.2153 31.4706V28.2153H41.91C41.9785 28.2121 42.0464 28.2302 42.1042 28.2671C42.1621 28.304 42.2072 28.3578 42.2333 28.4213L43.042 44.4926L24.7173 44.4919Z" fill="white" />
+                    </svg>
+                  </button>
+                {% else %}
+                  <a href="/pages/contact-us" class="hover-svg">
+                    <svg
+                      width="68"
+                      height="68"
+                      viewBox="0 0 68 68"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M34 68C52.7777 68 68 52.7777 68 34C68 15.2223 52.7777 0 34 0C15.2223 0 0 15.2223 0 34C0 52.7777 15.2223 68 34 68Z" fill="#F4F4F9" />
+                      <path d="M34 63.3334C50.2004 63.3334 63.3334 50.2004 63.3334 34.0001C63.3334 17.7997 50.2004 4.66675 34 4.66675C17.7997 4.66675 4.66669 17.7997 4.66669 34.0001C4.66669 50.2004 17.7997 63.3334 34 63.3334Z" fill="#E5337C" />
+                      <path d="M35.944 29.5035C35.8296 29.6176 35.765 29.7723 35.7641 29.9339C35.7632 30.0954 35.8262 30.2508 35.9393 30.3661L38.7893 33.2208H27.9427C27.7811 33.2208 27.6261 33.285 27.5118 33.3993C27.3975 33.5136 27.3333 33.6685 27.3333 33.8301C27.3333 33.9917 27.3975 34.1467 27.5118 34.261C27.6261 34.3753 27.7811 34.4395 27.9427 34.4395H38.7847L35.9347 37.2968C35.8225 37.4127 35.7602 37.5678 35.7611 37.7291C35.7619 37.8903 35.8259 38.0448 35.9393 38.1595C35.996 38.2155 36.0631 38.2598 36.1369 38.2899C36.2107 38.32 36.2896 38.3353 36.3693 38.3349C36.449 38.3344 36.5278 38.3183 36.6012 38.2874C36.6747 38.2565 36.7413 38.2115 36.7973 38.1548L40.66 34.2641C40.7128 34.2078 40.7556 34.1428 40.7867 34.0721C40.8183 33.998 40.8342 33.9181 40.8333 33.8375C40.8335 33.6781 40.7713 33.525 40.66 33.4108L36.7973 29.5201C36.7427 29.4626 36.6771 29.4165 36.6044 29.3845C36.5318 29.3524 36.4535 29.3352 36.3742 29.3336C36.2948 29.3321 36.2159 29.3463 36.1421 29.3754C36.0682 29.4046 36.0009 29.4481 35.944 29.5035Z" fill="white" />
+                    </svg>
+                  </a>
+                {% endif %}
+              </div>
+
+            {%- endform -%}
+          {% endif %}
+        </div>
+
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<script>
+
+
+
+  $(document).on('click', '.ad_to_cart', function(e) {
+  
+    e.preventDefault();
+    
+    var pid1 = $(this).attr('var_id');
+    console.log('pair-product======', pid1);
+    let addToCartForm = e.currentTarget.closest('form[action$="/cart/add"]');
+    let formData = new FormData(addToCartForm);
+
+    if (window.cartStrings.cart_type == "drawer") {
+      var cart = document.querySelector('cart-drawer');
+      formData.append('sections', cart.getSectionsToRender().map((section) => section.id));
+      formData.append('sections_url', window.location.pathname);
+      cart.setActiveElement(document.activeElement);
+    }
+
+
+// myLoader.style.display="block";
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+      method: 'POST',
+      body: formData
+    }).then((response) => response.json()).then((response) => {
+      let data = response;
+      console.log('data------', data);
+      document.dispatchEvent(new CustomEvent('ajaxProduct:added', {
+        detail: {
+          product: data
+        }
+
+      }));{% if cart.item_count == 0  %}$('#desktopBagCount').css("visibility", "visible");
+
+// $('.desktop-icon-count').css("visibility", "visible");
+        $('.desktop-icon-countno').css("display", "block");
+        $('.numberIcon').text(1);
+        $('#cart-icon-bubble').css("display", "block");
+      {% else %}
+        console.log('elselol');
+        $('#desktopBagCount').css("visibility", "visible");
+        $('#cart-icon-bubble').css("display", "block");
+        $('.numberIcon').text("{{  cart.item_count | plus:1 }}");{% endif %}$('.desktop-icon-count').css("display", "block");
+
+      $('.hideme').hide();
+
+// $('.cartButtonOut1').show();
+      $('.cartButtonOut2').show();
+      $('.cartButtonOut3').show();
+      $('#buy_now1').show();
+      $('#buy_now2').hide();
+
+      $('#bagg').show();
+      console.log('Display: cartButtonOut2');
+
+// myLoader.style.display="none";
+// ajax to database
+      if (window.cartStrings.cart_type == "drawer") {
+
+        cart.renderContents(response);
+        $(`.toastMsg--${
+          response.handle
+        }`).show();
+        setTimeout(function() {
+          $(`.toastMsg--${
+            response.handle
+          }`).hide();
+        }, 5000)
+        if (cart && cart.classList.contains('is-empty')) 
+          cart.classList.remove('is-empty');
+        
+
+
+
+      }
+
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+
+  });
+  $(document).ready(function() {
+    $(".clean-offers__content").hover(function() {
+      $(".clean-offers__content").removeClass('active');
+      $(this).addClass('active');
+    }, function() {
+      $(".clean-offers__content").removeClass('active');
+      $(".clean-offers__content").eq(1).addClass('active');
+    });
+  });
+
+  $(document).ready(function() {
+
+    $("#Contact_us_btn").click(function(e) {
+      e.preventDefault();
+
+      $(".chat-app-- button").click(function() {
+        $('.chat-app--').addClass('is-open');
+      });
+    });
+  });
+</script>
+<style>
+ section#clean-offer {
+      margin-top: 30px;
+  }
+  #MainContent {
+    background: #fff;
+  }
+  .hover-svg {
+    display: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    top: auto;
+    bottom: -15%;
+    transform: translate(0px, 50%);
+    left: 0;
+    right: 0;
+  }
+  .clean-offers__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 80px auto 0;
+    max-width: 1000px;
+  }
+  .clean-offers__content {
+    background-image: url("https://cdn.shopify.com/s/files/1/0720/7819/7049/files/Rectangle_36_2x_c1abfe7c-55d9-4838-9a99-6fcaa0cffeaa.png?v=1691570082");
+    background-repeat: no-repeat;
+    background-position: center;
+    flex: 0 0 28.28%;
+    max-width: calc(28.28% - 0px);
+    margin-bottom: 100px;
+    /*box-shadow: 0px 50px 99px #372B7B24;*/
+    /*padding: 50px 0 60px 0;*/
+    border-radius: 20px;
+    height: fit-content;
+    transition: all 300ms ease;
+    box-shadow: 0 50px 99px #372B7B24;
+    min-height: 430px;
+  }
+  .subcribe_btn {
+    position: relative;
+  }
+
+  .clean-offers__img img {
+    width: 85%;
+    /*max-width: 200px;
+    padding-top: 40px;
+    margin: 45px 0; */
+  }
+  .clean-offers {
+    margin-bottom: 20px;
+    /*margin-bottom: 100px;*/
+  }
+  .clean-offers--title h2 {
+    font-size: 22px;
+    line-height: 29px;
+    letter-spacing: 0;
+    text-align: center;
+    color: #000;
+    width: 100%;
+    max-width: 950px;
+    font-family: 'termina-regular';
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+  .clean-offers__img {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    /*padding-bottom: 25px; */
+  }
+  .clean-offers__text h4 {
+    letter-spacing: 4.5px;
+    color: #372B7B;
+    font-family: 'termina-medium';
+    text-transform: uppercase;
+    font-size: 20px;
+    /*line-height: 36px;*/
+    margin-top: 15px;
+    /*margin: 0;*/
+    text-align: center;
+  }
+  .clean-offers__text {
+    padding-bottom: 50px;
+    /*line-height: 42px;*/
+    font-family: 'termina-regular';
+    font-size: 14px;
+    /* margin-top: 26px;*/
+    letter-spacing: 0.9px;
+    color: #000000;
+    text-transform: capitalize;
+    text-align: center;
+    opacity: 0.5;
+  }
+  .clean-offers__text .offer-price {
+    font-size: 28px;
+    text-align: center;
+    line-height: 50px;
+    font-family: 'termina-medium';
+    letter-spacing: 0;
+    margin-bottom: -8px;
+    color: #372B7B;
+  }
+  .clean-offers__text a {
+    color: #372B7B;
+  }
+  .hover-svg svg {
+    width: 100%;
+  }
+  /*.subcribe_btn:hover .hover-svg {
+    display: block;
+  } 
+  .subcribe_btn:hover .clean-offers__text h4 {
+    color: #E5337C;
+  }
+  .subcribe_btn:hover .clean-offers__img img {
+    padding-top: 100px;
+  } x
+  .subcribe_btn:hover .clean-offers__text {
+    opacity: 1;
+     padding-bottom: 100px;
+  }*/
+  .clean-offers__content.active {
+    transform: scale(1.2);
+    box-shadow: 0 50px 99px #372B7B24;
+  }
+
+  .clean-offers__content.active .clean-offers__text h4 {
+    color: #E5337C;
+  }
+  .clean-offers__content.active .hover-svg {
+    display: block !important;
+  }
+  .clean-offers__content.active .clean-offers__text {
+    opacity: 1;
+  }
+  .clean-offers__content:nth-child(2) .active {
+    padding-top: 100px;
+  }
+  .clean-offers__content:nth-child(2).active .hover-svg {
+    bottom: -5%;
+    transform: translate(0px, 50%);
+  }
+  .compare_price {
+    color: #E5337C;
+    opacity: 50%;
+    font-size: 14px;
+  }
+  .doller_sign {
+    font-size: 17px;
+  }
+  @media only screen and (max-width: 1280px) and(min-width: 993px) {
+    /*.clean-offers__img img {
+      width: 100%;
+      max-width: 225px;
+      padding-top: 25px;
+    } */
+    .clean-offers__text .offer-price {
+      font-size: 32px;
+    }
+    .clean-offers__text h4 {
+      font-size: 24px;
+    }
+  }
+  @media only screen and (max-width: 992px) {
+    .clean-offers--title h2 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+    .clean-offers__img svg {
+      width: 90%;
+    }
+    .clean-offers--title h2 {
+      padding-bottom: 20px;
+    }
+    .clean-offers__content {
+      flex: 0 0 50%;
+      max-width: calc(50% - 0px);
+      margin-bottom: 60px;
+    }
+    .clean-offers__text h4 {
+      font-size: 24px;
+    }
+    .clean-offers__text .offer-price {
+      font-size: 35px;
+    };
+    /*.clean-offers__img img {
+      width: 100%;
+      max-width: 225px;
+      padding-top: 25px;
+    } */
+  }
+  @media only screen and (max-width: 767px) {
+    /*.clean-offers__content {
+      flex: 0 0 100%;
+      max-width: calc(100% - 0px);
+      margin-bottom: 60px;
+    }
+    .clean-offers {
+      margin-bottom: 10px;
+    } */
+    .clean-offers__block {
+      margin: 30px auto 0;
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "Clean Offers",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Text Heading"
+      }, {
+        "type": "html",
+        "id": "logo",
+        "label": "Logo SVG"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Offers",
+        "name": "Offers",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Offer Image"
+          },
+          {
+            "type": "text",
+            "id": "logotitle",
+            "label": "Number Of Pair"
+          },
+          {
+            "type": "textarea",
+            "id": "logodesc",
+            "label": "Desc"
+          }, {
+            "type": "text",
+            "id": "symbol",
+            "label": "Doller Sign"
+          }, {
+            "type": "text",
+            "id": "price",
+            "label": "Price"
+          }, {
+            "type": "text",
+            "id": "compare_price",
+            "label": "Compare Price"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Clean Offers"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,1167 @@
+.sneakers_content .internation_notes{
+  font-style: normal !important;
+  color: red !important;
+  font-size: 18px;
+}
+.kyx-sneakers {
+    background-color: #fff;
+}
+
+.kyx-sneakers_banner img {
+    width: 100%;
+    height: auto;
+}
+
+.kyx-sneakers_banner {
+    background: #fff;
+}
+
+fieldset {
+    border: none;
+}
+
+fieldset label {
+    font-size: 11px;
+}
+
+.container_one_address {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contactUsButton button {
+    width: 100%;
+    height: 4rem;
+    color: white;
+    background: #E5337C;
+    border: none;
+    font-family: termina-Medium;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.contactUsButton {
+    width: 100%;
+    margin: 5px;
+}
+
+.info_container {
+    font-size: 14px;
+    color: black;
+    font-family: 'termina-regular';
+}
+
+
+/* .sneakers_file {
+    display: flex;
+    justify-content: space-evenly;
+} */
+
+.kyx-rating_title h2 {
+    font-family: 'termina-medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 65px;
+    text-align: center;
+    color: #0062FF;
+}
+
+.kyk-rating_desc {
+    margin: 0 auto;
+}
+
+.kyk-rating_desc p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 161%;
+    color: #0062FF;
+    width: fit-content;
+    margin: auto;
+    display: block;
+}
+
+.kyx-rating_bg-blue_text p {
+    background: #0062FF;
+    border-radius: 100px;
+    font-family: 'termina-regular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: #fff;
+    width: fit-content;
+    margin: auto;
+    padding: 30px 70px;
+}
+
+.rating-system {
+    background-color: #fff;
+    padding-bottom: 2.5rem;
+    margin-top: -5px;
+}
+
+.kyx-rating_title {
+    padding: 3rem 0 2rem;
+}
+
+.rating-img-with-text_title {
+    font-family: 'termina-medium';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #3A3A3A;
+}
+
+.rating-img-with-text_desc {
+    font-family: 'Inter';
+    font-size: 18px;
+    line-height: 160%;
+    color: #3A3A3A;
+}
+
+.rating-img-with-text_subtitle {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 160%;
+    color: #3a3a3a;
+}
+
+.rating-img-with-text__content {
+    margin: auto;
+}
+
+.kyx-rating_bg-blue_text {
+    margin-top: -70px;
+}
+
+
+/* rating-img-with-text__content */
+
+.rating-img-with-text__content {
+    padding: 75px 15px;
+}
+
+.rating-img-with-text__content>* {
+    margin-top: 0;
+}
+
+.rating-img-with-text__content>*+* {
+    margin-top: 41px;
+}
+
+
+/* rating-img-with-text-first-flex */
+
+.rating-img-with-text-first-flex {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 21px 15px 71px;
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 13px;
+    justify-content: space-between;
+}
+
+.first-flex-content {
+    flex: 0 0 50%;
+    max-width: calc(50% - 13px);
+}
+
+.first-flex-content img {
+    width: 100%;
+    height: auto;
+}
+
+.rating-img-with-text-first-flex h2 {
+    font-family: 'termina-regular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 35px;
+    letter-spacing: 0.2em;
+    color: #E5337C;
+    text-transform: uppercase;
+}
+
+.rating-img-with-text-first-flex p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: #979797;
+}
+
+
+/* rating-img-with-text-second-flex */
+
+.rating-img-with-text-second-flex {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 21px 15px 91px;
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 13px;
+    justify-content: space-between;
+}
+
+.second-flex-content {
+    flex: 0 0 33.33%;
+    max-width: calc(33.33% - 13px);
+}
+
+.second-flex-content img {
+    width: 100%;
+    height: auto;
+}
+
+.rating-img-with-text-second-flex h2 {
+    font-family: 'termina-regular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 35px;
+    letter-spacing: 0.2em;
+    color: #E5337C;
+    text-transform: uppercase;
+}
+
+.rating-img-with-text-second-flex p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    color: #979797;
+}
+
+
+/* product-overview-content */
+
+.product-overview-content {
+    margin: 0 auto;
+}
+
+.product-overview-content h2 {
+    font-family: 'termina-regular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #3A3A3A;
+    margin-bottom: 1rem;
+}
+
+.product-overview-content p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: #3A3A3A;
+}
+
+.product-overview {
+    background-color: #F2EEEB;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.product-defects-issues__content {
+    display: flex;
+}
+
+.defects-issues,
+.qualifires {
+    width: 50%;
+}
+
+.product-defects-issues__content {
+    margin: 0 auto;
+}
+
+.top_content h6 {
+    font-family: 'termina-medium';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #3A3A3A;
+}
+
+.top_content p {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 16px;
+    color: #3A3A3A;
+}
+
+.bottom_content h6 {
+    font-family: 'Inter';
+    color: #E5337C;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.bottom_content p {
+    font-family: 'Inter';
+    font-size: 16px;
+    line-height: 130%;
+    color: #979797;
+}
+
+.defects-issues {
+    padding-right: 25px;
+}
+
+.product-defects-issues {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+.subjectivity {
+    margin: auto;
+    position: relative;
+}
+
+.subjectivity h6 {
+    font-family: 'termina-medium';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #3A3A3A;
+}
+
+.subjectivity p {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 16px;
+    color: #3A3A3A;
+}
+
+.bg_logo-img img {
+    width: 100%;
+    height: auto;
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+    margin-top: -120px;
+    margin-bottom: -150px;
+}
+
+.mobile_content p {
+    font-family: 'termina-medium';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0062FF;
+}
+
+.md-hidden {
+    display: none;
+}
+
+.md-visible {
+    display: block;
+}
+
+.mobile_content {
+    display: none;
+    margin-top: 2rem;
+}
+
+.mobile_content p {
+    font-family: termina-medium;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #0062ff;
+    padding: 10px 0;
+    border-top: 2px solid #fff;
+    border-left: 0;
+    border-right: 0;
+}
+
+
+/* .mobile_content p:last-child{
+    border-bottom: 2px solid #fff;
+} */
+
+.kyk-rating_desc,
+.rating-img-with-text__content,
+.product-overview-content,
+.product-defects-issues__content,
+.subjectivity {
+    width: 100%;
+    max-width: 900px;
+}
+
+
+/* 07-2023 agm css start */
+
+.kyx-sneakers .container_one_address {
+    column-gap: 10px;
+    justify-content: space-between;
+}
+
+.kyx-sneakers .parent_container {
+    margin: 40px 0;
+}
+
+.kyx-sneakers .parent_container>* {
+    margin-top: 0;
+}
+
+.kyx-sneakers .parent_container>*+* {
+    margin-top: 45px;
+}
+
+.kyx-sneakers .one_address_first .info_container {
+    flex: 0 0 33.33%;
+    max-width: calc(33.33% - 10px);
+}
+
+.kyx-sneakers .info_container label,
+legend {
+    font-family: 'termina-regular';
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #3A3A3A;
+    text-transform: uppercase;
+}
+
+.condition-filed.info_container label {
+    text-transform: capitalize;
+}
+
+.info_container.shoe-images p {
+    color: #3A3A3A;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 15px 0;
+}
+
+.shoe-images_block .shoe-image p {
+    color: #3A3A3A;
+    text-align: center;
+    font-family: Termina;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    letter-spacing: 2.8px;
+    padding-top: 10px;
+}
+
+.upload_image_block {
+    padding-bottom: 92px;
+}
+
+.shoe-image img {
+    width: 100%;
+    height: auto;
+}
+
+.shoe-image {
+    flex: 0 0 25%;
+    max-width: calc(25% - 13px);
+    padding: 20px 0px;
+}
+
+.shoe-images_block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 15px;
+}
+
+.info_container.shoe-images,
+.sneakers_file.sneaker-file-submit,
+.sneakers_file.sneaker-file-uplode,
+.parent_div_registration {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.kyx-sneakers .field__input1 {
+    height: 3rem;
+    width: 100%;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+    border: 2px solid #F2EEEB;
+    padding-left: 15px;
+}
+
+.sneakers_file.sneaker-file-uplode {
+    margin: 30px auto 50px;
+}
+
+.addr_second_info_one {
+    /* flex: 0 0 67%;
+    max-width: calc(67% - 10px); */
+    flex: 0 0 33%;
+    max-width: calc(33% - 10px);
+}
+
+.addr_second_info_third {
+    flex: 0 0 33%;
+    max-width: calc(33% - 10px);
+}
+
+.addr_second_info_two {
+    flex: 0 0 33%;
+    max-width: calc(33% - 10px);
+}
+
+.kyx-sneakers .one_address_third .info_container {
+    flex: 0 0 33.33%;
+    max-width: calc(33.33% - 10px);
+}
+
+.sneakers_content h5 {
+    font-family: termina-regular;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #3a3a3a;
+    text-transform: uppercase;
+}
+
+.sneakers_content ul.sneakers_content-point {
+    list-style: decimal;
+    margin-left: 25px;
+    padding: 25px 0;
+}
+
+.sneakers_content ul.sneakers_content-point li {
+    color: #3A3A3A;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28.98px;
+}
+
+.sneakers_content ul.sneakers_content-point li ul li {
+    font-style: italic;
+}
+
+.sneakers_content p {
+    color: #3A3A3A;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 28.98px;
+}
+
+.sneakers_content ul.sneakers_content-point li ul {
+    list-style: lower-alpha;
+    margin-left: 25px;
+}
+
+.kyx-sneakers .info_container select {
+    height: 3rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    border: 2px solid #F2EEEB;
+    font-family: 'Inter';
+    font-size: 12px;
+    /* letter-spacing: 3px; */
+    line-height: 14px;
+    /* font-weight: 600;*/
+    color: #8D8D8D;
+    padding: 0 10px;
+}
+
+.info-ckbox-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 15px;
+    row-gap: 15px;
+    column-gap: 10px;
+}
+
+.info-ckbox-input-main {
+    flex: 0 0 25%;
+    max-width: calc(25% - 10px);
+    position: relative;
+    display: flex;
+    align-items: baseline;
+}
+
+.kyx-sneakers .info_container textarea {
+    padding: 10px;
+    height: 8rem;
+    width: 100%;
+    font-family: Inter;
+    font-size: 12px;
+    outline: none;
+    resize:none;
+}
+
+.kyx-sneakers .info_container .info-ckbox-main .info-ckbox-input-main label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #8D8D8D;
+    font-family: Inter;
+    margin-left: 30px;
+}
+
+.sneaker-file-uplode {
+    position: relative;
+}
+
+.sneaker-file-uplode input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.sneakers-file-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.kyx-sneakers .contactUsButton {
+    margin: 0;
+}
+
+.info-ckbox_c {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 20px;
+    width: 20px !important;
+    z-index: 9;
+}
+
+span.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #8D8D8D;
+    background: #FFF;
+}
+
+.checkmark svg {
+    position: absolute;
+    display: none;
+}
+
+.info-ckbox_c:checked~.checkmark svg {
+    display: block;
+    margin-top: -2px;
+    margin-left: -2px;
+}
+
+
+/* .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  } */
+
+@media (max-width:1024px) {
+    .kyx-sneakers .info_container label,
+    legend {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:851px) {
+    .kyx-sneakers .info_container select {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width:771px) {
+    .kyx-sneakers .parent_container {
+        margin: 40px 0;
+    }
+    .kyx-sneakers .info_container label,
+    legend,
+    .sneakers_content h5 {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+    .kyx-sneakers .parent_container>*+* {
+        margin-top: 0px;
+    }
+    .container_one_address {
+        flex-direction: column;
+    }
+    .kyx-sneakers .one_address_first .info_container,
+    .kyx-sneakers .one_address_third .info_container {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .kyx-sneakers .field__input1 {
+        margin: 15px 0;
+    }
+    .addr_second_info_one,
+    .addr_second_info_two,
+    .addr_second_info_third {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .kyx-sneakers .info_container select {
+        margin: 15px 0;
+    }
+    .info-ckbox-inner {
+        margin: 15px 0;
+    }
+    .info-ckbox-input-main {
+        flex: 0 0 33.33%;
+        max-width: calc(33.33% - 10px);
+    }
+    .kyx-sneakers .contactUsButton {
+        margin: 15px 0;
+    }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 991px) {
+    .shoe-image {
+        flex: 0 0 33.33%;
+        max-width: calc(33.33% - 11px);
+        padding: 10px 0;
+    }
+    .kyx-rating_title h2 {
+        font-size: 44px;
+        line-height: 52px;
+    }
+    .kyk-rating_desc p {
+        font-size: 14px;
+    }
+    .kyx-rating_bg-blue_text p {
+        padding: 20px 59px;
+        font-size: 14px;
+    }
+    .rating-img-with-text__content>*+* {
+        margin-top: 20px;
+    }
+    .rating-img-with-text__content {
+        padding: 50px 15px;
+    }
+    .rating-img-with-text_title,
+    .product-overview-content h2 {
+        font-size: 16px;
+    }
+    .rating-img-with-text_desc,
+    .rating-img-with-text_subtitle,
+    .product-overview-content p {
+        font-size: 14px;
+    }
+    .rating-img-with-text-first-flex {
+        padding: 21px 15px 40px;
+    }
+    .rating-img-with-text-second-flex {
+        padding: 21px 15px 71px;
+    }
+    .bg_logo-img img {
+        max-width: 80%;
+        margin: -100px auto -150px;
+    }
+}
+
+@media (max-width:521px) {
+    .info-ckbox-input-main {
+        flex: 0 0 50%;
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width:380px) {
+    .info-ckbox-input-main {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .shoe-image {
+        flex: 0 0 50%;
+        max-width: calc(50% - 8px);
+        padding: 10px 0;
+    }
+    .md-hidden {
+        display: block;
+        padding: 0;
+    }
+    .md-visible {
+        display: none;
+    }
+    .kyx-rating_banner {
+        padding: 30px 0;
+    }
+    .kyx-rating_title h2 {
+        font-size: 32px;
+        line-height: 100%;
+    }
+    .kyk-rating_desc {
+        padding: 0 1.5rem;
+    }
+    .kyk-rating_desc p,
+    .product-overview-content p {
+        font-size: 14px;
+        line-height: 150%;
+    }
+    .kyk-rating_desc p br,
+    .kyx-rating_bg-blue_text p br,
+    .rating-img-with-text_desc br,
+    .rating-img-with-text_subtitle br {
+        display: none;
+    }
+    .kyx-rating_bg-blue_text {
+        margin-top: 0;
+    }
+    .kyx-rating_bg-blue_text p {
+        border-radius: 0;
+        font-size: 14px;
+        line-height: 21px;
+        padding: 30px 1.5rem;
+        text-align: left;
+    }
+    .rating-img-with-text_title {
+        font-size: 14px;
+        line-height: 15px;
+    }
+    .rating-img-with-text_desc,
+    .rating-img-with-text_subtitle {
+        font-size: 14px;
+        line-height: 160%;
+    }
+    .rating-img-with-text__content>*+* {
+        margin-top: 21px;
+    }
+    .rating-img-with-text__content {
+        padding: 50px 0px 20px;
+        /* margin-top: 50px;
+    margin-bottom: 15px; */
+    }
+    .first-flex-content,
+    .second-flex-content {
+        flex: 0 0 100%;
+        max-width: calc(100% - 0px);
+    }
+    .rating-img-with-text-first-flex,
+    .rating-img-with-text-second-flex {
+        padding: 0;
+        flex-wrap: wrap;
+        column-gap: 0px;
+    }
+    .first-flex-txt,
+    .second-flex-txt {
+        padding: 5px 0 20px;
+    }
+    .product-overview-content h2 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .product-overview {
+        padding: 40px 1.5rem !important;
+    }
+    .defects-issues {
+        padding-right: 0px;
+    }
+    .product-defects-issues__content {
+        flex-wrap: wrap;
+    }
+    .defects-issues,
+    .qualifires {
+        width: 100%;
+    }
+    .product-defects-issues {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    .top_content h6 {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .bottom_content h6 {
+        font-size: 14px;
+    }
+    .top_content p,
+    .bottom_content p {
+        font-size: 14px;
+    }
+    .qualifires {
+        padding-top: 15px;
+    }
+    .subjectivity h6 {
+        font-size: 16px;
+    }
+    .subjectivity p {
+        font-size: 14px;
+    }
+    .bg_logo-img {
+        display: none;
+    }
+    .rating-system {
+        padding-bottom: 3rem;
+    }
+    .product-overview-content.page-width--narrow {
+        padding: 0rem;
+    }
+    .product-overview .page-width {
+        padding: 0;
+    }
+}
+
+
+/* 07-2023 agm css end */
+
+@media only screen and (max-width: 768px) and (min-width: 750px) {
+    .product-overview {
+        padding: 40px 5rem!important;
+    }
+    .page-width--narrow {
+        padding: 0 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .mobile_content {
+        display: block;
+    }
+    .info_container.shoe-images p br {
+        display: none;
+    }
+    .info_container.shoe-images p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .shoe-images_block .shoe-image p {
+        font-size: 10px;
+    }
+    .shoe-image {
+        flex: 0 0 50%;
+        max-width: calc(50% - 8px);
+        padding: 6px 0;
+    }
+    .sneakers_file.sneaker-file-uplode {
+        margin: 30px auto 10px;
+    }
+    .contactUsButton button {
+        height: 2.5rem;
+    }
+    .sneakers_content ul.sneakers_content-point li,
+    .sneakers_content p {
+        font-size: 16px;
+        line-height: 25px;
+    }
+    .sneakers_content .internation_notes{
+      font-size: 16px;
+    }
+    .sneakers_content {
+        margin-bottom: 35px;
+    }
+}
+
+div#drag-and-drop-zone {
+    position: relative;
+}
+
+.file__value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #3a3a3a;
+    background: #f3efec;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.file__value:hover:after {
+    color: white;
+}
+
+.file__value--remove:after {
+    content: "X";
+    cursor: pointer;
+}
+
+.file__value:after:hover {
+    color: white;
+}
+
+.file__remove {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+}
+
+.file__value--remove {
+    display: block !important;
+}
+
+.spinner-loading:after {
+    display: none;
+}
+
+.loading-overlay__spinner {
+    width: 1.8rem;
+    display: inline-block;
+}
+
+.spinner {
+    animation: rotator 1.4s linear infinite;
+}
+
+@keyframes rotator {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+.path {
+    stroke-dasharray: 280;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    stroke: rgb(var(--color-foreground));
+    animation: dash 1.4s ease-in-out infinite;
+}
+
+@media screen and (forced-colors: active) {
+    .path {
+        stroke: CanvasText;
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 280;
+    }
+    50% {
+        stroke-dashoffset: 75;
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 280;
+        transform: rotate(450deg);
+    }
+}
+
+.loading-overlay:not(.hidden)+.cart-item__price-wrapper,
+.loading-overlay:not(.hidden)~cart-remove-button {
+    opacity: 50%;
+}
+
+.loading-overlay:not(.hidden)~cart-remove-button {
+    pointer-events: none;
+    cursor: default;
+}
+
+.file__value--text {
+    word-break: break-all;
+    font-size: 16px;
+}
+
+.uploading {
+    margin-top: 20px;
+}
+
+.statusMessage.active {
+    padding: 10px 20px;
+    background: #0062ff;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-family: Termina;
+    text-transform: uppercase;
+}
+
+div#uploadStatus.error {
+    color: white;
+    font-size: 16px;
+    background: #c34b4b;
+    padding: 10px;
+    font-family: termina-Medium;
+}
+.submitting_notes{
+  font-size: 17px;
+}
+@media  screen  and (max-width:767px){
+    div#uploadStatus.error{
+        font-size: 12px;
+    }
+  .submitting_notes{
+     font-size: 13px;
+   }
+  .submit_title h5{
+    font-size: 18px;
+  }
+}
+div#uploadStatus.success {
+    background: #2558f9;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    font-family: termina-Medium;
+}
+
+.errorstate.hide {
+    display: none;
+}
+
+.errorstate {
+    color: red;
+    margin-top: 20px;
+}
+.sneakers_content .sneakers_notes p{
+    font-weight: 800;
+    font-size: 18px;
+    margin: 10px 0;
+    margin: 0 0 10px 0;
+    font-family: 'Inter';
+    font-style: normal;
+}

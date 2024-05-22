@@ -1,0 +1,1557 @@
+{{ 'page-kyx-sneakers.css' | asset_url | stylesheet_tag }}
+{{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+{% comment %}{{ 'component-multicolumn.css' | asset_url | stylesheet_tag }}{% endcomment %}
+
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% assign defects-issues = false %}
+{% assign qualifier = false %}
+{%- for block in section.blocks -%}
+  {% case block.type %}
+    {% when 'defects-issues' %}
+    {% assign defects-issues = true %}
+    {% when 'qualifier' %}
+    {% assign qualifier = true %}
+  {% endcase %}
+{% endfor %}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  @media screen and (max-width: 990px) {
+    .background-primary.color-background-1.gradient.multicolumn.no-heading .multicolumn-list.contains-content-container {
+      row-gap: 0;
+      padding: 0;
+    }
+    .background-primary.color-background-1.gradient.multicolumn.no-heading .multicolumn-card__info {
+      bottom: 30px;
+    }
+    .background-primary.color-background-1.gradient.multicolumn.no-heading .section-{{ section.id }}-padding{
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+{%- endstyle -%}
+
+<section class="kyx-sneakers">
+  <div class="kyx-sneakers_banner">
+      {% liquid
+      assign desktopImg = section.settings.image
+      assign mobileImg = section.settings.image
+      if section.settings.sm_image != blank
+      assign mobileImg = section.settings.sm_image
+      endif
+      %}
+      {% if section.settings.image != blank %}
+      <img
+          class="md-visible"
+          src="{{ desktopImg | img_url: 'master' }}"
+          alt="{{ section.settings.title | escape }}" width="1920px" height="471px">
+      {% endif %}
+      <img
+          class="md-hidden"
+          src="{{ mobileImg | img_url: 'master' }}"
+          alt="{{ section.settings.title | escape }}" width="375px" height="250px">
+  </div>
+  <div class="rating-system">
+      <div class="kyx-rating_title">
+          {% if section.settings.title != blank %}
+          <h2>{{ section.settings.title | escape }}</h2>
+          {% else %}
+          <h2>{{ page.title | escape }}</h2>
+          {% endif %}
+      </div>
+      <div class="kyk-rating_desc">
+          {% if section.settings.sub_title != blank %}
+          <p>{{ section.settings.sub_title | newline_to_br }}</p>
+          {% endif %}
+      </div>
+  </div>
+  <div>
+      {%- form 'contact', id: 'ContactForm', class: 'isolate page-width' -%}
+      {%- if form.posted_successfully? -%}
+      <p
+          class="form-contact"
+          tabindex="-1"
+          autofocus>
+          {% render 'icon-success' %}
+          {{ 'templates.contact.form.post_success' | t }} In the meantime check out some more &nbsp;
+          <a href="/" style="text-decoration:underline;">shoes!</a>
+      </p>
+      {%- elsif form.errors -%}
+      <div class="form__message">
+          <h2
+              class="form-status caption-large text-body"
+              role="alert"
+              tabindex="-1"
+              autofocus>
+              {% render 'icon-error' %}
+              {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+      </div>
+      <ul class="form-status-list caption-large" role="list">
+          <li>
+              <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+              </a>
+          </li>
+      </ul>
+      {%- endif -%}
+      {%- if form.posted_successfully? -%}
+      <p class="sendothermessage">Need to send another message?
+          <a href="/pages/contact-us">Click here</a>.
+      </p>
+      {%- else -%}
+      <div class="parent_div_registration" style="display: flex; align-items:center; justify-content: center; flex-wrap: wrap;">
+          <div class="address_first_container">
+              <div class="parent_container">
+                  <div class="sneakers_content">
+                      <h5>HERE'S HOW IT WORKS</h5>
+                      <ul class="sneakers_content-point">
+                          <li>You fill out this form with the details of your used sneakers along with pictures.</li>
+                          <li>
+                              We will get back to you with a buyout offer with an option for “cash”* or store credit.
+                              <ul>
+                                  <li>If we are not going to offer to buy your sneakers we will notify you as well.</li>
+                              </ul>
+                          </li>
+                          <li>This offer is good for 24 hours (so make sure to check your email!)</li>
+                          <li>Upon acceptance of the offer we will send you a shipping label to drop your shoes off at UPS within 3 days of receipt.
+                          </li>
+                          <li>When we receive your shoes we will authenticate them and send your money through paypal or apply the store credit to your account. Depending on whichever you choose.</li>
+                      </ul>
+                      <div class="sneakers_notes">
+                          <p >We buy collections too!<span style="font-weight:400; "> If you have more than 3 pairs you want to sell, reach out directly to <a href="webuysneakers@kyxsneakers.com"> webuysneakers@kyxsneakers.com</a></span></p>
+                      </div>
+                      <p>*Our “cash” option is paid out via your choice of Paypal, Cash App, or Venmo.</p>
+                      <p class="internation_notes">**For international inquiries please email webuysneakers@kyxsneakers.com before submitting</p>
+                  </div>
+              </div>
+          </div>
+          <div class="kyx_sell_btn" id="sell_btn">
+            <button type="button">Sell now</button>
+          </div>
+      </div>
+      
+      <div id="multicoloumn_review" class="" >
+          {%- liquid
+          assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+          assign show_mobile_slider = false
+          if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
+          assign show_mobile_slider = true
+          endif
+          -%}
+          <div class="multicolumn multicolumn-slider color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title_review == blank %} no-heading{% endif %}">
+              <div class="section-{{ section.id }}-padding isolate">
+                  {%- unless section.settings.title_review == blank -%}
+                  <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
+                      <div class="title {{ section.settings.heading_size }} ForYouSectionTitle" id="foryou">
+                          {{ section.settings.title_review | escape }}
+                      </div>
+                  </div>
+                  {%- endunless -%}
+                    <slider-component class="slider-mobile-gutter">
+                        <ul
+                            class="grid product-grid  grid--1-col-tablet-down  multicolumn-list grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile slider--desktop grid--peek{% endif %}"
+                            id="Slider-{{ section.id }}"
+                            role="list"
+                            >
+                            {%- for block in section.blocks -%}
+                              {% if block.type == 'column' %}
+                                {%- assign empty_column = '' -%}
+                                {%- if block.settings.image == blank
+                                and block.settings.title == blank
+                                and block.settings.text == blank
+                                and block.settings.link_label == blank
+                                -%}
+                                {%- assign empty_column = ' multicolumn-list__item--empty' -%}
+                                {%- endif -%}
+                                <li
+                                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                                onclick="window.location.href='{{ block.settings.link }}'"
+                                style="cursor: pointer;"
+                                class="multicolumn-list__item grid__item {% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}"
+                                {{ block.shopify_attributes }}
+                                >
+                                <div class="multicolumn-card  content-container">
+                                    {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
+                                    {% assign spaced_image = true %}
+                                    {% endif %}
+                                    <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
+                                        
+                                        {%- if block.settings.title != blank -%}
+                                        <div class="review_name">
+                                            {%- if block.settings.title != blank -%}
+                                            <h3 class="reviews__title">{{ block.settings.title | escape }}</h3>
+                                            <span class="review__title_small">{{ block.settings.sub_title | escape }}</span>  
+                                            <span class="review__title_small_product" >- {{ block.settings.product_title | escape }} </span>
+                                            {%- endif -%}
+                                        </div>
+                                        {%- endif -%}
+                                    </div>
+                                    <div class="multicolumn-card__info add-siz">
+                                        {% comment %} {%- if block.settings.title != blank -%}
+                                        <h3>{{ block.settings.title | escape }}</h3>
+                                        {%- endif -%} {% endcomment %}
+                                        {%- if block.settings.text != blank -%}
+                                        <div class="rte">{{ block.settings.text }}</div>
+                                        {%- endif -%}
+                                        {%- if block.settings.link_label != blank -%}
+                                        <a
+                                        class="animate-arrow btn-blue-bg link"
+                                        {% if block.settings.link == blank %}
+                                        role="link" aria-disabled="true"
+                                        {% else %}
+                                        href="{{ block.settings.link }}"
+                                        {% endif %}
+                                        >
+                                        {{- block.settings.link_label | escape -}}
+                                        <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a
+                                            >
+                                        {%- endif -%}
+                                    </div>
+                                </div>
+                                </li>
+                              {% endif %}
+                            {%- endfor -%}
+                        </ul>
+                        {%- if show_mobile_slider -%}
+                        <div class="slider-buttons no-js-hidden medium-hide">
+                            <button
+                                type="button"
+                                class="slider-button slider-button--prev"
+                                name="previous"
+                                aria-label="{{ 'general.slider.previous_slide' | t }}"
+                                >
+                            {% render 'icon-caret' %}
+                            </button>
+                            <div class="slider-counter caption">
+                                <span class="slider-counter--current">1</span>
+                                <span aria-hidden="true"> / </span>
+                                <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                                <span class="slider-counter--total">{{ section.blocks.size }}</span>
+                            </div>
+                            <button
+                                type="button"
+                                class="slider-button slider-button--next"
+                                name="next"
+                                aria-label="{{ 'general.slider.next_slide' | t }}"
+                                >
+                            {% render 'icon-caret' %}
+                            </button>
+                        </div>
+                        {%- endif -%}
+                    </slider-component>
+                  
+              </div>
+          </div>
+      </div>
+      <div id="multi_img">
+        {%- liquid
+          assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+          assign show_mobile_slider = false
+          if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
+          assign show_mobile_slider = true
+          endif
+          -%}
+          <div class="multicolumn-slider color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title_review == blank %} no-heading{% endif %}">
+              <div class="section-{{ section.id }}-padding isolate">
+                  <div class="title_review_image">COLLECTIONS WE'VE BOUGHT</div>
+                  <slider-component class="slider-mobile-gutter">
+                      <ul
+                          class="grid product-grid  grid--1-col-tablet-down  multicolumn-list grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--4-col-desktop {% if show_mobile_slider %} slider slider--mobile slider--desktop grid--peek{% endif %}"
+                          id="Slider-{{ section.id }}"
+                          role="list"
+                          >
+                          {%- for block in section.blocks -%}
+                            {%- if block.type == "Image" -%}
+                              <li
+                              id="Slide-{{ section.id }}-{{ forloop.index }}"
+                              onclick="window.location.href='{{ block.settings.link }}'"
+                              style="cursor: pointer;"
+                              class="multicolumn-list__item grid__item  slider__slide center">
+                              <div class="multicolumn-card  content-container">
+                                  <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
+                                      
+                                      {% if block.settings.review_image != blank %}
+                                        <div class="media mobile_img media--transparent">
+                                          <img src="{{ block.settings.review_image | img_url: 'master' }}" class="multicolumn-card__image">
+                                        </div>
+                                      {% endif %}
+                                  </div>
+                              </div>
+                              </li>
+                            {%- endif -%}
+                          {%- endfor -%}
+                      </ul>
+                      <div class="slider-buttons no-js-hidden medium-hide">
+                          <button
+                              type="button"
+                              class="slider-button slider-button--prev"
+                              name="previous"
+                              aria-label="{{ 'general.slider.previous_slide' | t }}"
+                              >
+                          {% render 'icon-caret' %}
+                          </button>
+                          <div class="slider-counter caption">
+                              <span class="slider-counter--current">1</span>
+                              <span aria-hidden="true"> / </span>
+                              <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                              <span class="slider-counter--total">{{ section.blocks.size }}</span>
+                          </div>
+                          <button
+                              type="button"
+                              class="slider-button slider-button--next"
+                              name="next"
+                              aria-label="{{ 'general.slider.next_slide' | t }}"
+                              >
+                          {% render 'icon-caret' %}
+                          </button>
+                      </div>
+                  </slider-component>
+              </div>
+          </div>
+      </div>
+         <div class="parent_div_registration submit_title" style="display: flex; align-items:center; justify-content: start; flex-wrap: wrap;">
+            <h5>**Please Read Before Submitting**</h5>
+            <p class="submitting_notes">- We are only making offers on Nike, Jordan, Adidas, and New Balance at this time.</p>
+            <p class="submitting_notes">- We specialize in Used Sneakers. Any New Sneakers submitted that receive an offer will be below StockX.</p>
+            <p class="submitting_notes">- Please understand the value between New and Used sneakers can vary greatly.</p>
+            <p class="submitting_notes">- Please understand the demand for a shoe can also vary greatly between New and Used.</p>
+            <p class="submitting_notes">- If your submission resales for less than $150-New, we will most likely pass on that item.</p>
+            <p class="submitting_notes">- If you have a specific "ask" in mind, please share that in the additional information section. Whereas we try to make an offer on as many shoes as possible, it helps if you share any expectations you may have coming in.</p>
+            <p class="submitting_notes">- Due to high volume, please allow 2-3 business days for a reply to your submission. If you have not received a reply, please check your spam/junk folder. Emails will come from webuysneakers@kyxsneakers.com.</p>
+            <p class="submitting_notes">- Be nice :)</p>
+        </div>
+      <div class="parent_div_registration" style="display: flex; align-items:center; justify-content: center; flex-wrap: wrap;" id="from_block">
+          <div class="address_first_container">
+              <div class="parent_container">
+                  <div class="container_one_address one_address_first">
+                      <div class="info_container addr_first_info">
+                          <label for="ContactForm-name">FIRST NAME*</label>
+                          <input required class="field__input1" autocomplete="name" type="text" id="ContactForm-name" placeholder="Enter first name here" name="first_name" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                      </div>
+                      <div class="info_container addr_first_info">
+                          <label for="ContactForm-lastname">LAST NAME*</label>
+                          <input required class="field__input1" autocomplete="name" type="text" id="ContactForm-lastname" placeholder="Enter last name here" name="last_name" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                      </div>
+                      <div class="info_container addr_first_info">
+                          <label>Email*</label>
+                          <input required autocomplete="email" type="email" id="ContactForm-email" class="field__input1" name="email" spellcheck="false" placeholder="Enter email here" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" aria-required="true" {% if form.errors contains 'email' %}aria-invalid="true"aria-describedby="ContactForm-email-error"{% endif %}>
+                      </div>
+                  </div>
+                  <div class="container_one_address one_address_third">
+                      <div class="info_container">
+                          <label for="contactBrandName">BRAND*</label>
+                          <select required name="brand" id="contactBrandName">
+                              <option value="">Select Brand</option>
+                              <option value="Jordan" style="font-size:14px; font-family:termina-Regular">Jordan</option>
+                              <option value="Nike" style="font-size:14px; font-family:termina-Regular">Nike</option>
+                              <option value="Adidas" style="font-size:14px; font-family:termina-Regular">Adidas</option>
+                              <option value="New Balance" style="font-size:14px; font-family:termina-Regular">New Balance</option>
+                              <option value="Asics" style="font-size:14px; font-family:termina-Regular">Asics</option>
+                              <option value="Reebok" style="font-size:14px; font-family:termina-Regular">Reebok</option>
+                              <option value="Puma" style="font-size:14px; font-family:termina-Regular">Puma</option>
+                              <option value="Vans" style="font-size:14px; font-family:termina-Regular">Vans</option>
+                              <option value="Tombogo" style="font-size:14px; font-family:termina-Regular">Tombogo</option>
+                              <option value="Converse" style="font-size:14px; font-family:termina-Regular">Converse</option>
+                              <option value="Crocs" style="font-size:14px; font-family:termina-Regular">Crocs</option>
+                              <option value="other" style="font-size:14px; font-family:termina-Regular">Others</option>
+                          </select>
+                      </div>
+                      <div class="info_container">
+                          <label for="contactGender">GENDER*</label>
+                          <select required name="gender" id="contactGender">
+                              <option value="">Select Gender</option>
+                              <option value="male" style="font-size:14px; font-family:termina-Regular">Male</option>
+                              <option value="female" style="font-size:14px; font-family:termina-Regular">Female</option>
+                              <option value="other" style="font-size:14px; font-family:termina-Regular">Unisex</option>
+                          </select>
+                      </div>
+                      <div class="info_container">
+                          <label for="contactOriginal_box">ORIGINAL BOX*</label>
+                          <select required  name="original_box" id="contactOriginal_box">
+                              <option value="">Yes/No</option>
+                              <option value="1" style="font-size:14px; font-family:termina-Regular">Yes</option>
+                              <option value="0" style="font-size:14px; font-family:termina-Regular">No</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="container_one_address one_address_second">
+                      <div class="info_container addr_second_info_one">
+                          <label for="ContactFormSneakerName">SNEAKER NAME*</label>
+                          <input required  class="field__input1" autocomplete="name" type="text" id="ContactFormSneakerName" placeholder="Enter sneaker name" name="sneaker_name" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                      </div>
+                      <div class="info_container addr_second_info_third">
+                          <label for="ContactFormSize">Size*</label>
+                          <input required  class="field__input1" autocomplete="name" type="text" id="ContactFormSize" placeholder="Enter Your Size" name="Size" value="">
+                      </div>
+                      <div class="info_container addr_second_info_two">
+                          <label for="ContactFormStyleCode">STYLE CODE*</label>
+                          <input required  class="field__input1" autocomplete="name" type="text" id="ContactFormStyleCode" placeholder="Enter style code here" name="style_code" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                      </div>
+                  </div>
+                  <fieldset class="info_container condition-filed">
+                      <legend>SNEAKER CONDITION ( SELECT ALL THAT APPLY)</legend>
+                      <div class="info-ckbox-main">
+                          <div class="info-ckbox-inner">
+                              <div class="info-ckbox-input-main">
+                                  <input class="info-ckbox_c" type="checkbox" id="yellowing" name="sneakersCondition" value="Yellowing" >
+                                  <span class="checkmark">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <rect x="1" y="1" width="18" height="18" fill="white" stroke="#0062FF" stroke-width="2" />
+                                          <path d="M2 1.5L18.5 18M18.5 2L2 18.5" stroke="#0062FF" stroke-width="2" stroke-linecap="round" />
+                                      </svg>
+                                  </span>
+                                  <label for="yellowing">Yellowing</label>
+                              </div>
+                              <div class="info-ckbox-input-main">
+                                  <input class="info-ckbox_c" type="checkbox" id="scuffs" name="sneakersCondition" value="Scuffs" >
+                                  <span class="checkmark">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <rect x="1" y="1" width="18" height="18" fill="white" stroke="#0062FF" stroke-width="2" />
+                                          <path d="M2 1.5L18.5 18M18.5 2L2 18.5" stroke="#0062FF" stroke-width="2" stroke-linecap="round" />
+                                      </svg>
+                                  </span>
+                                  <label for="scuffs">Scuffs</label>
+                              </div>
+                              <div class="info-ckbox-input-main">
+                                  <input class="info-ckbox_c" type="checkbox" id="insole" name="sneakersCondition" value="Missing Insole" >
+                                  <span class="checkmark">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <rect x="1" y="1" width="18" height="18" fill="white" stroke="#0062FF" stroke-width="2" />
+                                          <path d="M2 1.5L18.5 18M18.5 2L2 18.5" stroke="#0062FF" stroke-width="2" stroke-linecap="round" />
+                                      </svg>
+                                  </span>
+                                  <label for="insole">Missing Insole</label>
+                              </div>
+                              <div class="info-ckbox-input-main">
+                                  <input class="info-ckbox_c" type="checkbox" id="laces" name="sneakersCondition" value="Replacement Laces" >
+                                  <span class="checkmark">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <rect x="1" y="1" width="18" height="18" fill="white" stroke="#0062FF" stroke-width="2" />
+                                          <path d="M2 1.5L18.5 18M18.5 2L2 18.5" stroke="#0062FF" stroke-width="2" stroke-linecap="round" />
+                                      </svg>
+                                  </span>
+                                  <label for="laces">Replacement Laces</label>
+                              </div>
+                              <div class="info-ckbox-input-main">
+                                  <input class="info-ckbox_c" type="checkbox" id="tears" name="sneakersCondition" value="Tears" >
+                                  <span class="checkmark">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <rect x="1" y="1" width="18" height="18" fill="white" stroke="#0062FF" stroke-width="2" />
+                                          <path d="M2 1.5L18.5 18M18.5 2L2 18.5" stroke="#0062FF" stroke-width="2" stroke-linecap="round" />
+                                      </svg>
+                                  </span>
+                                  <label for="tears">Tears</label>
+                              </div>
+                              <div class="info-ckbox-input-main">
+                                  <input class="info-ckbox_c" type="checkbox" id="unwearable" name="sneakersCondition" value="Unwearable" >
+                                  <span class="checkmark">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <rect x="1" y="1" width="18" height="18" fill="white" stroke="#0062FF" stroke-width="2" />
+                                          <path d="M2 1.5L18.5 18M18.5 2L2 18.5" stroke="#0062FF" stroke-width="2" stroke-linecap="round" />
+                                      </svg>
+                                  </span>
+                                  <label for="unwearable">Unwearable</label>
+                              </div>
+                              <div class="info-ckbox-input-main">
+                                  <input class="info-ckbox_c" type="checkbox" id="smell" name="sneakersCondition" value="Smell" >
+                                  <span class="checkmark">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <rect x="1" y="1" width="18" height="18" fill="white" stroke="#0062FF" stroke-width="2" />
+                                          <path d="M2 1.5L18.5 18M18.5 2L2 18.5" stroke="#0062FF" stroke-width="2" stroke-linecap="round" />
+                                      </svg>
+                                  </span>
+                                  <label for="smell">Smell</label>
+                              </div>
+                              <div class="info-ckbox-input-main">
+                                  <input class="info-ckbox_c" type="checkbox" id="other" name="sneakersCondition" value="Other">
+                                  <span class="checkmark">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <rect x="1" y="1" width="18" height="18" fill="white" stroke="#0062FF" stroke-width="2" />
+                                          <path d="M2 1.5L18.5 18M18.5 2L2 18.5" stroke="#0062FF" stroke-width="2" stroke-linecap="round" />
+                                      </svg>
+                                  </span>
+                                  <label for="other">Other (Fill Below)</label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="errorstate hide">Please select one field</div>
+                  </fieldset>
+                  <div class="info_container">
+                      <label>Additional information*</label>
+                      <textarea required type="text" rows="10" id="ContactForm-body" class="text-area field__input1" placeholder="Enter description of wear and tear — areas in great, average or poor condition and we’ll be in touch with next steps." name="additional_information"></textarea>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="upload_image_block">
+          <div class="info_container shoe-images">
+              <label>
+              Please include the following images below:
+              </label>
+              <p>Please do not hold your shoes while taking pictures. <br>Both shoes should be clearly seen in each picture (except for Shoe Tag).</p>
+          </div>
+          <div class="shoe-images_block">
+              <div class="shoe-image">
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/Sell-with-kyx-1-top_1.png?v=1689570982" width="388px" height="258px"  alt="Shoe Image">
+                  <p>TOP PHOTO</p>
+              </div>
+              <div class="shoe-image">
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/Sell-with-kyx-1-top_2.png?v=1689570982"  width="388px" height="258px" alt="Shoe Image">
+                  <p>BACK PHOTO</p>
+              </div>
+              <div class="shoe-image">
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/Sell-with-kyx-1-top_3.png?v=1689570982"  width="388px" height="258px" alt="Shoe Image">
+                  <p>SOLE PHOTO</p>
+              </div>
+              <div class="shoe-image">
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/Sell-with-kyx-1-top_4.png?v=1689570983"  width="388px" height="258px" alt="Shoe Image">
+                  <p>BOX PHOTO</p>
+              </div>
+              <div class="shoe-image">
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/Sell-with-kyx-1-top_5.png?v=1689570983"  width="388px" height="258px" alt="Shoe Image">
+                  <p>INSOLE</p>
+              </div>
+              <div class="shoe-image">
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/Sell-with-kyx-1-top_6.png?v=1689570983" width="388px" height="258px"  alt="Shoe Image">
+                  <p>INNER SIDE PHOTO</p>
+              </div>
+              <div class="shoe-image">
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/Sell-with-kyx-1-top_7.png?v=1689570983" alt="Shoe Image">
+                  <p>OUTER SIDE PHOTO</p>
+              </div>
+              <div class="shoe-image">
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/shoe-tag.png?v=1690605674" alt="Shoe Image">
+                  <p>SHOE TAG</p>
+              </div>
+          </div>
+          <div class="sneakers_file sneaker-file-uplode">
+              <label>Only JPG,JPEG and HEIC pictures are accepted</label>
+              <label for="avatar" style="display: none;">Choose a profile picture:</label>            
+              <div class="sneakers-file-img" id="drag-and-drop-zone">
+                  <input class="fileupload" type="file" id="avatar" name="avatar" accept=".jpg, .heic, .jpeg" title="Click to add Files" multiple />
+                  <img src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/profile-picture.png?v=1689065112" alt="profile picture">
+              </div>
+              <div id="uploadStatus"></div>
+              <div id="uploadStatusFiles"></div>
+          </div>
+          <div class="parent_div_registration">
+              <div class="parent_container">
+                  <div class="info_container">
+                      <label for="ContactInfo">How did you hear about KYX?*</label>
+                      <select required name="source" id="ContactInfo" >
+                          <option value="">Select Any One</option>
+                          <option value="friend" style="font-size:14px; font-family:termina-Regular">A Friend</option>
+                          <option value="ad" style="font-size:14px; font-family:termina-Regular">An ad</option>
+                          <option value="email" style="font-size:14px; font-family:termina-Regular">Email</option>
+                          <option value="google" style="font-size:14px; font-family:termina-Regular">Google/Search</option>
+                          <option value="Other" style="font-size:14px; font-family:termina-Regular">Other</option>
+                      </select>
+                      <div id="otherField" style="display: none; padding-top: 5px;">
+                          <!-- <label style="letter-spacing: 1.5px; font-size: 9px; color: #9c9191;" for="otherText">Enter Your Massage</label> -->
+                          <textarea id="otherText" name="comment" rows="4" cols="50" class="field__input1" placeholder="Enter Your Message" required></textarea>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="sneakers_file sneaker-file-submit">
+              <div class="contactUsButton">
+                  <button class="btn-sneckers">SUBMIT</button>
+                  <div class="statusMessage"></div>
+              </div>
+          </div>
+      </div>
+      {%- endif -%}
+      {% endform %}
+  </div>
+</section>
+
+<style>
+  #multi_img slider-component{
+   --desktop-margin-left-first-item: max(0rem, calc((100vw - var(--page-width) + -8rem - var(--grid-desktop-horizontal-spacing)) / 2)) !important;
+  }
+  .title_review_image{
+    font-size: 1.6rem!important;
+    font-family: 'termina-Regular';
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-bottom: 2rem;
+  }
+  .kyx_sell_btn button{
+    margin-top: 20px;
+    width: 285px;
+    font-size: 20px;
+    font-family: 'termina-demi';
+    color: #fff;
+    height: 58px;
+    background: #e5337c 0% 0% no-repeat padding-box;
+    border-radius: 29px;
+    border: none;
+    opacity: 1;
+  }
+  .slider--desktop.grid--2-col-desktop .grid__item{
+    width: calc((100% - var(--desktop-margin-left-first-item)) / 2 - var(--grid-desktop-horizontal-spacing) * 2);
+  }
+  .sneakers_file label {
+    margin-bottom: 10px;
+    display: block;
+    font-size: 18px;
+  }
+  .kyx-sneakers .b-red {
+    border: 2px solid red !important;
+  }
+  .hide{
+    display: none;
+  }
+  .show{
+    display: show;
+  }
+  
+  .slider--desktop.grid--4-col-desktop .grid__item .media  {
+    position: relative;
+    padding-bottom: 110%;
+    display: block;        
+  }
+  .slider--desktop.grid--4-col-desktop .grid__item .media img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+    @media screen and (min-width: 990px){
+      .slider--desktop.grid--3-col-desktop .grid__item {
+          width: calc((100% - var(--desktop-margin-left-first-item)) / 3 );
+      }
+      .slider--desktop.grid--4-col-desktop .grid__item{
+        width: calc((100% - var(--desktop-margin-left-first-item)) / 4 );
+      }
+    }
+  .multicolumn-slider .slider--mobile+.slider-buttons{
+      display:flex;
+  }
+  .multicolumn-slider .slider--desktop .slider__slide:first-child{
+      margin-left: 0;
+  }
+  .multicolumn-slider .multicolumn-card__image-wrapper{
+      display:flex;
+      gap: 20px;
+      align-items: center;
+  }
+  .multicolumn-slider .multicolumn-list__item.center .media--adapt, .multicolumn-list__item .media--adapt .multicolumn-card__image{
+    width:10%;
+  }
+  .multicolumn-slider .multicolumn-list__item.center .media--adapt img{
+      border-radius: 100%;
+      width:100%;
+  }
+  .review_name{
+      width:90%;
+      text-align: left;
+      line-height: 14px;
+  }
+  .multicolumn-slider .media>*:not(.zoom):not(.deferred-media__poster-button), .media model-viewer{
+      position: relative;
+  }
+  .multicolumn-slider .multicolumn-card-spacing{
+    padding-top: 1rem;
+  }
+  .reviews__title{
+      font-size: 20px;
+  }
+  .multicolumn-slider .multicolumn-card {
+    padding: 15px;
+  }
+  #multi_img .multicolumn-slider .multicolumn-card{
+    padding: 0px !important;
+  }
+  .multicolumn-slider .multicolumn-card__info.add-siz{
+      margin-top: 10px;
+      text-align:  left;
+  }
+  .multicolumn-slider .multicolumn-card__info.add-siz .rte{
+      font-size: 16px;
+      letter-spacing: normal;
+      padding-bottom: 2rem;
+      color: #3a3a3a;
+      line-height: 1.5;
+  }
+  .multicolumn-slider .title-wrapper-with-link{
+      justify-content: center;
+  }
+  .review__title_small{
+    font-size:16px;
+    color: #000;
+  }
+  .review__title_small_product{
+    font-size:16px;
+    color: #3a3a3a;
+  }
+  @media screen and (max-width: 767px){
+    .multicolumn-slider .multicolumn-list__item.center .media.media--transparent.media--adapt {
+        padding-bottom: 0!important;
+    }
+    .multicolumn-slider .grid--peek.slider--mobile{
+      gap: 20px;
+    }
+    .multicolumn-slider .multicolumn-list__item.center .media--adapt, .multicolumn-list__item .media--adapt .multicolumn-card__image{
+      width:20% ;
+    }
+    .review_name{
+      width:80%;
+      text-align: left;
+      line-height: 20px;
+    }
+    .multicolumn-slider .multicolumn-card__info.add-siz .rte{
+      font-size:15px;
+      padding-bottom: 1rem;
+    }
+    .address_first_container {
+      width: 100%;
+    }
+    .multicoloumn_review{
+      width:100%;
+    }
+    #multicoloumn_review #foryou{
+      font-size: 1.3rem!important;
+      font-family: 'termina-medium';
+    }
+    .reviews__title{
+      font-size: 20px;
+      line-height: 1 !important;
+    }
+    .rte{
+      padding-bottom: 1rem;
+    }
+  }
+  @media screen and (max-width: 480px){
+    .slider--tablet.grid--peek.grid--1-col-tablet-down .grid__item, .slider--mobile.grid--peek.grid--1-col-tablet-down .grid__item, .grid--peek .grid__item{
+       width: 100%;
+    }
+  }
+</style>
+{% comment %}
+{{ 'image-uploader.min.js' | asset_url | script_tag }}
+{% endcomment %}
+
+<script>
+    let previousFile = [];
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+        .replace(/[xy]/g, function (c) {
+            const r = Math.random() * 16 | 0, 
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+    const random_uuid = uuidv4();
+    
+    var promises = [];
+    var fileInput = document.getElementById("avatar");
+    let bufferFile = 0;
+    var uploadedFileNames = new Set();
+    console.log('uploadedFileNames====',uploadedFileNames);
+
+    fileInput.addEventListener('change', function(event) {
+      // check image in jpg,jpeg and heic form 
+      var uploadStatusDiv = document.getElementById("uploadStatus");
+      if (fileInput.files.length > 0) {
+        var file = fileInput.files[0];
+        var fileName = file.name.toLowerCase();
+        if (!fileName.endsWith('.jpg') && !fileName.endsWith('.heic') && !fileName.endsWith('.jpeg')) {
+          uploadStatusDiv.innerHTML = "Only JPG,JPEG and HEIC files are allowed for upload.";
+          $('#uploadStatus').addClass('error')
+          return;
+        } 
+      }
+      event.preventDefault();
+        //console.log('hioii')
+      
+    // same image not upload
+      var uploadStatusDiv = document.getElementById("uploadStatus");
+      var files = fileInput.files;
+      for (var i = 0; i < files.length; i++) {
+        if(!previousFile.includes(files[i].name)) {
+          previousFile.push(files[i].name);
+          $('#uploadStatus').removeClass('error').removeClass('success');
+          $('#uploadStatus').html('');
+        } else {
+          uploadStatusDiv.innerHTML = "Same images cannot be uploaded, please upload a different image", files[i].name;
+          $('#uploadStatus').addClass('error');
+          return;
+        }
+      }
+      uploadFiles();
+
+    });
+    fileInput.addEventListener('click', () => {
+      fileInput.value = null;
+    });
+    
+    Array.prototype.remove = function() {
+      var what, a = arguments, L = a.length, ax;
+      while (L && this.length) {
+          what = a[--L];
+          while ((ax = this.indexOf(what)) !== -1) {
+              this.splice(ax, 1);
+          }
+      }
+      return this;
+  };
+    $('body').on('click', '.file__value--remove', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        var fileName = $(this).attr('data-id');
+        $(this).addClass('spinner-loading').html(`<div class="loading-overlay__spinner"><svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div>`);
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        
+        var raw = JSON.stringify({
+          "file_name": fileName,
+          "lead_id": random_uuid
+        });
+        
+        var requestOptions = {
+          method: 'DELETE',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        fetch("https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/sell-sneaker/url/image", requestOptions)
+          .then(response => response.json())
+          .then(function (result) {
+            //console.log('remove result ========>', result);
+            if(result.statusCode == 200) {
+              $this.closest('.file__value').remove();
+              previousFile.remove(fileName);
+              if(bufferFile > 0) {
+                bufferFile = bufferFile - 1;
+              }
+              
+            }
+          })
+          .catch(error => console.log('error', error));
+        
+    });
+    function uploadFiles() {
+        var files = fileInput.files;
+        //console.log('files===',files);
+        bufferFile = files.length + bufferFile;
+        console.log('bufferFile===',bufferFile);
+        //console.log('on change bufferFile=========>', bufferFile);
+        var uploadStatusDiv = document.getElementById("uploadStatus");
+        
+        // Check if any files were selected
+        if (files.length === 0) {
+            uploadStatusDiv.innerHTML = "Same images cannot be uploaded, please upload a different image.";
+            $('#uploadStatus').addClass('error')
+            return;
+        }
+        
+
+      // var minFiles = 5;
+      // var maxFiles = 8;
+      // if (files.length < minFiles || files.length > maxFiles) {
+      //   uploadStatusDiv.innerHTML = "Please select between " + minFiles + " and " + maxFiles + " files.";
+      //   $('#uploadStatus').addClass('error');
+      //   return;
+      // }
+
+
+        // An array to store the promises for file reading and uploading
+        var promises = [];
+        
+        // Function to read each file and return a promise
+        function readFileAsDataURL(file, i) {
+            return new Promise(function(resolve, reject) {
+                var reader = new FileReader();
+                //console.log('reader===',reader);
+                reader.onloadend = function(event) {
+                    resolve({
+                        name: file.name,
+                        dataURL: event.target.result,
+                        result: reader.result
+                    });
+                };
+
+                reader.onerror = function(event) {
+                    reject(event.target.error);
+                };
+                // reader.readAsDataURL(file);
+                reader.readAsArrayBuffer(file);
+            });
+        }
+
+        // Loop through the selected files, read them as data URLs, and store the promises
+        for (var i = 0; i < files.length; i++) {
+            promises.push(readFileAsDataURL(files[i], i));  
+          
+        }
+    
+        // After all files are read, initiate the upload process
+        Promise.all(promises)
+            .then(function(fileDataArray) {
+                // Perform AJAX upload for each file
+                console.log('fileDataArray===',fileDataArray);
+                fileDataArray.forEach(async (fileData) => {
+                    await uploadFile(fileData);
+                });
+            })
+            
+            .catch(function(error) {
+                uploadStatusDiv.innerHTML = "Error reading files: " + error;
+            });
+    }
+    
+    async function uploadFile(fileData) {
+        
+        // Perform AJAX request to upload the file
+        var myHeaders = new Headers();
+        
+        myHeaders.append("x-api-key", "rcXrhS4T4j8TTVwF3exfd3YeZRFBPhya89FS1gTW");
+        myHeaders.append("Content-Type", "application/json");
+
+        var modifiedFileName = fileData.name.trim().replace(/\s+/g, "").replace(/_/g, '-').replace(/&/g, '-').replace(/'/g, '').replace(/[,\s]+/g, '');
+        var modifiedLeadId = random_uuid.trim().replace(/\s+/g, '-');
+        console.log('modifiedFileName ===', modifiedFileName);
+
+        var raw = JSON.stringify({
+            "file_name": modifiedFileName,
+            "lead_id": modifiedLeadId
+        });
+       
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+        
+        await fetch("https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/sell-sneaker/url", requestOptions)
+        .then(response => response.json())
+        .then(function (result) {
+            console.log('result================>',result);
+            if(result.statusCode == 200) {
+                $('.uploading').remove();
+                $('#uploadStatus').removeClass('error').addClass('success');
+                $('#uploadStatus').html('Files upload successfully')
+                $('#uploadStatusFiles').append("<div class='file__value'><div class='file__value--text'>" + fileData.name + "</div><div class='file__value--remove' data-id='" + fileData.name + "' ></div></div>");
+                var url = result.url;
+                var myHeaders = new Headers();
+                    myHeaders.append("x-api-key", "rcXrhS4T4j8TTVwF3exfd3YeZRFBPhya89FS1gTW");
+                    myHeaders.append("Content-Type", "image/png");
+
+                    var file = fileData.dataURL;
+                    
+                    var requestOptionsUpload = {
+                        method: 'PUT',
+                        headers: myHeaders,
+                        body: file,
+                        redirect: 'follow'
+                    };
+
+                    setTimeout(function() {
+                      $('#uploadStatus').removeClass('error').removeClass('success');
+                      $('#uploadStatus').html('');
+
+                    }, 1000);
+                    fetch(url, requestOptionsUpload)
+                    .then(response => response.json())
+                    .then(function (data) {
+                        
+                        //console.log('data=======>', data);
+                    })
+                    .catch((error) => {
+                      console.log('error', error);
+                      /* $('#uploadStatus').html("Same images cannot be uploaded, please upload a different image", fileData.name);
+                      $('#uploadStatus').addClass('error')
+                      return;*/
+                    });
+            }
+        })
+        .catch(function(error) {
+         console.log('error', error);
+         uploadStatusDiv.innerHTML = "Same images cannot be uploaded, please upload a different image", fileData.name;
+          $('#uploadStatus').addClass('error')
+          return;
+        });
+    }
+    
+    $('#ContactInfo').on('change', function() {
+      if ($(this).val() === 'Other') {
+        $('#otherField').show();
+      } else {
+        $('#otherField').hide();
+      }
+    });
+    
+    $('.btn-sneckers').on('click', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        
+        var firstName = $('#ContactForm-name').val();
+        var lastName = $('#ContactForm-lastname').val();
+        var email = $('#ContactForm-email').val();
+        var brand = $('#contactBrandName').val();
+        var gender = $('#contactGender').val();
+        var original_box = $('#contactOriginal_box').val();
+        var sneaker_name = $('#ContactFormSneakerName').val();
+        var shoe_size = $('#ContactFormSize').val();
+        var source = $('#ContactInfo').val();
+        var comment = $('#otherText').val();
+
+        var arr = [];
+        $.each($(".info-ckbox_c:checked"), function() {
+            arr.push($(this).val());
+        });
+    
+        var sneaker_condition = arr.join(',');
+        var style_code = $('#ContactFormStyleCode').val();
+        var additional_information = $('#ContactForm-body').val();
+        var image_location = '';
+    
+        var myHeaders = new Headers();
+        myHeaders.append("x-api-key", "rcXrhS4T4j8TTVwF3exfd3YeZRFBPhya89FS1gTW");
+        myHeaders.append("Content-Type", "text/plain");
+
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        var validateEmail = email.match(validRegex);
+
+        if (firstName == '') {
+            $('#ContactForm-name').addClass('b-red');
+            var aTag = $('#ContactForm-name');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+            $('#ContactForm-name').removeClass('b-red');
+        }
+    
+        if (lastName == '') {
+            $('#ContactForm-lastname').addClass('b-red');
+            var aTag = $('#ContactForm-lastname');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+            $('#ContactForm-lastname').removeClass('b-red');
+        }
+    
+        if (email == '' && validateEmail == null) {
+            $('#ContactForm-email').addClass('b-red');
+            var aTag = $('#ContactForm-email');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else if (email.match(validRegex)) {
+            $('#ContactForm-email').removeClass('b-red');
+        } else {
+            $('#ContactForm-email').addClass('b-red');
+            return false;
+        }
+    
+        if (brand == '') {
+            $('#contactBrandName').addClass('b-red');
+            var aTag = $('#contactBrandName');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+            $('#contactBrandName').removeClass('b-red');
+        }
+    
+        
+
+        if (gender == '') {
+            $('#contactGender').addClass('b-red');
+            var aTag = $('#contactGender');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+            $('#contactGender').removeClass('b-red');
+        }
+    
+        if (original_box == '') {
+            $('#contactOriginal_box').addClass('b-red');
+            var aTag = $('#contactOriginal_box');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+            $('#contactOriginal_box').removeClass('b-red');
+        }
+    
+        if (sneaker_name == '') {
+            $('#ContactFormSneakerName').addClass('b-red');
+            var aTag = $('#ContactFormSneakerName');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+            $('#ContactFormSneakerName').removeClass('b-red');
+        }
+
+        if (shoe_size == '') {
+          $('#ContactFormSize').addClass('b-red');
+          var aTag = $('#ContactFormSize');
+          $('html,body').animate({
+              scrollTop: aTag.offset().top - 150
+          }, 'slow');
+          return false;
+        } else {
+            $('#ContactFormSize').removeClass('b-red');
+        }
+
+        /* if(sneaker_condition.length == 0) {
+            $('.errorstate').removeClass('hide');
+            var aTag = $('.info-ckbox-main');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+          $('.errorstate').addClass('hide');
+        }*/
+        if (style_code == '') {
+            $('#ContactFormStyleCode').addClass('b-red');
+            var aTag = $('#ContactFormStyleCode');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+            $('#ContactFormStyleCode').removeClass('b-red');
+        }
+      
+        if (additional_information == '') {
+            $('#ContactForm-body').addClass('b-red');
+            var aTag = $('#ContactForm-body');
+            $('html,body').animate({
+                scrollTop: aTag.offset().top - 150
+            }, 'slow');
+            return false;
+        } else {
+            $('#ContactForm-body').removeClass('b-red');
+        } 
+        
+        if (bufferFile < 5 || bufferFile > 8 ) {
+          $('html,body').animate({
+              scrollTop: $('.sneaker-file-uplode').offset().top - 150
+          }, 'slow');
+          if(bufferFile == 0) {
+            $('#uploadStatus').html(`Please upload minimum 5 images.`);  
+          } else if(bufferFile > 8) {
+            $('#uploadStatus').html(`You cannot upload more than 8 images.`);  
+          } else {
+            $('#uploadStatus').html(`You have uploaded ${bufferFile} images. Please upload ${8 - bufferFile} more images.`);  
+          }
+          
+          $('#uploadStatus').addClass('error');
+          return false;
+        } else {
+          $('#uploadStatus').remove();
+        }
+
+        // souce filed code
+
+        if (source == '') {
+          $('#ContactInfo').addClass('b-red');
+          $('#otherText').addClass('b-red');
+          var aTag = $('#ContactInfo');
+          $('html,body').animate({
+              scrollTop: aTag.offset().top - 150
+          }, 'slow');
+          return false;
+        } 
+        else {
+            $('#ContactInfo').removeClass('b-red');
+        }
+
+      if( source == 'Other'){
+        if (comment == '') {
+          $('#otherText').addClass('b-red');
+          return false;
+        } else {
+          $('#otherText').removeClass('b-red');
+        }
+      }
+                          
+        if(comment != ''){
+          var raw = {
+              "lead_id": random_uuid,
+              "first_name": firstName,
+              "last_name": lastName,
+              "email": email,
+              "sneaker_name": sneaker_name,
+              "style_code": style_code,
+              "brand": brand,
+              "original_box": original_box,
+              "gender": gender,
+              "sneaker_condition": sneaker_condition,
+              "shoe_size": shoe_size,
+              "additional_information": additional_information,
+              "source":source,
+              "comment": comment,
+          }
+        }
+        else{
+          var raw = {
+            "lead_id": random_uuid,
+            "first_name": firstName,
+            "last_name": lastName,
+            "email": email,
+            "sneaker_name": sneaker_name,
+            "style_code": style_code,
+            "brand": brand,
+            "original_box": original_box,
+            "gender": gender,
+            "sneaker_condition": sneaker_condition,
+            "shoe_size": shoe_size,
+            "additional_information": additional_information,
+            "source":source,
+          }
+        }
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(raw),
+            redirect: 'follow'
+        };
+        console.log('raw----',raw);
+        $(this).addClass('spinner-loading').html(`<div class="loading-overlay__spinner"><svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg></div>`);
+        fetch("https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/sell-sneaker", requestOptions)
+        .then(response => response.text())
+        .then(function (data) {
+            var dataJSON = JSON.parse(data);
+            if(dataJSON.code == 200) {
+              $this.removeClass('.spinner-loading').html('Submit');
+              $('.statusMessage').addClass('active').html('Thank you!  We will reach out soon with our offer!');
+              setTimeout(function() {
+                $('.statusMessage').removeClass('active').html('');
+                window.location.reload()
+              }, 2000);
+            }
+            
+        })
+        .catch(error => console.log('error', error));
+    
+    
+    })
+
+    // Assuming you have an array to store uploaded file names
+   function validateFileType(){
+        var fileName = document.getElementById("fileName").value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+        if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+            //TO DO
+        }else{
+            alert("Only jpg/jpeg and png files are allowed!");
+        }   
+    } 
+    
+    $("#sell_btn").on("click", function() {
+      $('html, body').animate({
+        scrollTop: $("#from_block").offset().top-70
+      }, 1000); 
+    });
+</script>
+{% schema %}
+  {
+    "name": "Page Kyx Sneakers",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "image_picker",
+        "id": "sm_image",
+        "label": "Mobile Image"
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }, {
+        "type": "textarea",
+        "id": "sub_title",
+        "label": "Desc"
+      },
+      {
+        "type": "header",
+        "content": "Review Silder"
+      },
+      {
+        "type": "text",
+        "id": "title_review",
+        "default": "Multicolumn",
+        "label": "t:sections.multicolumn.settings.title.label"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          }
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+      },
+      {
+        "type": "select",
+        "id": "image_width",
+        "options": [
+          {
+            "value": "third",
+            "label": "t:sections.multicolumn.settings.image_width.options__1.label"
+          },
+          {
+            "value": "half",
+            "label": "t:sections.multicolumn.settings.image_width.options__2.label"
+          },
+          {
+            "value": "full",
+            "label": "t:sections.multicolumn.settings.image_width.options__3.label"
+          }
+        ],
+        "default": "full",
+        "label": "t:sections.multicolumn.settings.image_width.label"
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "t:sections.multicolumn.settings.image_ratio.options__1.label"
+          },
+          {
+            "value": "portrait",
+            "label": "t:sections.multicolumn.settings.image_ratio.options__2.label"
+          },
+          {
+            "value": "square",
+            "label": "t:sections.multicolumn.settings.image_ratio.options__3.label"
+          },
+          {
+            "value": "circle",
+            "label": "t:sections.multicolumn.settings.image_ratio.options__4.label"
+          }
+        ],
+        "default": "adapt",
+        "label": "t:sections.multicolumn.settings.image_ratio.label"
+      },
+      {
+        "type": "range",
+        "id": "columns_desktop",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 3,
+        "label": "t:sections.multicolumn.settings.columns_desktop.label"
+      },
+      {
+        "type": "select",
+        "id": "column_alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "t:sections.multicolumn.settings.column_alignment.options__1.label"
+          },
+          {
+            "value": "center",
+            "label": "t:sections.multicolumn.settings.column_alignment.options__2.label"
+          }
+        ],
+        "default": "left",
+        "label": "t:sections.multicolumn.settings.column_alignment.label"
+      },
+      {
+        "type": "select",
+        "id": "background_style",
+        "options": [
+          {
+            "value": "none",
+            "label": "t:sections.multicolumn.settings.background_style.options__1.label"
+          },
+          {
+            "value": "primary",
+            "label": "t:sections.multicolumn.settings.background_style.options__2.label"
+          }
+        ],
+        "default": "primary",
+        "label": "t:sections.multicolumn.settings.background_style.label"
+      },
+     
+      {
+        "type": "select",
+        "id": "color_scheme",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:sections.all.colors.accent_1.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:sections.all.colors.accent_2.label"
+          },
+          {
+            "value": "background-1",
+            "label": "t:sections.all.colors.background_1.label"
+          },
+          {
+            "value": "background-2",
+            "label": "t:sections.all.colors.background_2.label"
+          },
+          {
+            "value": "inverse",
+            "label": "t:sections.all.colors.inverse.label"
+          }
+        ],
+        "default": "background-1",
+        "label": "t:sections.all.colors.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.multicolumn.settings.header_mobile.content"
+      },
+      {
+        "type": "select",
+        "id": "columns_mobile",
+        "options": [
+          {
+            "value": "1",
+            "label": "t:sections.multicolumn.settings.columns_mobile.options__1.label"
+          },
+          {
+            "value": "2",
+            "label": "t:sections.multicolumn.settings.columns_mobile.options__2.label"
+          }
+        ],
+        "default": "1",
+        "label": "t:sections.multicolumn.settings.columns_mobile.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "swipe_on_mobile",
+        "default": false,
+        "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "t:sections.multicolumn.blocks.column.name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "default": "Column",
+            "label": "Name"
+          },
+          {
+            "type": "text",
+            "id": "sub_title",
+            "label":"Sub Title"
+          },
+          {
+            "type": "text",
+            "id": "product_title",
+            "label":"Product Name"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "label": "Review"
+          }
+        ]
+      },
+      {
+        "type": "Image",
+        "name": "Review Image",
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"review_image",
+            "label":"Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Page Kyx Sneakers",
+        "blocks": [
+          {
+            "type": "column"
+          },
+          {
+            "type": "Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

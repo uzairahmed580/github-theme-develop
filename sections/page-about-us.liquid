@@ -1,0 +1,225 @@
+<div class="kyx-about-us-main">
+  <div class="kyx-about-us-banner">
+    {% liquid
+            assign desktopImg = section.settings.image
+            assign mobileImg = section.settings.image
+            if section.settings.sm_image != blank
+                assign mobileImg = section.settings.sm_image
+            endif
+          %}
+    {% if section.settings.image != blank %}
+      <img
+        class="md-visible merox-lazy"
+        data-src="{{ desktopImg | img_url: 'master' }}"
+        src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/about-banner-main-banner-desktop.jpg?v=1691127797"
+        alt="{{ section.settings.title | escape }}"
+        width="1920px"
+        height="476px">
+    {% endif %}
+    <img
+      class="md-hidden merox-lazy"
+      data-src="{{ mobileImg | img_url: 'master' }}"
+      src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/about-banner-main-banner-mobile.jpg?v=1691128496"
+      alt="{{ section.settings.title | escape }}"
+      width="375px"
+      height="263px">
+  </div>
+  <div class="kyx-about-us-heading ">
+    <div class="page-width">
+      <div class="kyx-about-us-title">
+        {% if section.settings.title != blank %}
+          <h2>{{ section.settings.title | escape }}</h2>
+        {% else %}
+          <h2>{{ page.title | escape }}</h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="banner_about">
+    <img
+      data-src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/KYX_Team_Photo_da0f7f41-9c82-4a31-a8e4-86e03793986a.heic?v=1703592768"
+      src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/about-banner-placeholder.jpg?v=1691127623"
+      alt="Team Banner"
+      class="merox-lazy" />
+  </div>
+  <div class="kyx-about-us-content page-width">
+
+    {{ page.content }}
+  </div>
+</div>
+<style>
+  @media screen and (min-width: 992px) {
+    .banner_about {
+      ;
+      /*       margin-bottom: 30px; */
+    }
+    .banner_about img {
+      margin-bottom: 30px;
+      /*height: 500px; */
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+  .banner_about img {
+    max-width: 100%;
+    display: block;
+  }
+</style>
+{% schema %}
+  {
+    "name": "Page About Us",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }, {
+        "type": "image_picker",
+        "id": "sm_image",
+        "label": "Mobile Image"
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Page About Us"
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  .kyx-about-us-main {
+    background: #fff;
+    padding-bottom: 30px;
+  }
+  .kyx-about-us-banner {
+    background: #fff;
+  }
+  img .md-hidden {
+    display: none;
+  }
+  .md-visible {
+    display: block;
+  }
+  .fullLengthText {
+    font-family: 'Inter';
+  }
+  .kyx-about-us-des {
+    width: 100%;
+    max-width: 800px;
+  }
+  .kyx-about-us-banner img {
+    width: 100%;
+    height: auto;
+    /*       display: block; */
+  }
+  .kyx-about-us-content > * {
+    margin-top: 0;
+  }
+  .fullLengthText p:last-child,
+  .fullLengthText {
+    margin-bottom: 0;
+  }
+  .kyx-about-us-heading {
+    background-color: #fff;
+    {% comment %}
+      padding-bottom: 5rem;
+    {% endcomment %}
+  }
+  .kyx-about-us-title h2 {
+    font-family: Termina;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 65px;
+    text-align: center;
+    color: #0062ff;
+    padding: 2rem 0;
+  }
+  .kyx-about-us-des {
+    margin: 0 auto;
+    {% comment %}
+      padding: 0 15px;
+    {% endcomment %}
+  }
+  .kyx-about-us-des p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 161%;
+    color: #0062ff;
+    width: fit-content;
+    margin: auto;
+    display: block;
+    text-align: left;
+  }
+  .kyx-about-us-content {
+    margin: 0 auto;
+    {% comment %}
+      padding: 50px 15px 70px;
+    {% endcomment %}
+    width: 100%;
+    max-width: 900px;
+    padding-top: 50px;
+  }
+
+  /*  responsive  */
+  @media(max-width:768px) {
+    .kyx-about-us-heading {
+      padding-bottom: 4rem;
+    }
+    .kyx-about-us-title h2 {
+      font-size: 55px;
+      padding: 3rem 0 1rem;
+    }
+    .kyx-about-us-content {
+      {% comment %}
+        padding: 51px 15px;
+      {% endcomment %}
+    }
+    .kyx-about-us-content {
+      padding-top: 40px;
+    }
+    .fullLengthText p {
+      font-size: 14px;
+    }
+  }
+  @media only screen and (max-width: 990px) {
+    .md-hidden {
+      display: block;
+    }
+    .md-visible {
+      display: none;
+    }
+  }
+
+  @media(max-width: 568px) {
+    .kyx-about-us-title h2 {
+      font-size: 41px;
+    }
+    .kyx-about-us-heading {
+      padding-bottom: 3rem;
+    }
+    .kyx-about-us-des p {
+      font-size: 14px;
+    }
+  }
+  @media(max-width: 452px) {
+    .kyx-about-us-title h2 {
+      font-size: 35px;
+      padding: 2rem 0 1rem;
+    }
+    .kyx-about-us-heading {
+      padding-bottom: 2rem;
+    }
+    .fullLengthText p img {
+      width: 80px;
+      height: auto;
+    }
+  }
+</style>

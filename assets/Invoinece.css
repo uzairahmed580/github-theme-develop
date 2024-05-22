@@ -1,0 +1,232 @@
+body {
+   font-family: 'termina-demi';
+}
+
+.heading {
+  font-size: 4rem;
+}
+table,tr,th{
+  border:0px;
+}
+.size {
+  height: 4rem;
+}
+
+#invoinceBody {
+/*   width: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen {
+  div.divFooter {
+    width: 100%;
+    border-top: 2px solid black;
+    margin-top: 2rem;
+  }
+}
+
+div.icons {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+    padding-top: 2%;
+    align-items: center;
+}
+
+@media print {
+  div.divFooter {
+    width: 100%;
+    border-top: 5px solid black;
+    position: fixed;
+    bottom: 0;
+  }
+
+  div.icons {
+    display: none;
+  }
+
+  #invoinceBody{
+    width:733px
+  }
+
+  #invoinceBody {
+    width:733px
+  }
+}
+
+.invoince_container_one {
+  width: 90%;
+  border: 3px blue solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invoince_container_two {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.address_div {
+  width: 90%;
+  height: max-content;
+  line-height: 0.5rem;
+}
+
+.address_div h3 {
+  color: #000000;
+   font-family: 'termina-demi';
+}
+
+.address_div p {
+  color: #000000;
+   font-family: 'termina-demi';
+  font-size: 0.8rem;
+}
+
+.orderId {
+  height: auto;
+  width: 90%;
+  background-color: lightgray;
+  margin-bottom: 0.3rem;
+}
+
+.orderDetails {
+  height: auto;
+  width: 90%;
+  display: flex;
+  border: 2px solid lightgrey;
+}
+
+.orderId h3 {
+  margin: 0.3rem;
+}
+
+.part1 {
+  width: 30%;
+  border-right: 2px solid lightgray;
+}
+
+.part1 h5 {
+  margin: 0.3rem;
+}
+
+.part1 p {
+  margin: 0.3rem;
+  font-size: 0.8rem;
+   font-family: 'termina-demi';
+}
+
+.part2 {
+  width: 70%;
+   font-family: 'termina-demi';
+}
+
+.part3 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.insideContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.insideContainer_one p {
+  margin: 0rem;
+}
+
+.insideContainer_one {
+  display: flex;
+  width: 100%;
+}
+
+.insideContainer_two {
+}
+
+.part3 p {
+  margin: 0rem;
+}
+
+.part4 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid lightgray;
+  font-size: 0.8rem;
+}
+
+.part5 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.part5 p {
+  margin: 0rem;
+}
+
+.accountSection {
+  display: flex;
+  width: 100%;
+  align-items: end;
+  justify-content: end;
+  flex-direction: column;
+}
+
+.responsiveInvioce {
+  display: flex;
+  width: 50%;
+}
+
+@media (max-width: 800px) {
+  .responsiveInvioce {
+    width: 100%;
+  }
+
+  .accountSection {
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .part1 {
+    width: auto;
+  }
+}
+
+@media (max-width: 477px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .size {
+    height: 1rem;
+  }
+  #invoinceBody {
+    width: auto;
+    padding: 0 !important;
+  }
+}
+@media (max-width: 1000px) {
+  #invoinceBody {
+    width: auto;
+
+  }
+  .heading {
+    font-size: 2rem;
+  }
+
+  .size {
+    height: 3rem;
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "06a2a226-07ec-41fa-af4b-9d9e0f2c5088": {
+          "type": "link_list",
+          "settings": {
+            "heading": "",
+            "menu": "footer"
+          }
+        },
+        "1230f92e-bc9c-46ba-8290-6c7ad7e42bbe": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "about-menu"
+          }
+        },
+        "d9b5499c-18db-4ca0-b9f5-0676e13d8963": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "pages-menu"
+          }
+        },
+        "1389e442-e155-47e2-838b-75ae5748732a": {
+          "type": "social_icon",
+          "settings": {
+            "show_social": true,
+            "shop_name": true,
+            "copy_rights": "All Rights Reserved"
+          }
+        },
+        "2f18cdc9-9128-459b-914e-db686e0a48cc": {
+          "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/form-embed-block\/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "RqRY65"
+          }
+        },
+        "518ee502-3b61-4892-9721-136545f5de58": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_title": "Join Our newsletter",
+            "newsletter_form": true
+          }
+        }
+      },
+      "block_order": [
+        "06a2a226-07ec-41fa-af4b-9d9e0f2c5088",
+        "1230f92e-bc9c-46ba-8290-6c7ad7e42bbe",
+        "d9b5499c-18db-4ca0-b9f5-0676e13d8963",
+        "1389e442-e155-47e2-838b-75ae5748732a",
+        "2f18cdc9-9128-459b-914e-db686e0a48cc",
+        "518ee502-3b61-4892-9721-136545f5de58"
+      ],
+      "custom_css": [
+        ".newsletter-form {flex-direction: row;}"
+      ],
+      "settings": {
+        "color_scheme": "inverse",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "914bc6c0-2846-4296-b677-9f1be7f43b34": {
+      "type": "blog-slider",
+      "blocks": {
+        "9381ea6f-2622-4c0e-b6b9-47a6f6f3dea7": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Web_1920_10.png",
+            "sm_image": "shopify:\/\/shop_images\/Web_1920_10.png",
+            "blog_tag_text": "STYLE",
+            "blog_text": "3 Reasons Buying Used Sneakers is Better than Buying New",
+            "button_label": "View Article",
+            "button_url": "shopify:\/\/blogs\/news\/3-reasons-buying-used-sneakers-is-better-than-buying-new"
+          }
+        },
+        "32436b47-c52b-4f90-af50-3529c37dc151": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Web_1920_1.png",
+            "sm_image": "shopify:\/\/shop_images\/Web_1920_1.png",
+            "blog_tag_text": "SUSTAINABILITY",
+            "blog_text": "The Definitive Guide to the Jordan 1's History",
+            "button_label": "View Article",
+            "button_url": "shopify:\/\/blogs\/news\/the-definitive-guide-to-the-jordan-1s-history"
+          }
+        },
+        "6a251a47-ccf7-4f48-b5d8-59fc2205a544": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Web_1920_7.png",
+            "sm_image": "shopify:\/\/shop_images\/Web_1920_7.png",
+            "blog_tag_text": "SUSTAINABILITY",
+            "blog_text": "The Composition of Sneakers: Exploring the Science Behind",
+            "button_label": "View Article",
+            "button_url": "shopify:\/\/blogs\/news\/the-composition-of-sneakers-exploring-the-science-behind-sneaker-manufacturing"
+          }
+        }
+      },
+      "block_order": [
+        "9381ea6f-2622-4c0e-b6b9-47a6f6f3dea7",
+        "32436b47-c52b-4f90-af50-3529c37dc151",
+        "6a251a47-ccf7-4f48-b5d8-59fc2205a544"
+      ],
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "layout": "grid",
+        "show_image": true,
+        "image_height": "medium",
+        "show_date": true,
+        "show_author": false,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "menu": ""
+      }
+    }
+  },
+  "order": [
+    "914bc6c0-2846-4296-b677-9f1be7f43b34",
+    "main"
+  ]
+}

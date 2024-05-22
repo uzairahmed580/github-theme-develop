@@ -1,0 +1,315 @@
+{{ 'custom-product-grid.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rte.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .flexBox {
+    display: flex;
+  }
+  .rating_bg_c {
+    background: #fff !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: auto !important;
+    right: 0 !important;
+    width: 100px !important;
+    height: 85px !important;
+    border-radius: 0 12px 0 0 !important;
+    color: #fff;
+  }
+  .media {
+    position: unset !important;
+  }
+  .ShoeImgSizeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "termina-medium";
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #8d8d8d;
+    background-color: #fff;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding-bottom: 0.5rem;
+    position: absolute;
+    bottom: -35px;
+  }
+  .collection .card__inner {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  }
+  .shoeName {
+    font-family: 'Inter';
+    font-size: 1rem;
+    font-weight: 600;
+    color: #3a3a3a;
+    width: 100%;
+    text-align: center;
+    height: 3.5rem !important;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+  .shoeName a {
+    color: #3A3A3A;
+  }
+  #ForYouSection {
+    /*padding-bottom: 50px; */
+    padding-bottom: 35px; 
+  }
+  @media screen and (max-width: 767px) {
+    .ShoeImgSizeContainer {
+      padding: 7px !important;
+      bottom: -33px !important;
+      font-size: 11px !important;
+    }
+    .shoeName {
+      height: 42px !important;
+      overflow: hidden !important;
+      margin-top: 42px !important;
+      font-size: 0.9rem !important;
+    }
+    .priceContainer {
+      padding-top: 4px;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .shoeName {
+      height: auto !important;
+    }
+  }
+</style>
+<script>
+  $(document).ready(function() {
+    $.ajax({
+
+      url: 'https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/product_views',
+      method: "GET",
+      crossDomain: true,
+      contentType: "application/json",
+      beforeSend: function() {
+        $("#loading-image").show();
+      },
+      success: function(response) {
+        $("#loading-image").hide();
+
+// console.log(response);
+
+        let count = 0;
+        for (var data in response) {
+          for (let innerKey in response[data]) {
+            if (count == 0) {
+
+              var rating = response[data][innerKey]['kyxrating'];
+              if (rating == '9') {
+                rating = '9.0';
+              }
+              if (rating == '8') {
+                rating = '8.0';
+              }
+              if (rating == '7') {
+                rating = '7.0';
+              }
+              if (rating == '6') {
+                rating = '6.0';
+              }
+              if (rating == '5') {
+                rating = '5.0';
+              }
+              if (rating == '4') {
+                rating = '4.0';
+              }
+              if (rating == '3') {
+                rating = '3.0';
+              }
+
+              var image = response[data][innerKey]['product_image'];
+              var Imgclass = 'motion-reduce merox-lazy'
+              if (image == '') {
+                image = 'https://cdn.shopify.com/s/files/1/0720/7819/7049/t/8/assets/placeholder.png?v=125816514545718613741685775323';
+                Imgclass = 'placeholder-img ';
+              } else {
+                image = `//cdn.shopify.com/s/files/1/0720/7819/7049/${
+                  response[data][innerKey]['product_image']
+                }`
+              }
+              let html = `
+     <li id="Slide-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-1" class="grid__item">
+            
+
+<link href="//cdn.shopify.com/s/files/1/0720/7819/7049/t/30/assets/component-rating.css?v=24573085263941240431682772465" rel="stylesheet" type="text/css" media="all">
+
+<div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div class="
+        card
+        card--card
+         card--media
+         
+        
+        
+        
+      " style="--ratio-percent: 100.0%;">
+      
+      <div class="card__inner gradient ratio" style="--ratio-percent: 100.0%;">
+      <a href="/products/${
+                response[data][innerKey]['handle']
+              }"  class="mk">
+      <div class="card__media">
+            <div class="media media--transparent media--hover-effect">
+              
+              <img srcset="" data-src="${image}" src="https://cdn.shopify.com/s/files/1/0720/7819/7049/files/placeholder.jpg?v=1691044815" alt="${
+                response[data][innerKey]['product_name']
+              }" class="${Imgclass}merox-lazy" loading="lazy" width="700" height="700">
+              <div class="rating_bg_c">0</div>
+              <div class="KYX_rating">
+                 <div class="KYXname">KYX</div>
+                 <div class="KYXrating">${
+                rating
+              }</div>
+              </div>
+                
+            </div>
+          </div>
+          </a>
+          <div class="ShoeImgSizeContainer">SIZE ${
+                response[data][innerKey]['product_size']
+              }</div>
+          
+<div class="card__content hidden">
+          <div class="card__information">
+            <h3 class="card__heading">
+              <a href="/products/${
+                response[data][innerKey]['handle']
+              } " id="StandardCardNoMediaLink-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273" class="full-unstyled-link" aria-labelledby="StandardCardNoMediaLink-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273 NoMediaStandardBadge-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273">
+              ${
+                response[data][innerKey]['product_name']
+              } 
+              </a>
+            </h3>
+          </div>
+          <div class="card__badge top left"></div>
+        </div>
+      </div>
+      <div class="shoeName">
+          <a href="/products/${
+                response[data][innerKey]['handle']
+              } ">${
+                response[data][innerKey]['product_name']
+              }</a>
+      </div>
+      <div class="priceContainer">
+          
+          <div class="price">
+              <div class="newPrice">$${
+                response[data][innerKey]['product_price'].replace('$', '').replace('.00', '')
+              }</div>             
+          </div>
+               
+          
+            <div class="brandName">${
+                response[data][innerKey]['product_brand']
+              }</div>
+            
+      </div>
+      <div class="card__content" style="display:none;">
+        <div class="card__information">
+          <h3 class="card__heading h5" id="title-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273">
+            <a href="/products/${
+                response[data][innerKey]['handle']
+              }" id="CardLink-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273" class="full-unstyled-link" aria-labelledby="CardLink-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273 Badge-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-8251460649273">
+             ${
+                response[data][innerKey]['product_name']
+              }
+            </a>
+          </h3>
+          <div class="card-information"><span class="caption-large light"></span>
+<div class="
+    price ">
+  <div class="price__container"><div class="price__regular">
+      <span class="visually-hidden visually-hidden--inline">Regular price</span>
+      <span class="price-item price-item--regular">
+        ${
+                response[data][innerKey]['product_price']
+              }
+      </span>
+    </div>
+    <div class="price__sale">
+        <span class="visually-hidden visually-hidden--inline">Regular price</span>
+        <span>
+          <s class="price-item price-item--regular">
+            
+              
+            
+          </s>
+        </span><span class="visually-hidden visually-hidden--inline">Sale price</span>
+      <span class="price-item price-item--sale price-item--last">
+        
+      </span>
+    </div>
+    <small class="unit-price caption hidden">
+      <span class="visually-hidden">Unit price</span>
+      <span class="price-item price-item--last">
+        <span></span>
+        <span aria-hidden="true">/</span>
+        <span class="visually-hidden">&nbsp;per&nbsp;</span>
+        <span>
+        </span>
+      </span>
+    </small>
+  </div></div>
+
+          </div>
+        </div><div class="card__badge top left"></div>
+      </div>
+    </div>
+  
+  </div>
+          </li>
+`
+              $('#trending').append(html);
+            }
+          }
+        }
+
+      },
+      error: function(xhr, status, error) {
+        console.log('fail');
+        console.log(status);
+      }
+    });
+  });
+</script>
+
+
+
+{% comment %}
+<div class="product-grid__container product-grid__container--{{ section.id }}">
+{% assign latest_products = collections.all.products | sort: 'created_at' | reverse %}
+{% for product in collections[section.settings.collection].products limit: 100 %}
+
+{% include "custom-product-grid", product: product %}
+{% endfor %}
+
+</div>
+{% endcomment %}<div class="color-background-1 isolate gradient" id="ForYouSection">
+  <div class="collection section-template--18902835822905__0d6c9a98-7ac4-4a5b-a1d0-04ca97e3ea8d-padding">
+    <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width" style="margin-top: -10px;">
+      <div class="ForYouSectionTitle" id="foryou">Trending Now</div>
+    </div>
+    <div id="myDiv" class="loading-img_position">
+      <img
+        id="loading-image"
+        src="{{ 'Kyx_Loading.gif' | asset_url }}"
+        style="display:none;" />
+    </div>
+    <slider-component class="slider-mobile-gutter page-width  flexBox">
+      <ul
+        id="trending"
+        class="grid product-grid contains-card contains-card--product grid--6-col-desktop grid--1-col-tablet-down"
+        role="list"
+        aria-label="Slider"></ul>
+    </slider-component>
+  </div>
+</div>

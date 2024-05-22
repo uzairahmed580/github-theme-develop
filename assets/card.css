@@ -1,0 +1,322 @@
+/* @import url("home.css"); */
+@import url("product.css");
+#cardContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.card_first_container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card_second_container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    font-family: termina-regular;
+    font-size: 12px;
+    gap: 0.3rem;
+    margin: 1rem;
+    margin-left: 0;
+}
+
+.card_first_container_items {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_second_container_items {
+    display: flex;
+    font-family:'termina-demi';
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    background: white;
+    margin-right: 1rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.card_second_container_items img {
+    height: 100%;
+    object-fit: cover;
+    /* background-color: #bababad9; */
+}
+
+.Cart_handle {
+    font-family: 'termina-demi';
+    font-size: 18px;
+    color: black;
+}
+
+@media (max-width: 1000px) {
+    .Cart_handle {
+        font-family: 'termina-demi';
+        font-size: 11px;
+        color: black;
+        line-height: 0 !important;
+    }
+    .removeTag {
+        width: 6rem;
+        font-size: 10px;
+    }
+}
+
+.Cart__price {
+    text-decoration: none;
+    color: black;
+    /* margin-left: 0rem; */
+    font-family: 'termina-demi';
+    font-size: 12px;
+    font-weight: 100 !important;
+    padding-top: 12px;
+}
+
+.card_second_container_details {
+    display: flex;
+    font-family:'termina-demi';
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    background: white;
+    height: fit-content;
+    width: 40%;
+    flex-direction: column;
+}
+
+.card_title {
+    width: 80%;
+    font-family: termina-Medium;
+    color: #000;
+}
+
+.shoe_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.shoe_container svg {
+    width: 80px;
+    height: 80px;
+}
+
+.price_container {
+    width: 60%;
+}
+
+
+/* 6/05/23 rupali */
+
+@media (max-width: 1000px) {
+    .remove_container {
+        display: flex;
+    }
+}
+
+.remove_container {
+    /* display: flex; */
+    padding-right: 3rem;
+    padding-left: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+
+.responsiveButton {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: rem;
+    margin-bottom: 11px;
+    font-family:'termina-demi';
+    margin-left: 2rem;
+    width: 6rem;
+    font-size: 15px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: none;
+    border: 1px solid #000000;
+}
+
+.price_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.discount_price_card p {
+    /* text-decoration: line-through;
+    color: #c4c4c4; */
+}
+
+.discount_price_container {
+    display: flex;
+}
+
+.AddButton {
+    background-color: #E5337C;
+    color: #fff;
+    font-family: 'termina-demi';
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    height: 2rem;
+    margin-top: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.AddButton:hover {
+    font-size: 15px;
+}
+
+.card_title_itmes {
+    font-family: 'termina-medium';
+    font-size: 23px;
+}
+
+.card_second_container_details input {
+    height: 2rem;
+    width: 100%;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.card_price {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+    font-weight: 400;
+    font-size: 1rem;
+    border-bottom: 1px solid #e3e3e3;
+    font-size: 14px;
+    font-family: 'termina-regular';
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    flex-direction: column;
+}
+
+.responsiveContainer {
+    display: flex;
+}
+
+.mobileTimer {
+    display: none !important;
+}
+
+.buttonCart {
+    background-color: #e5337c;
+    color: #fff;
+    text-align: center;
+    height: 49px;
+    font-family: termina-Medium;
+    font-size: 16px;
+    padding: 10px 10px;
+}
+
+@media (max-width: 1000px) {
+    .card_first_container_items {
+        flex-direction: column;
+    }
+    .card_second_container_details {
+        width: auto;
+        margin-top: 4rem;
+    }
+    .mobileTimer {
+        display: block;
+        margin-left: 2rem;
+    }
+}
+
+.removeTag {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    margin-bottom: 11px;
+    font-family: 'termina-medium';
+    /* margin-left: 15px; */
+    /* padding: 10px; */
+    /* width: 8rem; */
+    font-size: 11px;
+    border: 1px solid #0062FF;
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
+}
+.card_second_container_items .ProductPrice a{
+    display: block;
+}
+@media screen and (max-width: 767px) {
+    .shoe_container {
+        justify-content: flex-start;
+    }
+    .card_second_container_items {
+        display: block;
+        margin-top: 1rem;
+        margin-right: 0;
+    }
+    .card_second_container_items img,
+    .card_second_container_items svg {
+        height: 100%;
+        object-fit: cover;
+        width: 80px;
+        max-width: 80px;
+        min-width: 80px;
+    }
+    .Cart__price {
+        padding-top: 5px;
+    }
+    .remove_container .timerDiv {
+        padding-top: 0 !important;
+    }
+    .remove_container {
+        justify-content: start;
+        align-items: start;
+        margin-left: 95px;
+        display: flex;
+        padding: 0px 15px 25px;
+    }
+    .card_second_container_items .ProductPrice a{
+        display: block;
+    }
+    .remove_container > div{
+        padding-top: 0 !important;
+    }
+    .removeTag {
+        margin-left: 0;
+        width: 6rem;
+        font-size: 10px;
+        margin-bottom: 0;
+    }
+    .card_second_container_details .order-summary {
+        padding: 0 !important;
+    }
+    .shoe_container {
+        margin-left: 0 !important;
+    }
+    #main-cart-items {
+        background-color: #fff;
+    }
+}
+
+@media (max-width: 477px) {
+    .responsiveContainer {
+        flex-direction: column;
+    }
+    .card_first_container_items {
+        width: 100%;
+    }
+    .card_second_container_items {
+        margin-bottom: 0.8rem;
+        width: 100%;
+    }
+}

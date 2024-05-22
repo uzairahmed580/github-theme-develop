@@ -1,0 +1,39 @@
+<div class="product-grid-item">
+        <div class="product-grid-image">
+          <a href="{{ product.url }}">
+            {% if product.metafields.custom.product_featured_image_custom != blank %}
+              <img src="{{ product.metafields.custom.product_featured_image_custom | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
+            {% else %}
+              <img src="{{ product.featured_image.src | img_url: 'medium' }}" alt="{{ product.featured_image.alt }}">
+            {% endif %}
+          </a>
+          <div class="product-grid-image-login" >
+            <button type="button" onclick="window.location.href='{{ shop.url }}{{ routes.account_login_url }}'">login to see</button>
+          </div>
+          <div class="product-grid-image-info">
+            {% if product.metafields.custom.Kyx_rating != blank %}
+              <p class="product-grid-rating">{{ product.metafields.custom.Kyx_rating }}</p>
+            {% endif %}
+          </div>          
+        </div>
+        <div class="product-grid-info">
+          <h3 class="product-grid-title"><a class="product-grid-title-url-{{ section.id }}" {% if customer %} href="{{ product.url }}" {% else %} href="{{ shop.url }}{{ routes.account_login_url }}" {% endif %}>{{ product.title }}</a></h3>
+          {% if product.metafields.custom.Brand %}
+            <div class="product-grid-brand">{{ product.metafields.custom.Brand }}</div>
+          {% else %}
+            <div class="product-grid-brand">{{ product.vendor }}</div>
+          {% endif %} 
+          <div class="product-grid-price-size-container">
+            <div class="product-grid-price"><span style="font-size: 10px;font-weight: bold;">USD</span> {{ product.price | money_without_currency }}</div>
+                {% for product_option in product.options_with_values %}
+                {% if product_option.name == 'Sizes' or product_option.name == 'sizes' or product_option.name == 'size' or product_option.name == 'Size' %}
+                {% for value in product_option.values %}
+                <div class="product-size">
+				SIZE {{ value }}
+				</div>
+                {% endfor %}  
+                {% endif %}
+                {% endfor %}
+          </div>
+        </div>
+      </div>

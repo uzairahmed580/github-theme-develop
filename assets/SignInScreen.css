@@ -1,0 +1,497 @@
+.AAA {}
+
+.hbuttons div {
+    width: 100% !important;
+    max-width: 240px!important;
+    border-radius: 23px !important;
+}
+
+.KYX_Username_Container input {
+    border: 1px solid #000000;
+    outline: none;
+    width: 95%;
+    height: 2.5rem;
+    font-family: 'Inter';
+    font-size: 14px;
+    padding: 0.5rem;
+    display: flex;
+}
+
+.signInText {
+    font-family: 'termina-Regular';
+    font-weight: 400;
+    font-size: 17px;
+    display: flex;
+    margin: 0.5rem 0 0.5rem 0;
+    justify-content: center;
+}
+
+.resetButton {
+    background-color: #e5337c!important;
+    color: #fff!important;
+    text-align: center!important;
+    height: 49px;
+    font-family: termina-Medium!important;
+    font-size: 16px!important;
+    padding: 0 30px!important;
+    width: 283px;
+}
+
+.resetButton:hover {
+    font-size: 16.5px!important;
+}
+
+.userNameText {
+    text-align: start;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'termina-demi';
+    margin-bottom: 0.2rem;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+}
+
+.forgotPasswordText {
+    display: flex;
+    font-size: 0.7rem;
+    font-weight: flex-end;
+    justify-content: end;
+    font-weight: 700;
+    font-family: 'Oswald';
+    margin-right: 10px;
+    color: #135BEE;
+    width: 100%;
+}
+
+.signinButton {
+    background-color: #e5337c!important;
+    color: #fff!important;
+    width: 149px;
+    text-align: center!important;
+    height: 49px;
+    font-family: termina-Medium!important;
+    font-size: 16px!important;
+    --border-opacity: none !important;
+}
+
+.googleButton {
+    font-size: 14px;
+    border: 2px solid;
+    padding: 0.5rem 2rem;
+    font-family: 'termina-bold';
+    color: black
+}
+
+.bottomPartDropdown {
+    display: flex;
+    margin: 2rem 0rem 2rem 0rem;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'termina-bold';
+    padding-top: 25px;
+}
+
+.facebookAndGoogleLogin {
+    font-size: 14px;
+    border: 2px solid;
+    padding: 0.5rem 2rem;
+    font-family: 'termina-bold';
+}
+
+.newMember {
+    display: flex;
+    gap: 0.3rem;
+}
+
+@media (max-width: 477px) {
+    .KYX_Username_Container {
+        width: 100%;
+        transition: 0.5s ease;
+    }
+}
+
+#cardContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.card_first_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_second_container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    font-family: 'termina-Regular';
+    font-size: .7rem;
+    gap: 1.3rem;
+    margin: 1rem;
+}
+
+.card_first_container_items {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_second_container_items {
+    display: flex;
+     font-family: 'termina-demi';
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    background: white;
+    margin-right: 1rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.card_second_container_items img {
+    height: 60%;
+    object-fit: cover;
+    background-color: #bababad9;
+}
+
+.card_second_container_details {
+    display: flex;
+     font-family: 'termina-demi';
+    color: black;
+    font-size: 1rem;
+    font-weight: 600;
+    background: white;
+    height: fit-content;
+    width: 40%;
+    flex-direction: column;
+}
+
+.card_title {
+    font-family: Oswald;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.shoe_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.price_container {
+    width: 60%;
+}
+
+.remove_container {
+    display: flex;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.responsiveButton {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: rem;
+    margin-bottom: 11px;
+     font-family: 'termina-demi';
+    margin-left: 2rem;
+    width: 6rem;
+    font-size: 15px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: none;
+    border: 1px solid #000000;
+}
+
+.price_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.discount_price_card p {
+    text-decoration: line-through;
+    color: #c4c4c4;
+}
+
+.discount_price_container {
+    display: flex;
+}
+
+.AddButton {
+    background-color: #000000;
+    color: #fff;
+     font-family: 'termina-demi';
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: 40%;
+    height: 2rem;
+    margin-top: 1rem;
+}
+
+.card_title_itmes {
+     font-family: 'termina-demi';
+    font-size: 1.8rem;
+}
+
+.card_second_container_details input {
+    height: 2rem;
+    width: 80%;
+    margin-top: 1rem;
+}
+
+.card_price {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0rem;
+    font-weight: 400;
+    font-size: 1rem;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.responsiveContainer {
+    display: flex;
+}
+
+@media (max-width: 1000px) {
+    .card_first_container_items {
+        flex-direction: column;
+    }
+    .card_second_container_details {
+        width: auto;
+        margin-top: 1rem;
+    }
+    .remove_container {
+        display: none;
+    }
+    .responsiveButton {
+        display: block;
+    }
+}
+
+.removeTag {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: rem;
+    margin-bottom: 11px;
+     font-family: 'termina-demi';
+    margin-left: 15px;
+    width: 6rem;
+    font-size: 15px;
+    border: 1px solid #000000;
+}
+
+@media (max-width: 477px) {
+    .responsiveContainer {
+        flex-direction: column;
+    }
+}
+
+.card_title {
+    display: flex;
+    width: 35%;
+    justify-content: space-between;
+     font-family: 'termina-demi';
+}
+
+.card_title p {
+    font-size: 0.9rem;
+    color: black;
+}
+
+.shippedDetails {
+    display: flex;
+    margin-left: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shippedDetails div {
+     font-family: 'termina-demi';
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid yellow;
+    padding-right: 0.7rem;
+    padding-left: 0.7rem;
+    border-radius: 10px;
+}
+
+.shippedDetails p {
+    margin: 0;
+    color: #000000;
+}
+
+.viewDetails {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.orderDetails {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.viewOrderDetails {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_one {
+    height: 100%;
+    width: 80%;
+}
+
+.div_one {
+    display: flex;
+    align-items: center;
+}
+
+.div_one img {
+    width: 15%;
+}
+
+.imgDiv {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+.cost {
+    display: flex;
+    justify-content: space-between;
+}
+
+.div_one_cost {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cost ul {
+    font-weight: 100;
+    font-size: 0.8rem;
+}
+
+.Product_title {
+    margin-left: 2rem;
+    font-size: 1rem;
+    color: black;
+     font-family: 'termina-demi';
+}
+
+.detailsImageDiv {
+    justify-content: end;
+    margin-top: 1rem;
+}
+
+.direction {
+    flex-direction: row;
+}
+
+.searchDiv {
+    align-items: center;
+    width: 32%;
+}
+
+.showProduct {
+    display: none;
+}
+
+.container_one_singinPage {
+    width: 79%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 477px) {
+    .div_one {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 70%;
+    }
+    .container_one_singinPage {
+        width: 100%
+    }
+    .div_two {
+        font-size: 0.8rem;
+    }
+    .Product_title {
+        margin-left: 0rem;
+        font-size: 0.8rem;
+    }
+    .imgDiv {
+        align-items: flex-end;
+    }
+    .detailsImageDiv {
+        justify-content: flex-start;
+    }
+    .div_one_cost {
+        width: 100%;
+    }
+    /* may be 1000px */
+    .direction {
+        flex-direction: column;
+    }
+    .searchDiv {
+        width: 100%;
+    }
+    .card_title {
+        width: 100%;
+        flex-direction: column;
+    }
+    .card_title p {
+        margin-top: 0rem;
+        margin-bottom: 0.3rem;
+    }
+}
+
+#SignInContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_two_signinPage {
+    width: 60%;
+    background: white;
+    padding: 2rem;
+    margin-bottom: 10rem;
+    box-shadow: 0px 0px 10px #00000030;
+}
+
+.newMemberSignIn {
+    display: flex;
+    /* margin-left: 1.5rem; */
+    gap: 0.3rem;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+@media (max-width: 1000px) {
+    .container_two_signinPage {
+        width: 100%;
+        padding: 1rem;
+    }
+}

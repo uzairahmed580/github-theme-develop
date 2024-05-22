@@ -1,0 +1,293 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .continue_shopping {
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+    width: 100%;
+    height: 3rem;
+    background: white;
+    color: black;
+    border: 1px solid #0062ff !important;
+    font-family: termina-regular;
+    font-size: 14px;
+
+  }
+
+
+  .continue_shopping:hover {
+    color: white;
+    background: #e5337c
+  }
+
+
+  .padding_button {
+    padding: 12px;
+    height: 50px;
+    width: fit-content;
+    background: #E5337C;
+    font-family: termina-demi;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-size: 20px;
+  }
+
+  /* .shop-hover:hover .padding_button {
+    font-size: 16px !important;
+  } */
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}
+    px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}
+    px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {}
+  .timer {
+    position: absolute;
+    font-weight: bold;
+  }
+{%- endstyle -%}
+
+{%- unless settings.cart_type == 'drawer' -%}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+<cart-items style="padding:0; max-width:100%" class="page-width{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
+  <div class="cart__warnings">
+    <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
+    <a href="{{ routes.all_products_collection_url }}" class="button shop-hover">
+      <div class='padding_button'>{{ 'general.continue_shopping' | t }}</div>
+    </a>
+
+    {%- if shop.customer_accounts_enabled and customer == null -%}
+      <h2 class="cart__login-title">{{ 'sections.cart.login.title' | t }}</h2>
+      <p class="cart__login-paragraph">
+        {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
+      </p>
+    {%- endif -%}
+  </div>
+
+  <form
+    action="{{ routes.cart_url }}"
+    class="cart__contents critical-hidden"
+    method="post"
+    id="cart">
+    <div
+      class="cart__items"
+      id="main-cart-items"
+      data-id="{{ section.id }}">
+      <div class="js-contents">
+        {%- if cart != empty -%}
+          <div id="cardContainer " class="page-width">
+            <div class="card_first_container">
+              <div class="card_second_container">
+                <div onclick="window.location.href='{{ shop.url }}'">Home</div>
+                <img
+                  src="{{ 'side_icon.png' | asset_url }}"
+                  style="height:1rem; width:1rem;"
+                  alt="side">
+                <div>Cart</div>
+              </div>
+              <div class="card_title">CART</div>
+              <!-- timer -->
+              <!-- <div style="position:relative;"><span class="timer"></span></div> -->
+            </div>
+          </div>
+
+          <div id="cardContainer" class="page-width">
+            <div class="card_first_container_items">
+              <div style="display: flex; flex-direction: column; width: 100%;">
+                {%- for item in cart.items -%}
+                  <div class="card_second_container_items">
+                    <div class="responsiveContainer" style="position:relative;">
+                      <div class="shoe_container">
+                        {% if item.image %}
+                          <img
+                            src="{{ item.image | image_url: width: 161 }}"
+                            class="cart-item__image"
+                            alt="{{ item.image.alt | escape }}"
+                            loading="lazy"
+                            width="80"
+                            height="{{ 80 | divided_by: item.image.aspect_ratio | ceil }}">
+                        {% else %}
+                          {{ 'product-' | append: '1' | placeholder_svg_tag: 'placeholder-svg' | width: '80px' | height: '80px' }}
+                        {% endif %}
+
+                        <div class="price_card">
+                          <div style="margin-left: 2rem">
+                            <a class="Cart_handle" href="{{ item.url }}">{{ item.product.title | escape }}</a>
+                            <div class="discount_price_container">
+                              <div class="discount_price_card">
+                                <p class="Cart__price">
+                                  {%- if item.original_price != item.final_price -%}
+                                    {{ 'products.product.price.regular_price' | t }}
+                                  {%- else -%}
+                                    {{ item.original_price | money }}
+                                  {%- endif -%}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="remove_container">
+                      {%- if settings.cart_type == 'drawer' -%}
+                      <timer-cart data-productId="{{ item.product.id }}" id="item__timer--{{ item.id }}"
+                        class="timerDiv cart_product-timer timerDiv item__timer--{{ item.id }}"
+                        style="font-family:termina-regular; font-size:10px; padding-top: 5px;    display: block;text-align: center;"></timer-cart>
+                      {%- else -%}
+                      <div
+                        class="timer_{{ item.id }}"
+                        class="timerDiv"
+                        style="font-family:termina-regular; font-size:10px; padding-top: 23px;"></div>
+                      {%- endif -%}
+                      <div class="ProductPrice">
+                        <a
+                          href="{{ shop.url }}{{ item.url_to_remove }}"
+                          class="removeTag removebtn_{{ item.id }}"
+                          style="padding: 11px;"
+                          onclick="rmCookie({{ item.id }}, {{ item.product.id }});">
+                          REMOVE
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+              <div class="card_second_container_details">
+                <div class="order-summary" style="width: 100%; padding: 0rem 2rem; padding: 8%;">
+                  <div class="card_title_itmes">Summary</div>
+                  <div class="card_price">
+                    <div>Price ({{ cart.item_count }} items)</div>
+                    <div>{{ cart.total_price | money }}</div>
+                  </div>
+                  <div class="card_price" style="border-bottom: none">
+                    <div>Subtotal</div>
+                    <div style="font-weight: 800">{{ cart.total_price | money }}</div>
+                  </div>
+                  <div class="card_price" style="border-bottom: none">
+                    <div>Tax & Shipping</div>
+                    <div style="font-weight: 800; text-align:right;">To be calculated in next step...</div>
+                  </div>
+                  <div class="buttonContainer">
+                    <span
+                      type="submit"
+                      class="continue_shopping"
+                      onclick="window.location.href='https://www.kyxsneakers.com/collections/all'">CONTINUE SHOPPING</span>
+                    <input
+                      type="submit"
+                      name="checkout"
+                      value="CHECKOUT"
+                      class="AddButton"
+                      style="height: 3rem; background: #e5337c; color: white;border: 1px solid #0062ff !important;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <p
+      class="visually-hidden"
+      id="cart-live-region-text"
+      aria-live="polite"
+      role="status"></p>
+    <p
+      class="visually-hidden"
+      id="shopping-cart-line-item-status"
+      aria-live="polite"
+      aria-hidden="true"
+      role="status">
+      {{ 'accessibility.loading' | t }}
+    </p>
+  </form>
+</cart-items>
+<script>
+
+   
+if (window.cartStrings.cart_type == "page") {
+  
+
+
+  function setCookie5(cname, cvalue, exdays = 365) {
+    const d = new Date();
+    d.setTime(d.getTime() + (10 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function rmCookie(id, productid) {
+    console.log(id);
+    setCookie5(`${id}_minute`, 00);
+    setCookie5(`${id}_second`, 00);
+    var items = {};
+    items[id] = 0;
+    jQuery.post('/cart/update.js', {updates: items});
+    $.ajax({
+      url: 'https://oyr2io95dd.execute-api.us-east-2.amazonaws.com/PROD/delete_stock',
+      method: 'post',
+      data: '{"key1": "' + productid + '", "key2": "1" ,"key3": "0"}',
+      crossDomain: true,
+      contentType: "text/plain",
+      success: function(data) {
+        window.location.reload();
+      },
+      error: function(xhr, status, error) {
+        console.log('fail');
+        console.log(error);
+      }
+    });
+    // event.preventDefault();
+
+  }
+}
+</script>
+{% schema %}
+  {
+    "name": "t:sections.main-cart-items.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ]
+  }
+{% endschema %}

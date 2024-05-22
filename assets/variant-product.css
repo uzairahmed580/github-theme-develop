@@ -1,0 +1,116 @@
+
+    .gift__card product-info .product__title{
+      margin-bottom: 0px !important;
+    } 
+    .gift__card product-info .gift_card_price{
+      margin: 0! important;
+    }
+    .gift__card .product__info-container>*+*{
+      margin: 0! important;
+    }
+    .gift__card .field__input, .customer .field input{
+      border: 2px solid #F2EEEB !important;
+      background: #fff ;
+    }
+    .gift__card .quantity{
+      border: 1px solid #000;
+      width: calc(11rem / var(--font-body-scale) + var(--inputs-border-width) * 2) !important;
+      min-height: calc((var(--inputs-border-width) * 2) + 1.5rem) !important;
+    }
+    .gift__card .quantity__input{
+      border: 0px solid #000 !important;
+    }
+    .product-desc{
+      font-size: 16px;
+      font-family: 'Inter';
+      font-weight: 400;
+      margin-top: 10px;
+    }
+    .product-desc span {
+      font-family: 'termina-demi';
+    }
+    .gift__card .product__info-container .product-form{
+      margin: 1.5rem 0;
+    }
+    .gift__card .mobile-btn{
+      display: none;
+    }
+.product--variant .shopify-payment-button{display:none};
+.variant__products__details .productDetails_brand {order:1;}
+.variant__products__details .productDetails_title {order:2;}
+.variant__products__details .gift_card_price{order:3;}
+.variant__products__details .payment__button{order:6;}
+.variant__products__details .shopify__app{order:5;}
+.variant__products__details variant-radios{order:4;}
+.variant__products__details .product__description{order:7;}
+.variant__products__details .share-button {order:8;}
+.variant__products__details .price__badge-sold-out{display:none;}
+.variant__products__details .product__description h1{font-size: 16px;}
+
+    @media screen and (max-width:767px){
+    .gift__card .product-form__input input[type=radio]+label{
+      padding: 0.5rem 1rem !important;
+      font-size: 1.2rem !important;
+      }
+      .gift__card.product--variant .product-form__input input[type=radio]+label{
+        padding: 0.5rem 1rem !important;
+        font-size: 12px !important;
+      }
+      .gift__card .product-form__buttons.mobile-btn{
+        display:flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 999;
+        padding: 5px 0;
+        background-color: #fff;
+      }
+      .gift__card .product-form__buttons.mobile-btn span{
+        font-size: 16px !important;
+      }
+      /* .gift__card .product-form__buttons.desktop_btn {
+        display: none!important;
+      } */
+      .gift__card .grid__item{
+        padding-bottom: 30px !important;
+      }
+      .gift__card .product-form__buttons.mobile-btn .buynow_btn{
+        background: #fff !important;
+        color: #e5337c !important;
+        border: 2px solid #e5337c;
+      }
+      .payment__button product-form .product-form__buttons
+      {
+        position: fixed !important;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        padding: 10px 15px 15px 10px;
+        background: #fff;
+        display: block;
+        margin: 0;
+      }
+      .product-form__submit span{
+        font-size: 13px !important;
+      }
+    }
+  .desktop_btn{
+    width:100%;
+  }
+  .product-form__submit{
+    width:80%;
+  }
+  .product-form__buttons.desktop_btn #heart{
+    width:20%;
+    border:2px solid #e5337c;
+  }
+  .product-form__submit span{
+    font-size: 18px;
+  }
+.payment__button product-form .button{
+  margin:0;
+}
